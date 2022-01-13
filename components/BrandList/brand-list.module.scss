@@ -1,0 +1,111 @@
+.wrapper {
+  margin-bottom: 50px;
+}
+
+.letters {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: bold;
+  color: #717171;
+  padding: 1rem 1rem 2rem;
+  //margin-bottom: 20px;
+  //border-bottom: 1px solid #e8e8e8;
+  position: sticky;
+  top: 70px;
+  z-index: 999;
+  background-color: #E5E5E5;
+
+  div {
+    cursor: pointer;
+
+
+  }
+}
+.active {
+  color: #6C98B1;
+
+  &:hover {
+    transform: scale(3);
+  }
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  grid-gap: 1.5rem;
+}
+
+.brand {
+  //margin-bottom: 30px;
+  position: relative;
+
+}
+
+.capital {
+  font-family: Rubik;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 66px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #717171;
+
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 20px 0;
+
+  a {
+    display: flex;
+    height: 50px;
+    width: 33.3%;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 0.5rem 1rem;
+    color: #2b2b2b;
+
+    &:hover {
+      color: #6C98B1;
+      border: 1px solid #6C98B1;
+    }
+  }
+}
+
+.brandList {
+  //display: grid;
+  //grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .capital{
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .letters {
+    flex-wrap: wrap;
+    //justify-content: center;
+    padding: 1rem 1rem 0;
+
+    a {
+      margin-right: 25px;
+      margin-bottom: 15px;
+    }
+  }
+  .links {
+    a {
+      width: 100%;
+      //text-align: center;
+      justify-content: center;
+    }
+  }
+}

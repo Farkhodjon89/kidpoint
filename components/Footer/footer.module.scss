@@ -1,0 +1,162 @@
+.wrapper {
+  background: #fff;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0;
+
+  .references {
+    //margin-top: 20px;
+    .referencesWrapper {
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      justify-content: space-between;
+    }
+
+
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-family: Rubik;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 17px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #5E697B;
+      margin-bottom: 20px;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      font-family: Rubik;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #5E697B;
+      margin-bottom: 20px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.bot {
+  height: 50px;
+  color: red;
+  display: flex;
+  align-items: center;
+  background-color: #D9E1E5;
+  width: 100vw;
+  position: relative;
+  margin-right: -50vw;
+  margin-left: -50vw;
+  left: 50%;
+  right: 50%;
+  //border-top: 1px solid #717171;
+
+  .botInner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #5E697B;
+
+    .center {
+      display: flex;
+
+      li {
+        margin-right: 30px;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-left: 10px;
+      }
+    }
+  }
+
+}
+
+.references {
+  display: flex;
+
+}
+
+@media screen and (max-width: 1100px) {
+  .top {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    div {
+      align-items: center;
+      margin-bottom: 40px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .bot {
+    height: 100%;
+
+    .botInner {
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+
+      div {
+        margin-bottom: 20px;
+      }
+
+      a {
+        display: block;
+      }
+    }
+
+    .center {
+      //flex-direction: column;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+
+    }
+  }
+}

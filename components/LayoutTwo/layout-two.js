@@ -1,0 +1,87 @@
+import React from 'react'
+import s from './layout-two.module.scss'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
+const LayoutTwo = ({ children }) => {
+  const router = useRouter()
+  return (
+    <>
+      <div className={s.header}>
+        <div className={s.headerInner}>
+          {/* {router.pathname === '/checkout' ? (
+            <>
+              <Link href='/cart'>
+                <a>
+                  <img src='/icons/arrowLeft.svg' alt='' />
+                  <span>Orqaga</span>
+                </a>
+              </Link>
+              <Link href='/'>
+                <a className={s.logo}>
+                  <img src='/header/logo.svg' alt='' />
+                </a>
+              </Link>
+              <Link href='/'>
+                <a>
+                  <img src='/icons/phone.svg' alt='' />
+                  <span>(55) 500-88-77</span>
+                </a>
+              </Link>
+            </>
+          ) : (
+            <Link href='/'>
+              <a className={s.logo}>
+                <img src='/header/logo.svg' alt='' />
+              </a>
+            </Link>
+          )} */}
+          <div className={s.info}>
+            {/*<div>*/}
+            {/*  <img src='/public/icons/wear.svg' alt='' /> Бесплатная примерка*/}
+            {/*</div>*/}
+            <Link href='/'>
+              <a >
+                <img className={s.logo} src='/header/logo-white.svg' alt='' />
+              </a>
+            </Link>
+          </div>
+          <div className={s.inner}>
+            <div>
+              <img src='/public/icons/return.svg' alt='' />Магазины
+            </div>
+            <div>
+              <img src='/public/icons/return.svg' alt='' />Доставка и оплата
+            </div>
+            <div>
+              <img src='/public/icons/return.svg' alt='' />Обмен и возврат товара
+            </div>
+            <div>
+              <img src='/public/icons/wear.svg' alt='' /> Статус заказа
+            </div>
+          </div>
+          <Link href='tel:+998 99 610-77-88'>
+            <a>
+              <img className={s.phoneLogo} src='/public/icons/phone.svg' alt='' />
+              <span>99 610-77-88</span>
+            </a>
+          </Link>
+        </div>
+      </div>
+      <div className={s.wrapper}>{children}</div>
+      <div className={s.footer}>
+        <div className={s.footerInner}>
+          <div>© 2021 Bloom. Все права защищены</div>
+          <Link href='https://billz.uz/'>
+            <a target='_blank'>
+              E-commerce решение от
+              <img src='/footer/billz2.svg' alt='' />
+            </a>
+          </Link>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default LayoutTwo

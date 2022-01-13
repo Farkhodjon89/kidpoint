@@ -1,0 +1,14 @@
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://bloomshop.uz">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Крема, лосьоны, гели по уходу за лицом и телом | Bloomshop">
+<meta property="og:description" content="Интернет-магазин BloomShop предлагает вам купить крема, гели, лосьоны и другие предметы гигиенты по уходу за лицом и телом.">
+<meta property="og:image" content="https://scontent.fppk1-1.fna.fbcdn.net/v/t1.6435-9/188331576_218914673372068_7699013698827035248_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=eZkmMwutnlUAX-bsbGx&_nc_ht=scontent.fppk1-1.fna&oh=c94ca0eb3d3ba28e3c9d0780e8885f44&oe=61315760">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="Tashtib-tex.uz">
+<meta property="twitter:url" content="https://tashtib-tex.uz">
+<meta name="twitter:title" content="Крема, лосьоны, гели по уходу за лицом и телом | Bloomshop">
+<meta name="twitter:description" content="Интернет-магазин BloomShop предлагает вам купить крема, гели, лосьоны и другие предметы гигиенты по уходу за лицом и телом.">
+<meta name="twitter:image" content="https://scontent.fppk1-1.fna.fbcdn.net/v/t1.6435-9/188331576_218914673372068_7699013698827035248_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=eZkmMwutnlUAX-bsbGx&_nc_ht=scontent.fppk1-1.fna&oh=c94ca0eb3d3ba28e3c9d0780e8885f44&oe=61315760">

@@ -1,0 +1,120 @@
+import React, {useState, useEffect} from 'react'
+import s from './header.module.scss'
+import Link from 'next/link'
+import HeaderMenu from '../HeaderMenu/header-menu'
+import TopBar from '../TopBar/top-bar'
+import {connect} from 'react-redux'
+import {deleteFromCart, addToCart, setCartModal} from '../../redux/actions/cartActions'
+import client from '../../apollo/apollo-client'
+import {useLazyQuery} from '@apollo/react-hooks'
+import CartModal from '../CartModal/cart-modal'
+import icons from '../../public/fixture'
+import PRODUCTS from '../../queries/products'
+
+const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart}) => {
+  const [open, setOpen] = useState(false)
+  const [isSearchActive, setIsSearchActive] = useState(true)
+  const [searchResults, setSearchResults] = useState([])
+  const [cartModal, setCartModal] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [loadProducts, {data, loading}] = useLazyQuery(PRODUCTS, {
+    client
+  })
+
+  useEffect(() => {
+    if (data && searchQuery.length) {
+      setSearchResults(data.products.nodes)
+    }
+  }, [data])
+
+  const searchData = e => {
+    setSearchResults([])
+    setSearchQuery(e.target.value)
+
+    if (e.target.value.length) {
+      loadProducts({
+        variables: {
+          first: 10,
+          search: e.target.value
+        }
+      })
+    }
+  }
+
+  return (
+      <>
+        <TopBar/>
+        <div className={s.wrapper}>
+          <div className={s.inner}>
+            <div className={s.left}>
+              <img src='/header/burger.svg' alt='' className={s.burger} onClick={() => setOpen(true)}/>
+            </div>
+            <Link href='/'>
+              <a>
+                <img className={s.logo} src='/header/logo.svg' alt=''/>{' '}
+              </a>
+            </Link>
+            <div className={s.right}>
+              <div className={s.search}>
+                <Link href="/search">
+                  <a>
+                        <span
+                            dangerouslySetInnerHTML={{__html: icons.search}}
+                            onClick={() => setIsSearchActive(true)}
+                        />
+                  </a>
+                </Link>
+              </div>
+              <div className={s.user}>
+                <Link href={'/account'}>
+                  <a dangerouslySetInnerHTML={{__html: icons.user}} className={s.account}>
+                  </a>
+                </Link>
+              </div>
+              <div className={s.wishlist}>
+                <Link href={'/wishlist'}>
+                  <a className={s.headerWishlist}>
+                    <span dangerouslySetInnerHTML={{__html: icons.wishlist}}/>
+                    {wishlistItems.length > 0 && <span className={s.wishlistQuantity}>{wishlistItems.length}</span>}
+                  </a>
+                </Link>
+              </div>
+              <div className={s.cartLink}>
+                <a onClick={() => setCartModal(true)}>
+                  <span dangerouslySetInnerHTML={{__html: icons.cart2}}/>
+                  <span> <span className={s.cartWord}>Корзина</span> ({cartItems.length}) </span>
+                </a>
+              </div>
+            </div>
+            <CartModal
+                cartItems={cartItems}
+                deleteFromCart={deleteFromCart}
+                cartModal={cartModal}
+                addToCart={addToCart}
+                setCartModal={setCartModal}
+            />
+          </div>
+        </div>
+        <HeaderMenu categories={categories} open={open} setOpen={setOpen} cartItems={cartItems}/>
+      </>
+  )
+}
+
+const mapStateToProps = state => {
+  return {
+    cartItems: state.cartData,
+    wishlistItems: state.wishlistData,
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteFromCart: item => {
+      dispatch(deleteFromCart(item))
+    },
+    setCartModal: () => {
+      dispatch(setCartModal())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

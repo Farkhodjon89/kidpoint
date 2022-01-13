@@ -1,0 +1,52 @@
+.category {
+  margin-bottom: 96px;
+  .image {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 12px;
+    margin: 0 auto;
+    border-radius: 32px;
+  }
+  .title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #2B2B2B;
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+.titleCategories {
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #5E697B;
+}
+.mobileCategory {
+  display: none;
+}
+
+@media (max-width: 440px) {
+  .categories {
+    display: none;
+  }
+  .mobileCategory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .category {
+      width: 47%;
+      margin-bottom: 24px;
+      .image {
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}

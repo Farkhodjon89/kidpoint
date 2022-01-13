@@ -1,0 +1,138 @@
+.wrapper {
+  //display: flex;
+  //flex-wrap: wrap;
+  margin-bottom: 70px;
+}
+
+.brands1 {
+  display: flex;
+  margin-bottom: 30px;
+
+  .brands1LeftSide {
+    display: flex;
+    justify-content: center;
+
+    .brand1LeftSideItem {
+      padding: 57px;
+      background-color: #fff;
+      border-radius: 32px;
+      //margin-right: 30px;
+
+    }
+  }
+
+  .brands1RightSide {
+    //height: 118px;
+    border: 1px solid #E8E8E8;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .brand1RightSideItem {
+      width: 25%;
+      max-width: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 160px;
+      background-color: #fff;
+      border-radius: 32px;
+      //margin-left: 30px;
+    }
+  }
+}
+
+.brands2 {
+  display: flex;
+
+  .brands2LeftSide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .brand2LeftSideItem {
+      width: 25%;
+      max-width: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 160px;
+      background-color: #fff;
+      border-radius: 32px;
+    }
+  }
+
+  .brands2RightSide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .brand2RightSideItem {
+      padding: 57px;
+      background-color: #fff;
+      border-radius: 32px;
+    }
+
+  }
+}
+
+.titleBrands {
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #5E697B;
+}
+
+
+@media screen and (max-width: 1100px) {
+  .brands1 {
+    flex-direction: column;
+
+    .brand1LeftSideItem {
+      margin-bottom: 15px;
+    }
+    .brands1RightSide {
+      .brand1RightSideItem {
+        width: 50%;
+        margin-bottom: 15px;
+      }
+    }
+  }
+  .brands2 {
+    flex-direction: column;
+    .brands2RightSide{
+      order: 1;
+      .brand2RightSideItem {
+        margin-bottom: 15px;
+
+      }
+    }
+    .brands2LeftSide {
+      order: 2;
+      .brand2LeftSideItem {
+        width: 50%;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .brand {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .brand {
+    width: 50%;
+    height: 80px;
+  }
+}

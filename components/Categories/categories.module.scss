@@ -1,0 +1,46 @@
+.titleCategories {
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #5E697B;
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .category {
+    margin-bottom: 40px;
+
+    .image {
+      width: 160px;
+      height: 160px;
+      margin-bottom: 12px;
+      margin: 0 auto;
+      border-radius: 32px;
+    }
+
+    .title {
+      font-family: Rubik;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #5E697B;
+      margin-top: 10px;
+      width: 160px;
+    }
+
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+}

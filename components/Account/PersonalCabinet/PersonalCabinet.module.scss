@@ -1,0 +1,159 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 100px;
+
+  .title {
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #5E697B;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+  }
+
+  .leftSide {
+    width: 35%;
+    background-color: #fff;
+    border-radius: 16px;
+    max-width: 255px;
+    height: 180px;
+    padding: 24px;
+    margin-top: 20px;
+    //height: auto;
+    .tab {
+      width: 250px;
+      height: 40px;
+      padding: 10px 16px;
+
+      .label {
+        color: #2B2B2B;
+        font-family: Manrope;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: left;
+
+        &:hover {
+          color: #6C98B1;
+        }
+      }
+    }
+  }
+
+  .rightSide {
+    width: 65%;
+
+    .action {
+      width: 48%;
+
+      &.actionFullRow {
+        width: 100%;
+
+      }
+    }
+
+    .input {
+      width: 100%;
+      max-width: 540px;
+      height: 54px;
+      border: 1px solid #E8E8E8;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .inputs {
+      width: 100%;
+    }
+
+    .textArea {
+      width: 100%;
+      max-width: 540px;
+      height: 108px;
+      border: 1px solid #E8E8E8;
+      padding: 20px;
+      margin-bottom: 36px;
+    }
+
+    input {
+      width: 100%;
+      height: 50px;
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 0 20px;
+      margin-bottom: 30px;
+    }
+
+    .submitButton {
+      background: #E4D6B9;
+      color: #052537;
+      border: 1px solid #E4D6B9;
+      width: 48%;
+      border-radius: 16px;
+      max-width: 100%;
+      height: 52px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      display: inline;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 60px;
+      margin-top: 32px;
+      margin-right: 2rem;
+    }
+
+    .errorMessage {
+      position: absolute;
+      top: 13px;
+      right: 17px;
+      cursor: pointer;
+    }
+
+    .errorMessage {
+      position: absolute;
+      top: 50px;
+      font-weight: 300;
+      font-size: 12px;
+      color: #ff1d53;
+    }
+
+    .error {
+      border-color: #ff1d53;
+    }
+
+    .error {
+      outline-color: red !important;
+      border: 1px solid red !important;
+    }
+
+    @media screen and (max-width: 576px) {
+      .action {
+        width: 100%;
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .wrapper {
+    flex-direction: column;
+
+    .leftSide {
+      width: 100%;
+    }
+
+    .rightSide {
+      width: 100%;
+    }
+  }
+}
+

@@ -1,0 +1,24 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dermatology",
+  "name": "Bloom",
+  "image": "https://scontent.fppk1-1.fna.fbcdn.net/v/t1.6435-9/188331576_218914673372068_7699013698827035248_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=eZkmMwutnlUAX-bsbGx&_nc_ht=scontent.fppk1-1.fna&oh=c94ca0eb3d3ba28e3c9d0780e8885f44&oe=61315760",
+  "@id": "bloomshop.uz",
+  "url": "https://bloomshop.uz",
+  "telephone": "+998 71 222-22-22",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "21 улица Узбекистон Овози",
+    "addressLocality": "Ташкент",
+    "postalCode": "100001",
+    "addressCountry": "UZ"
+  } ,
+  "sameAs": [
+    "https://www.facebook.com/bloombeauty.uz/",
+    "https://www.instagram.com/bloombeauty.uz/",
+    "https://t.me/bloombeautyuz"
+  ] 
+}
+</script>

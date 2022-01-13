@@ -1,0 +1,14 @@
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://necons.uz">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Мужская одежда, обувь и аксессуары в Ташкенте | Necons">
+<meta property="og:description" content="Стильные мужские костюмы, качественная мужская обувь и все необходимые аксессуары для вашего образа тут, в интернет магазине Necons!">
+<meta property="og:image" content="https://necons.uz/base/banner-min.jpg">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="necons.uz">
+<meta property="twitter:url" content="https://necons.uz">
+<meta name="twitter:title" content="Мужская одежда, обувь и аксессуары в Ташкенте | Necons">
+<meta name="twitter:description" content="Стильные мужские костюмы, качественная мужская обувь и все необходимые аксессуары для вашего образа тут, в интернет магазине Necons!">
+<meta name="twitter:image" content="https://necons.uz/base/banner-min.jpg">
