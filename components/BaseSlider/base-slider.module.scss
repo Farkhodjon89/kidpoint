@@ -10,6 +10,7 @@
 
 
 }
+
 .inner {
   display: block;
   height: 600px;
@@ -18,6 +19,7 @@
   background-size: cover;
   border-radius: 32px;
 }
+
 .main {
   width: 100%;
   height: 100%;
@@ -26,17 +28,20 @@
   position: relative;
   border-radius: 32px;
 }
+
 .major {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   margin-left: 95px;
+
   div {
     font-weight: 800;
     font-size: 40px;
     color: #ffffff;
 
   }
+
   a {
     display: flex;
     align-items: center;
@@ -60,15 +65,55 @@
   cursor: pointer;
   top: 50%;
   transform: translateY(-50%);
+  border: 1px solid #D9E1E5;
+  border-radius: 12px;
+  background-color: #EEF6FB;
 }
 
 .sliderPrevArrow {
-  left: 5%;
+  left: -2%;
 }
 
 .sliderNextArrow {
-  right: 5%;
+  right: -2%;
 }
+
+.slick-dots {
+  position: absolute;
+  bottom: -45px;
+  list-style: none;
+  display: block;
+  text-align: center;
+  padding: 0;
+  width: 918px !important;
+  height: 8px;
+  background: #F3F8FB;
+  border-radius: 50px;
+}
+
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+}
+.slick-dots li button {
+  border: 0;
+  background: transparent;
+  display: block;
+  height: 20px;
+  width: 20px;
+  outline: none;
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 1100px) {
   .inner {
@@ -80,6 +125,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+
     div {
       font-size: 28px;
       //text-align: center;

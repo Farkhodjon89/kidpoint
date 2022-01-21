@@ -56,7 +56,7 @@ export const cartItemStock = (item, color, size) => {
   } else {
     return item?.variations?.nodes?.filter(
       ({ attributes }) =>
-        attributes.nodes[0].value === color &&
+        attributes?.nodes[0].value === color &&
         attributes.nodes[1].value === size
     )[0]?.stockQuantity
   }

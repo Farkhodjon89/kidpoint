@@ -60,8 +60,13 @@ const Brands = ({brands1, brands2}) => {
                   </div>
               ))}
             </div>
-
           </div>
+
+          <Link href={'/brands'}>
+            <div className={s.allBrands}>
+              <button>Все бренды</button>
+            </div>
+          </Link>
         </div>
       </>
 

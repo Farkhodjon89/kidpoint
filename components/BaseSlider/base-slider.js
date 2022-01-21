@@ -14,7 +14,7 @@ const BaseSlider = ({ data }) => {
 
   const SliderPrevArrow = (props) => (
     <img
-      src='/public/icons/arrowLeft.svg'
+      src='/icons/arrowLeft.svg'
       alt=''
       onClick={props.onClick}
       className={s.sliderPrevArrow}
@@ -23,7 +23,7 @@ const BaseSlider = ({ data }) => {
 
   const SliderNextArrow = (props) => (
     <img
-      src='/public/icons/arrowRight.svg'
+      src='/icons/arrowRight.svg'
       alt=''
       onClick={props.onClick}
       className={s.sliderNextArrow}
@@ -38,6 +38,7 @@ const BaseSlider = ({ data }) => {
     autoplay: true,
     speed: 3000,
     autoplaySpeed: 2000,
+    // dots: true,
     prevArrow: <SliderPrevArrow />,
     nextArrow: <SliderNextArrow />,
 

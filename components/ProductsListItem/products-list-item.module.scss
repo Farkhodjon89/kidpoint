@@ -35,7 +35,7 @@
 
 .productImg {
   width: 100%;
-  height: 380px;
+  height: 350px;
   border-radius: 32px;
   object-fit: cover;
 }
@@ -52,22 +52,36 @@
   flex-direction: column;
   //justify-content: space-between;
   height: 120px;
-  padding: 0 15px;
+  padding: 0 20px;
+  .productName{
+    font-family: Rubik;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #5E697B;
+    margin-bottom: 15px;
+
+  }
 
   div {
     &:nth-of-type(1) {
-      text-align: center;
+      //text-align: center;
+
     }
 
-    &:nth-of-type(1),
     &:nth-of-type(2) {
+      font-family: Rubik;
+      font-size: 15px;
+      font-style: normal;
       font-weight: 600;
-      font-size: 14px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      margin-bottom: 10px;
-      color: #5E697B;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #052537;
+
     }
 
     &:nth-of-type(3) {

@@ -31,10 +31,6 @@ const CartMain = ({
 
   return cartItems.length >= 1 ? (
       <div>
-        <div className={s.heading}>КОРЗИНА</div>
-        <div className={s.divider}></div>
-        {/*<div className={s.heading_two}>Главная / Корзина</div>*/}
-
         <div className={s.wrapper}>
           <div className={s.left}>
             {cartItems.map((product, i) => {
@@ -186,8 +182,6 @@ const CartMain = ({
           </div>
           <div className={s.right}>
             <div className={s.title}>Итог заказа</div>
-            <div className={s.underline}></div>
-
             <div className={s.details}>
               <div>
                 Подытог

@@ -3,6 +3,7 @@ import Breadcrumbs from "../components/Breadcrumbs/breadcrumbs";
 import Layout from "../components/Layout/layout";
 import WishlistMain from "../components/WishlistMain/wishlist-main";
 import {StaticDataSingleton} from "../utils/staticData";
+import SectionTitle from "../components/SectionTitle";
 
 const Wishlist = ({categories}) => {
 
@@ -19,6 +20,7 @@ const Wishlist = ({categories}) => {
 
   return (
       <Layout categories={categories}>
+        <SectionTitle  title={'Избранные'}/>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <WishlistMain />
       </Layout>

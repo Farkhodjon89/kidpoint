@@ -7,6 +7,8 @@ import {
   cartItemStock,
   addToCart,
 } from '../redux/actions/cartActions'
+import SectionTitle from "../components/SectionTitle";
+import CategoriesBar from "../components/CategoriesBar/categories-bar";
 
 export default function Cart({ categories, category }) {
   const breadcrumbs = [
@@ -39,6 +41,8 @@ export default function Cart({ categories, category }) {
   // ]
   return (
     <Layout categories={categories}>
+      <CategoriesBar categories={categories}/>
+      <SectionTitle title={'Корзина'}/>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
       <CartMain  />
     </Layout>

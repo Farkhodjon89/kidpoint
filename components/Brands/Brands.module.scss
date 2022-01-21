@@ -22,8 +22,6 @@
   }
 
   .brands1RightSide {
-    //height: 118px;
-    border: 1px solid #E8E8E8;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -88,7 +86,27 @@
   text-align: center;
   color: #5E697B;
 }
-
+.allBrands{
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 350px;
+  height: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E4D6B9;
+  border-radius: 16px;
+  button {
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #052537;
+  }
+}
 
 @media screen and (max-width: 1100px) {
   .brands1 {

@@ -70,11 +70,11 @@ const WishlistMain = ({ wishlistItems, deleteFromWishlist, account,openNavigatio
                   </div>
                   <div className={s.details}>
                     <div className={s.nameRemove}>
-                      <div className={s.brand}>
-                        {product.paBrands.nodes[0].name
-                          ? product.paBrands.nodes[0].name
-                          : null}
-                      </div>
+                      {/*<div className={s.brand}>*/}
+                      {/*  {product.paBrands.nodes[0].name*/}
+                      {/*    ? product.paBrands.nodes[0].name*/}
+                      {/*    : null}*/}
+                      {/*</div>*/}
                       <div className={s.name}>{product.name}</div>
                     </div>
                     <div className={s.price}>

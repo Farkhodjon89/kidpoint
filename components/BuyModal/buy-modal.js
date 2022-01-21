@@ -80,7 +80,7 @@ const BuyModal = ({
         {success && order ? (
             <>
               <div className={s.successBlock}>
-                <div>
+                <div className={s.orderThanks}>
                   <img src='/public/icons/successTick.svg' alt=''/> Спасибо за ваш заказ!
                 </div>
                 <div>

@@ -189,7 +189,7 @@ const CatalogMain = ({
               category={categoryParent || category}
               sizes={state.activeTerms && state.activeTerms.paSizes}
               colors={state.activeTerms && state.activeTerms.paColors}
-              brands={state.activeTerms && state.activeTerms.paBrands}
+              // brands={state.activeTerms && state.activeTerms.paBrands}
               // brands={brands}
               filterValues={filterValues}
               filters={state.filters}
@@ -246,7 +246,7 @@ const CatalogMain = ({
               >
                 <ProductsList products={state.products} catalog={'catalog'}/>
                 <div className={s.button}>
-                  <button onClick={loadMore} className={s.loadButton}>Загрузить еще</button>
+                  <button onClick={loadMore} className={loading ? s.none : s.loadButton}>Загрузить еще</button>
                 </div>
                 {loading && <Loader/>}
               </InfiniteScroll>

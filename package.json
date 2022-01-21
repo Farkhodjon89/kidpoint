@@ -29,6 +29,7 @@
     "numeral": "^2.0.6",
     "query-string": "^6.14.0",
     "react": "17.0.1",
+    "react-country-region-selector": "^3.4.0",
     "react-dom": "17.0.1",
     "react-hook-form": "^6.15.4",
     "react-image-gallery": "^1.0.9",

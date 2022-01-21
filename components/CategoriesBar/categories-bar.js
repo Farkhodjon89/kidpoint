@@ -28,34 +28,58 @@ const pages = [
 ]
 
 const CategoriesBar = ({categories}) => {
-  const [isShown, setIsShown] = useState(false)
+
   return (
       <div className={s.wrapper}>
         <div className={s.inner}>
-          <div className={s.catalog}
-               onMouseEnter={() => setIsShown(true)}
-               onMouseLeave={() => setIsShown(false)}
-               style={{display: 'flex', height: '100%', alignItems: 'center'}}
-          >
-            <Link href='/catalog'>
-              <a>
-                Каталог
-              </a>
-            </Link>
-            {isShown &&
-            <CategoriesModal categories={categories}/>
-            }
-          </div>
-          {pages.map(({id, name, slug}) => (
-              <Link href={slug}>
-                <a className={s.pages}>
-                  {name}
-                </a>
-              </Link>
+          {categories.map(({name, slug, children}) => (
+              <Category name={name} slug={slug} children={children} />
           ))}
         </div>
       </div>
   )
+}
+
+
+const Category = ({name, slug, children}) => {
+  const [isShown, setIsShown] = useState(false);
+  return (
+      <div
+          className={s.moki}
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}>
+        <Link href={`/catalog/${slug}`}>
+          <a className={isShown ? s.hover : ''}>{name}</a>
+        </Link>
+        {isShown && (
+            <div className={s.joki}>
+              <div className={s.jokiInner}>
+                {children.map(({name, slug, children}, i) => (
+                    <div className={s.jokiMoki}>
+                      <Link href={`/catalog/${slug}/`} key={i}>
+                        <a>{name}</a>
+                      </Link>
+                      <div>
+                        {children.map((r) => (
+                            <>
+                              <Link href={`/catalog/${r.slug}`} >
+                                <a className={s.jokiLink}>
+                                  {/*<span dangerouslySetInnerHTML={{__html: icon.dotIcon}}/>*/}
+                                  {r.name}
+                                </a>
+                              </Link>
+                            </>
+                        ))}
+                      </div>
+                    </div>
+                ))}
+              </div>
+            </div>
+        )}
+      </div>
+  );
+
+
 }
 
 export default CategoriesBar

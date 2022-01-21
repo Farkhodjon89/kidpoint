@@ -7,7 +7,7 @@ import {
   Input,
   DeliveryInput,
   PaymentInput,
-  Textarea,
+  Textarea, CashInput,
 } from '../../utils/inputs'
 import Loader from '../Loader/loader'
 import {useRouter} from 'next/router'
@@ -15,6 +15,9 @@ import {useForm} from 'react-hook-form'
 import MaskedInput from 'react-input-mask'
 import sha512 from 'js-sha512'
 import useUser from "../../utils/useUser";
+import {RegionDropdown} from "react-country-region-selector";
+import {getFormatPrice} from "../../utils/price";
+import Link from "next/link";
 
 const cities = [
   "Ташкент",
@@ -38,38 +41,43 @@ const paymentMethods = [
     name: 'Оплата наличными или картой при получении',
     img: '',
   },
-  // {
-  //   value: 'zoodpay',
-  //   name: 'Zoodpay',
-  //   img: ''
-  // }
   {
     value: 'payme',
     name: '',
-    img: '/public/icons/payme.svg',
+    img: '/icons/payme.svg',
   },
-  // {
-  //   value: 'click',
-  //   name: '',
-  //   img: '/icons/click.svg'
-  // }
+  {
+    value: 'uzcard',
+    name: '',
+    img: '/icons/uzcard.svg'
+  },
+  {
+    value: 'click',
+    name: '',
+    img: '/icons/click.svg'
+  }
 ]
+
+const cashPayment = paymentMethods.filter((_, index) => index === 0)
+const otherPayment = paymentMethods.filter((_, index) => index !== 0)
 
 const CheckoutMain = ({cartItems}) => {
   const {register, handleSubmit, errors, setValue} = useForm()
+  const user = process.browser && JSON.parse(localStorage.getItem('info'));
   const router = useRouter()
   const lineItems = []
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
-  const [city, setCity] = useState('')
-  const [country, setCountry] = useState('')
+  const [city, setCity] = useState(user && user.city ? user.city : 'Toshkent shahri');
+  const [country, setCountry] = useState(user && user.country ? user.country : 'Uzbekistan');
   const [address, setAddress] = useState('')
   const [delivery, setDelivery] = useState(`Доставка курьером`)
   const [payment, setPayment] = useState('cash')
   const [comment, setComment] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [checkboxTicked, setCheckboxTicked] = useState(false)
   const [selectMethod, setSelectMethod] = useState(paymentMethods[0].value)
   const [order, setOrder] = useState()
   const {userData} = useUser();
@@ -250,7 +258,7 @@ const CheckoutMain = ({cartItems}) => {
       actions: [
         <Input
             name='firstName'
-            placeholder='Имя *'
+            placeholder='Ваше имя'
             setAction={setName}
             innerRef={register({required: true})}
             style={errors.name && s.error}
@@ -290,13 +298,6 @@ const CheckoutMain = ({cartItems}) => {
             placeholder='Введите email(необязательно)'
             onChange={(e) => validateEmail(e)}
         />,
-        <Input
-            name='city'
-            placeholder='Город *'
-            setAction={setCity}
-            innerRef={register({required: true})}
-            style={errors.city && s.error}
-        />,
         <input
             id="country"
             name="country"
@@ -306,7 +307,18 @@ const CheckoutMain = ({cartItems}) => {
             value='Узбекистан'
             disabled={true}
             placeholder='Узбекистан'
+        />,
+        <RegionDropdown
+            country={country}
+            value={city}
+            onChange={(val) => setCity(val)}
+            placeholder='Город *'
+            // setAction={setCity}
+            className={errors.city && s.errorInput}
+            blankOptionLabel="Старана не выбрана"
+            defaultOptionLabel="Выберите город"
         />
+
       ],
     },
     {
@@ -324,10 +336,13 @@ const CheckoutMain = ({cartItems}) => {
       title: 'Метод оплаты',
       rowStyle: 'full',
       actions: [
+        <CashInput payment={payment}
+                   setPayment={setPayment}
+                   cashPayment={cashPayment}/>,
         <PaymentInput
             payment={payment}
             setPayment={setPayment}
-            paymentMethods={paymentMethods}
+            otherPayment={otherPayment}
         />,
       ],
     },
@@ -362,7 +377,7 @@ const CheckoutMain = ({cartItems}) => {
               value={`${host}/order/${order && order.order_key}`}
           />
         </form>
-        <div className={s.main}>Оформление заказа</div>
+        {/*<div className={s.main}>Оформление заказа</div>*/}
         {fields.map(({title, rowStyle = '2cols', actions}, i) => (
             <div key={i}>
               <div className={s.title}>
@@ -396,15 +411,42 @@ const CheckoutMain = ({cartItems}) => {
 
             </div>
         ))}
+        <div className={s.right}>
+          <div className={s.title2}>Итог заказа</div>
+          <div className={s.details}>
+            <div>
+              Подытог
+              <span>{getFormatPrice(cartTotalPrice)}</span>
+            </div>
+            <div>
+              Доставка
+              <span>{cartTotalPrice >= 500000 ? '0' : '25000'} UZS</span>
+            </div>
+            <div>
+              Итого
+              <span>
+                {getFormatPrice(
+                    (cartTotalPrice) + (cartTotalPrice >= 500000 ? 0 : 25000)
+                )}
+              </span>
+            </div>
+          </div>
+        </div>
 
         {isLoading ? (
             <Loader/>
         ) : (
-            <button className={s.submit} onClick={handleSubmit(sendInfo)}>
+            <button disabled={!checkboxTicked} className={checkboxTicked ? s.submit : s.disabled}
+                    onClick={handleSubmit(sendInfo)}>
               Перейти к оплате
             </button>
         )}
+        <div className={s.checkbox}>
+          <input type='checkbox' onClick={() => setCheckboxTicked(prev => !prev)}/>
+          <label>Я прочитал и согласен с условиями использования сайта*</label>
+        </div>
       </div>
+
   ) : (
       <EmptyBlock/>
   )

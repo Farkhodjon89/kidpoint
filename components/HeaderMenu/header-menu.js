@@ -82,15 +82,15 @@ const HeaderMenu = ({categories, open, setOpen, cartItems, wishlistItems}) => {
                   </Accordion>
               )
           ))}
-          {pages.map(({id,name,slug}) => (
-              <div className={s.pages}>
-                <Link href={slug}>
-                  <a>
-                    {name}
-                  </a>
-                </Link>
-              </div>
-          ))}
+          {/*{pages.map(({id,name,slug}) => (*/}
+          {/*    <div className={s.pages}>*/}
+          {/*      <Link href={slug}>*/}
+          {/*        <a>*/}
+          {/*          {name}*/}
+          {/*        </a>*/}
+          {/*      </Link>*/}
+          {/*    </div>*/}
+          {/*))}*/}
         </div>
       </div>
   )

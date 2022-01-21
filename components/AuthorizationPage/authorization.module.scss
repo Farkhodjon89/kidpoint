@@ -105,8 +105,10 @@
   font-size: 15px;
   line-height: 18px;
   font-weight: 400;
-  //color: #2B2B2B;;
   margin-bottom: 50px;
+  div {
+    color: #5E697B;
+  }
 
   button {
     margin-left: 12px;
@@ -126,6 +128,7 @@
   font-weight: 800;
   color: #6C98B1 !important;
   text-decoration: underline;
+  padding: 5px 0;
 
   &:hover {
     text-decoration: underline !important;
@@ -142,9 +145,10 @@
   letter-spacing: 0em;
   text-align: center;
   color: #5E697B;
+  margin-bottom: 130px;
 
   .privacyText {
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: underline;
 
   }
@@ -159,6 +163,7 @@
   letter-spacing: 0em;
   text-align: center;
   color: #5E697B;
+
 
   .privacyText {
     font-weight: 500;
@@ -183,9 +188,16 @@
     font-size: 16px;
     border: none;
     background: none;
-    padding: 0;
+    padding: 5px 0;
     line-height: 19px;
-    color: #2b2b2b;
+    color: #BAC1C5;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+
 
     &:hover {
       text-decoration: none;

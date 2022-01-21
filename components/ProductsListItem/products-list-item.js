@@ -32,29 +32,33 @@ const ProductsListItem = ({ product, catalog,slider,wishlistItems,addToWishlist,
                 dangerouslySetInnerHTML={ { __html: wishlistItem ? icons.wishlistChosen : icons.wishlist  }}
             />
 
-            <div className={s.details}>
-              {product.paBrands?.nodes[0]?.name && (
-                  <div>{product.paBrands?.nodes[0].name}</div>
-              )}
-              <div>{product.name}</div>
-              {/*<div*/}
-              {/*    dangerouslySetInnerHTML={{ __html: product.description }}*/}
-              {/*/>*/}
-              <div>
-                {product.onSale ? (
-                    <>
+            <Link href={`/product${product.slug}`}>
+              <a>
+                <div className={s.details}>
+                  {product.paBrands?.nodes[0]?.name && (
+                      <div>{product.paBrands?.nodes[0].name}</div>
+                  )}
+                  <div className={s.productName}>{product.name}</div>
+                  {/*<div*/}
+                  {/*    dangerouslySetInnerHTML={{ __html: product.description }}*/}
+                  {/*/>*/}
+                  <div>
+                    {product.onSale ? (
+                        <>
                     <span className={s.normalPrice}>
                       {getFormatPrice(product.woocsRegularPrice)}
                     </span>{' '}
-                      <span className={s.salePrice}>
+                          <span className={s.salePrice}>
                       {getFormatPrice(product.woocsSalePrice)}
                     </span>
-                    </>
-                ) : (
-                    <div>{getFormatPrice(product.woocsRegularPrice)}</div>
-                )}
-              </div>
-            </div>
+                        </>
+                    ) : (
+                        <div>{getFormatPrice(product.woocsRegularPrice)}</div>
+                    )}
+                  </div>
+                </div>
+              </a>
+            </Link>
           </div>
         </div>
 

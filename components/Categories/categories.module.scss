@@ -11,10 +11,11 @@
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 
   .category {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    margin-right: 20px;
 
     .image {
       width: 160px;

@@ -5,45 +5,45 @@ import icons from '../../public/fixture';
 
 const Footer = ({categories}) => {
   const links = [
-    {
-      title: 'Страницы',
-      child: [
-        {
-          id: 1,
-          name: 'Каталог',
-          slug: '/catalog'
-        },
-        // {
-        //   id: 2,
-        //   name: 'Бренды',
-        //   slug: '/brands'
-        // },
-        {
-          id: 2,
-          name: 'Акции',
-          slug: '/sales'
-        },
-        // {
-        //   id: 2,
-        //   name: 'Подарочные карты',
-        //   slug: '/cards'
-        // },
-        // {
-        //   id: 3,
-        //   name: 'Клиентские дни',
-        //   slug: '/client-days'
-        // },
-
-      ]
-    },
-
     // {
-    //   title: 'Категории',
-    //   child: Object.values(categories).map(({ name, slug }) => ({
-    //     name: name,
-    //     slug: '/catalog/' + slug,
-    //   })),
+    //   title: 'Страницы',
+    //   child: [
+    //     {
+    //       id: 1,
+    //       name: 'Каталог',
+    //       slug: '/catalog'
+    //     },
+    //     // {
+    //     //   id: 2,
+    //     //   name: 'Бренды',
+    //     //   slug: '/brands'
+    //     // },
+    //     {
+    //       id: 2,
+    //       name: 'Акции',
+    //       slug: '/sales'
+    //     },
+    //     // {
+    //     //   id: 2,
+    //     //   name: 'Подарочные карты',
+    //     //   slug: '/cards'
+    //     // },
+    //     // {
+    //     //   id: 3,
+    //     //   name: 'Клиентские дни',
+    //     //   slug: '/client-days'
+    //     // },
+    //
+    //   ]
     // },
+
+    {
+      title: 'Категории',
+      child: Object.values(categories).map(({ name, slug }) => ({
+        name: name,
+        slug: '/catalog/' + slug,
+      })),
+    },
     // {
     //   child: [
     //     {

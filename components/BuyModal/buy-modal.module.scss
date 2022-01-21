@@ -8,6 +8,17 @@
   bottom: 0;
   background: rgba(34, 34, 34, 0.7);
 }
+.orderThanks{
+  font-family: Rubik;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #052537;
+
+}
 .modalContent {
   display: flex;
   flex-direction: column;
@@ -20,6 +31,8 @@
   outline: none;
   padding: 25px;
   position: absolute;
+  border-bottom-right-radius: 24px;
+  border-bottom-left-radius: 24px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -30,12 +43,12 @@
     border: 1px solid #5E697B;
     border-radius: 16px;
     padding: 0 20px;
-    font-size: 13px;
-    color: #5E697B;
+    font-size: 15px;
+    color: #BAC1C5;
     margin-bottom: 25px;
     &::placeholder {
-      font-size: 13px;
-      color: #5E697B;
+      font-size: 15px;
+      color: #BAC1C5;
     }
   }
   a,
@@ -63,11 +76,14 @@
   cursor: pointer;
 }
 .modalTitle {
-  font-weight: 800;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: #717171;
-  border-bottom: 1px solid #e8e8e8;
+  text-transform: capitalize;
+  color: #5E697B;
+  font-family: Rubik;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0em;
   padding-bottom: 15px;
   margin-bottom: 25px;
   display: flex;
@@ -177,6 +193,12 @@
   font-weight: 500;
   font-size: 15px;
   margin-bottom: 30px;
+  color: #5E697B;
+  &:last-of-type {
+    font-weight: bold;
+  }
+
+
 }
 
 @media screen and (max-width: 1023px) {
@@ -190,11 +212,14 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  height: 130px;
+  height: 150px;
   padding: 25px;
-  background: rgba(0, 190, 30, 0.05);
   margin-bottom: 30px;
   font-weight: 600;
+  color: #052537;
+  border: 1px solid #09C094;
+  border-radius: 24px;
+  background: #F3F8FB;
   font-size: 16px;
   div {
     display: flex;
@@ -204,8 +229,15 @@
       margin-right: 10px;
     }
     &:last-of-type {
-      font-weight: normal;
+      font-family: Rubik;
       font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #5E697B;
+
     }
   }
 }

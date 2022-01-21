@@ -81,7 +81,7 @@ export default function Catalog({
               pageInfo={pageInfo}
               // sizes={sizes}
               // colors={colors}
-              brands={brands}
+              // brands={brands}
               activeTerms={activeTerms}
           />
         </Layout></>
@@ -103,10 +103,10 @@ export default function Catalog({
 // }
 
 export async function getServerSideProps({ params }) {
-  const brands = await client.query({
-    query: BRANDS,
-    fetchPolicy: 'no-cache',
-  });
+  // const brands = await client.query({
+  //   query: BRANDS,
+  //   fetchPolicy: 'no-cache',
+  // });
 
   const staticData = new StaticDataSingleton()
   await staticData.checkAndFetch()
@@ -136,7 +136,7 @@ export async function getServerSideProps({ params }) {
   // const niJoki = brands.data.paBrands.nodes.filter(
   //     ({ products }) => products.nodes.length !== 0
   // )
-  const niJoki = brands.data.paBrands.nodes.filter(({products}) => products.nodes.length !== 0);
+  // const niJoki = brands.data.paBrands.nodes.filter(({products}) => products.nodes.length !== 0);
 
 
   return {
@@ -147,7 +147,7 @@ export async function getServerSideProps({ params }) {
       // colors: colors.data.paColors.nodes,
       products: products.data.products.nodes,
       pageInfo: products.data.products.pageInfo,
-      brands: niJoki,
+      // brands: niJoki,
       activeTerms: products.data.products.activeTerms,
     },
     // revalidate: 60,

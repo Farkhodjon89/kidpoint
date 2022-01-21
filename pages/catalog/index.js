@@ -5,6 +5,7 @@ import client from '../../apollo/apollo-client';
 import PRODUCTS from '../../queries/products';
 import {StaticDataSingleton} from '../../utils/staticData';
 import CategoriesBar from "../../components/CategoriesBar/categories-bar";
+import SectionTitle from "../../components/SectionTitle";
 
 const CatalogPage = ({pageInfo, products, category, categories, activeTerms}) => {
 
@@ -24,6 +25,7 @@ const CatalogPage = ({pageInfo, products, category, categories, activeTerms}) =>
         <Layout categories={categories}>
           <CategoriesBar categories={categories}/>
           <div className="container">
+            <SectionTitle title='Каталог'/>
             <Breadcrumbs breadcrumbs={breadcrumbs}/>
             <Catalog
                 products={products}
