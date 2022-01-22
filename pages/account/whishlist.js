@@ -11,6 +11,7 @@ import {addToCart, deleteFromCart} from "../../redux/actions/cartActions";
 import {addToWishlist, deleteFromWishlist} from "../../redux/actions/wishlistActions";
 import WishlistMain from "../../components/WishlistMain/wishlist-main";
 import useUser from "../../utils/useUser";
+import SectionTitle from "../../components/SectionTitle";
 
 
 const WhishListPage = ({categories,cartItems,wishlistItems,deleteFromCart}) => {
@@ -39,6 +40,7 @@ const WhishListPage = ({categories,cartItems,wishlistItems,deleteFromCart}) => {
   return (
       <Layout categories={categories}>
         <CategoriesBar categories={categories}/>
+        <SectionTitle title='Профиль'/>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <PersonalCabinet>
           <h1 className={s.title}>Избранные</h1>

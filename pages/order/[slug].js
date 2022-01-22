@@ -17,6 +17,7 @@ export const getServerSideProps = async ({ params }) => {
     query: ORDER,
     variables: { id: params.slug }
   })
+  console.log(order)
   return {
     props: {
       order: order.data.order

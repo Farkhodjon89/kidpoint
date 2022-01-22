@@ -10,6 +10,7 @@ import MaskedInput from "react-input-mask";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import useUser from "../../utils/useUser";
+import SectionTitle from "../../components/SectionTitle";
 
 const AccountPage = ({categories}) => {
   const breadcrumbs = [
@@ -160,6 +161,7 @@ const AccountPage = ({categories}) => {
   return (
       <Layout categories={categories}>
         <CategoriesBar categories={categories}/>
+        <SectionTitle title='Профиль'/>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <PersonalCabinet>
           <h1 className={s.title}>Персоналные данные</h1>

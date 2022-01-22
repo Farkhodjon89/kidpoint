@@ -5,6 +5,7 @@ import {StaticDataSingleton} from '../../utils/staticData'
 import AuthorizationPage from '../../components/AuthorizationPage'
 import useUser from "../../utils/useUser";
 import LayoutTwo from "../../components/LayoutTwo/layout-two";
+import SectionTitle from "../../components/SectionTitle";
 
 const Authorization = ({categories}) => {
   useUser({ redirectTo: '/account/settings', redirectIfFound: true });

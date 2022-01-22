@@ -49,22 +49,22 @@ const LayoutTwo = ({children}) => {
             <div className={s.inner}>
               <Link href={'/'}>
                 <a>
-                  <img src='/public/icons/return.svg' alt=''/>Магазины
+                  Магазины
                 </a>
               </Link>
               <Link href={'/'}>
                 <a>
-                  <img src='/public/icons/return.svg' alt=''/>Доставка и оплата
+                  Доставка и оплата
                 </a>
               </Link>
               <Link href={'/'}>
                 <a>
-                  <img src='/public/icons/return.svg' alt=''/>Обмен и возврат товара
+                  Обмен и возврат товара
                 </a>
               </Link>
               <Link href={'/'}>
                 <a>
-                  <img src='/public/icons/wear.svg' alt=''/> Статус заказа
+                   Статус заказа
                 </a>
               </Link>
             </div>

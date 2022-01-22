@@ -8,6 +8,7 @@
   text-align: center;
   color: #5E697B;
 }
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +17,12 @@
   .category {
     margin-bottom: 30px;
     margin-right: 20px;
+
+    @media(max-width: 440px) {
+      &.category {
+        margin-right: 10px;
+      }
+    }
 
     .image {
       width: 160px;
@@ -45,3 +52,5 @@
   }
 
 }
+
+

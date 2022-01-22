@@ -9,6 +9,7 @@ import OrderTabs from "../../components/Account/OrderTabs/OrderTabs";
 import useUser from "../../utils/useUser";
 import {useRouter} from "next/router"
 import AccountOrder from "../../components/AccountOrder";
+import SectionTitle from "../../components/SectionTitle";
 
 const OrderPage = ({categories}) => {
   const breadcrumbs = [
@@ -59,6 +60,7 @@ const OrderPage = ({categories}) => {
   return (
       <Layout categories={categories}>
         <CategoriesBar categories={categories}/>
+        <SectionTitle title='Профиль'/>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <PersonalCabinet>
           <h1 className={s.title}>Мои Заказы</h1>

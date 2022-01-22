@@ -2,12 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  align-items: center;
   height: 70px;
-  font-weight: 800;
-  font-size: 14px;
-  text-transform: uppercase;
-  border-bottom: 1px solid #e8e8e8;
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #052537;
+  //border-bottom: 1px solid #e8e8e8;
   margin-bottom: 30px;
 }
 .mainOrder {
@@ -23,22 +27,26 @@
 .successBlock {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 130px;
   padding: 25px;
-  background: rgba(0, 190, 30, 0.05);
+  border: 1px solid #09C094;
+  border-radius: 24px;
+  background: transparent;
   margin-bottom: 30px;
   font-weight: 600;
   font-size: 16px;
   div {
     display: flex;
     align-items: center;
+    color: #052537;
+    margin-bottom: 15px;
     img {
       margin-right: 10px;
     }
     &:last-of-type {
       font-weight: normal;
       font-size: 15px;
+      color: #5E697B;
     }
   }
 }
@@ -48,33 +56,35 @@
   justify-content: space-between;
   height: 130px;
   padding: 25px;
-  background: rgba(255, 94, 26, 0.05);
+  background: rgba(108, 152, 177, 0.12);
+  border-radius: 24px;
   margin-bottom: 30px;
   div {
     font-weight: normal;
     font-size: 15px;
+    color: #5E697B;
+    line-height: 20px;
     &:first-of-type {
       display: flex;
       font-weight: 600;
       font-size: 16px;
       align-items: center;
+      color: #052537;
+
       img {
         margin-right: 10px;
       }
     }
   }
-  a {
-    font-weight: bold;
-  }
 }
 .title {
-  font-weight: 800;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: #717171;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #5E697B;
   padding-bottom: 15px;
   margin-bottom: 15px;
-  border-bottom: 1px solid #e8e8e8;
+  //border-bottom: 1px solid #e8e8e8;
 }
 
 .details {
@@ -83,11 +93,17 @@
     align-items: center;
     justify-content: space-between;
     font-size: 15px;
-    color: #717171;
+    color: #5E697B;
     margin-bottom: 15px;
     span {
       font-weight: 500;
-      color: #2b2b2b;
+      color: #5E697B;
+      &:last-of-type{
+        font-weight: 700;
+      }
+    }
+    &:last-of-type{
+      font-weight: 700;
     }
   }
 }
@@ -97,7 +113,7 @@
   div {
     margin-bottom: 15px;
     span {
-      color: #717171;
+      color: #5E697B;
       font-weight: normal;
     }
   }
