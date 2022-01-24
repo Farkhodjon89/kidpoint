@@ -62,35 +62,16 @@ const HeaderMenu = ({categories, open, setOpen, cartItems, wishlistItems}) => {
 
           <img className={s.closeIcon} src='/public/icons/close.svg' alt='' onClick={() => setOpen(false)}/>
         </div>
-        {/*<div className={s.tab}>*/}
-        {/*  {Object.values(categories).map(({ name }, i) => (*/}
-        {/*    <div key={i} onClick={() => setTab(i)} className={tab === i ? s.active : ''}>*/}
-        {/*      {name}*/}
-        {/*    </div>*/}
-        {/*  ))}*/}
-        {/*</div>*/}
         <div className={s.accordion}>
-          <div className={s.catalog} onClick={() => setExpand((expand) => !expand)}>
-            Каталог
-            <img src="/public/icons/arrowDown.svg" alt="" />
-          </div>
-          {expand &&
-          (Object.values(categories).map(
-              ({name, slug, children}, i) => (
-                  <Accordion name={name} slug={slug} key={i} setOpen={setOpen}>
-                    {children}
-                  </Accordion>
-              )
-          ))}
-          {/*{pages.map(({id,name,slug}) => (*/}
-          {/*    <div className={s.pages}>*/}
-          {/*      <Link href={slug}>*/}
-          {/*        <a>*/}
-          {/*          {name}*/}
-          {/*        </a>*/}
-          {/*      </Link>*/}
-          {/*    </div>*/}
-          {/*))}*/}
+          {
+            (Object.values(categories).map(
+                ({name, slug, children}, i) => (
+                    <Accordion name={name} slug={slug} key={i} setOpen={setOpen}>
+                      {children}
+                    </Accordion>
+                )
+            ))
+          }
         </div>
       </div>
   )

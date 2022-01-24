@@ -71,25 +71,19 @@
 
 .tab {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  height: 50px;
+  flex-direction: column;
   padding: 0 15px;
 
   div {
     display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    width: 33.3%;
-    height: 100%;
+    padding: 5px 0;
     font-size: 16px;
-    color: #717171;
+    color: #052537;
 
     &.active {
       font-weight: 600;
       color: #2b2b2b;
-      border-top: 1px solid #2b2b2b;
+      //border-top: 1px solid #2b2b2b;
     }
   }
 }
