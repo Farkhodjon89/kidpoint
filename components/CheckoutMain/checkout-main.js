@@ -38,7 +38,7 @@ const cities = [
 const paymentMethods = [
   {
     value: 'cash',
-    name: 'Оплата наличными или картой при получении',
+    name: 'Оплата наличными при получении',
     img: '',
   },
   {
@@ -46,11 +46,11 @@ const paymentMethods = [
     name: '',
     img: '/icons/payme.svg',
   },
-  {
-    value: 'uzcard',
-    name: '',
-    img: '/icons/uzcard.svg'
-  },
+  // {
+  //   value: 'uzcard',
+  //   name: '',
+  //   img: '/icons/uzcard.svg'
+  // },
   {
     value: 'click',
     name: '',
@@ -116,7 +116,7 @@ const CheckoutMain = ({cartItems}) => {
   const deliveryMethods = [
     {
       left: 'Доставка курьером',
-      right: cartTotalPrice >= 500000 ? '0 UZS' : '25 000 UZS',
+      right: cartTotalPrice >= 500000 ? '0 UZS' : '20 000 UZS',
     },
     // {
     //   left: 'Самовывоз из магазина',
@@ -247,7 +247,7 @@ const CheckoutMain = ({cartItems}) => {
   }
   const getDeliveryPrice = () => {
     return setDelivery === 'flat_rate' && orderReviewData.totalPrice < 500000
-        ? 25000
+        ? 20000
         : 0
   }
 
@@ -420,13 +420,13 @@ const CheckoutMain = ({cartItems}) => {
             </div>
             <div>
               Доставка
-              <span>{cartTotalPrice >= 500000 ? '0' : '25000'} UZS</span>
+              <span>{cartTotalPrice >= 500000 ? '0' : '20000'} UZS</span>
             </div>
             <div>
               Итого
               <span>
                 {getFormatPrice(
-                    (cartTotalPrice) + (cartTotalPrice >= 500000 ? 0 : 25000)
+                    (cartTotalPrice) + (cartTotalPrice >= 500000 ? 0 : 20000)
                 )}
               </span>
             </div>

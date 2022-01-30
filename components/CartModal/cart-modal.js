@@ -7,7 +7,7 @@ import {addToWishlist, deleteFromWishlist} from "../../redux/actions/wishlistAct
 import {connect} from "react-redux";
 
 
-const CartModal = ({cartItems, deleteFromCart, decreaseQuantity,cartModal, setCartModal,addToCart}) => {
+const CartModal = ({cartItems, deleteFromCart, decreaseQuantity,cartModal, setCartModal,addToCart,catalog = ''}) => {
   const myRef = useRef()
   const handleClickOutside = (e) => {
     if (!myRef.current.contains(e.target)) {
@@ -29,7 +29,7 @@ const CartModal = ({cartItems, deleteFromCart, decreaseQuantity,cartModal, setCa
   return (
       <>
         {/*<div className={`${s.superWrapper} ${!cartModal ? s.active : ''}`}></div>*/}
-        <div ref={myRef} className={`${s.wrapper}  ${cartModal ? s.active : ''}`}>
+        <div ref={myRef} className={`${catalog === 'catalog' ? s.wrapper2 : s.wrapper}  ${cartModal ? s.active : ''}`}>
           <div className={s.top}>
             Корзина
             <img
@@ -123,7 +123,7 @@ const CartModal = ({cartItems, deleteFromCart, decreaseQuantity,cartModal, setCa
           <div className={s.bot}>
             <div className={s.details}>
               Итого
-              <span>{getFormatPrice(cartTotalPrice )}</span>
+              <span>{getFormatPrice(cartTotalPrice)}</span>
             </div>
             <Link href='/checkout'>
               <a className={s.checkout}>Оформить заказ</a>

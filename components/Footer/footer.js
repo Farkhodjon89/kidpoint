@@ -102,7 +102,7 @@ const Footer = ({categories}) => {
       {
         name: 'Instagram',
         img: '/footer/instagram.svg',
-        slug: 'https://www.instagram.com/bloombeauty.uz/',
+        slug: 'https://instagram.com/kidpoint.uz?utm_medium=copy_link',
       },
       {
         name: 'Facebook',
@@ -112,7 +112,7 @@ const Footer = ({categories}) => {
       {
         name: 'Telegram',
         img: '/footer/telegram.svg',
-        slug: 'https://t.me/bloombeautyuz',
+        slug: 'https://t.me/kidpoint',
       },
     ],
   }
@@ -158,9 +158,9 @@ const Footer = ({categories}) => {
                 <li>
                   <span dangerouslySetInnerHTML={{__html: icons.payme}}></span>
                 </li>
-                <li>
-                  <span dangerouslySetInnerHTML={{__html: icons.uzcard}}></span>
-                </li>
+                {/*<li>*/}
+                {/*  <span dangerouslySetInnerHTML={{__html: icons.uzcard}}></span>*/}
+                {/*</li>*/}
               </ul>
               <Link href='https://billz.uz/e-market'>
                 <a target='_blank' rel='nofollow'>

@@ -115,6 +115,15 @@ const icons = {
 </svg>
 
   `,
+  cartDark: `
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.52377 7.00012C9.41427 5.74398 13.9724 5.45585 16 5.50012C18.0276 5.5444 18.8831 6.26642 19.5 7.50012C20.5 9.50012 20.289 14.4882 18.5 16.0872C16.712 17.6862 9.33015 17.8382 6.87015 16.0872C4.27115 14.2362 5.629 9.19212 5.544 5.74312C5.595 3.81312 3.5 3.50012 3.5 3.50012" stroke="#052537" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13 10.5001H15.773" stroke="#052537" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.26375 20.1276C7.56375 20.1276 7.80775 20.3716 7.80775 20.6716C7.80775 20.9726 7.56375 21.2166 7.26375 21.2166C6.96275 21.2166 6.71875 20.9726 6.71875 20.6716C6.71875 20.3716 6.96275 20.1276 7.26375 20.1276Z" fill="#052537" stroke="#052537" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17.5958 20.1276C17.8968 20.1276 18.1408 20.3716 18.1408 20.6716C18.1408 20.9726 17.8968 21.2166 17.5958 21.2166C17.2958 21.2166 17.0518 20.9726 17.0518 20.6716C17.0518 20.3716 17.2958 20.1276 17.5958 20.1276Z" fill="#052537" stroke="#052537" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`,
+
   logo: `<svg width="130" height="42" viewBox="0 0 130 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M54.5034 37.6391L54.7158 13.2526V13.2522L70.0166 13.3987C71.8228 13.718 72.921 14.957 73.3106 17.1177L73.258 27.3982C73.0216 29.6771 71.6345 30.8045 69.2732 30.958L60.8525 31.0775L60.826 37.5993L54.5034 37.6391ZM60.6124 18.3666H67.0676V25.805H60.6124V18.3666Z" fill="white"/>

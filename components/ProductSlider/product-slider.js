@@ -23,7 +23,7 @@ const SliderNextArrow = (props) => (
 );
 
 
-const ProductSlider = ({products, text, wishlistItems, addToWishlist, deleteFromWishlist}) => {
+const ProductSlider = ({products, text}) => {
 
   const settings = {
     infinite: true,

@@ -52,12 +52,12 @@ const LayoutTwo = ({children}) => {
                   Магазины
                 </a>
               </Link>
-              <Link href={'/'}>
+              <Link href={'/about'}>
                 <a>
                   Доставка и оплата
                 </a>
               </Link>
-              <Link href={'/'}>
+              <Link href={'/about'}>
                 <a>
                   Обмен и возврат товара
                 </a>

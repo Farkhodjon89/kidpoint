@@ -17,6 +17,8 @@ import {
   reducer,
   catalog,
 } from '../../utils/catalog'
+import FilterAge from "../FilterAge/filter-age";
+import FilterGender from "../FilterGender/filter-gender";
 
 
 const initialState = {
@@ -47,7 +49,7 @@ const CatalogMain = ({
   const [prevSortValue, setPrevSortValue] = useState('default')
 
   const filterValues = (type, value) => {
-    const arrayValuesFor = ['brands', 'colors', 'sizes']
+    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender']
 
     if (value === '' || value == null) {
       const filters = {...state.filters}
@@ -189,8 +191,9 @@ const CatalogMain = ({
               category={categoryParent || category}
               sizes={state.activeTerms && state.activeTerms.paSizes}
               colors={state.activeTerms && state.activeTerms.paColors}
-              // brands={state.activeTerms && state.activeTerms.paBrands}
-              // brands={brands}
+              age={state.activeTerms && state.activeTerms.paVozrasts}
+              brands={state.activeTerms && state.activeTerms.paBrands}
+              gender={state.activeTerms && state.activeTerms.paGenders}
               filterValues={filterValues}
               filters={state.filters}
               dispatch={dispatch}
@@ -200,12 +203,14 @@ const CatalogMain = ({
         </div>
         <div className={s.left}>
           <FilterCategory category={category} categories={categories}/>
-          {/*<FilterBrand filterValues={filterValues}*/}
-          {/*             active={state.filters.brands}*/}
-          {/*             sizes={state.activeTerms && state.activeTerms.paSizes}*/}
-          {/*             colors={state.activeTerms && state.activeTerms.paColors}*/}
-          {/*             brands={state.activeTerms && state.activeTerms.paBrands}*/}
-          {/*/>*/}
+          <FilterBrand filterValues={filterValues}
+                       active={state.filters.brands}
+                       brands={state.activeTerms && state.activeTerms.paBrands}
+          />
+          <FilterGender
+              filterValues={filterValues}
+              active={state.filters.gender}
+              gender={state.activeTerms && state.activeTerms.paGenders}/>
           <FilterColor
               colors={state.activeTerms && state.activeTerms.paColors}
               active={state.filters.colors}
@@ -216,23 +221,27 @@ const CatalogMain = ({
               active={state.filters.sizes}
               filterValues={filterValues}
           />
+          <FilterAge
+              age={state.activeTerms && state.activeTerms.paVozrasts}
+              active={state.filters.age}
+              filterValues={filterValues}/>
         </div>
         <div className={s.right}>
-          <div className={s.rightTop}>
-            Сортировать:
-            <select
-                onChange={(e) =>
-                    dispatch({
-                      type: 'SET_SORTING',
-                      sortValue: e.target.value,
-                    })
-                }
-            >
-              <option value='default'> по умолчанию</option>
-              <option value='highToLow'> по убыванию</option>
-              <option value='lowToHigh'> по возрастанию</option>
-            </select>
-          </div>
+          {/*<div className={s.rightTop}>*/}
+          {/*  Сортировать:*/}
+          {/*  <select*/}
+          {/*      onChange={(e) =>*/}
+          {/*          dispatch({*/}
+          {/*            type: 'SET_SORTING',*/}
+          {/*            sortValue: e.target.value,*/}
+          {/*          })*/}
+          {/*      }*/}
+          {/*  >*/}
+          {/*    <option value='default'> по умолчанию</option>*/}
+          {/*    <option value='highToLow'> по убыванию</option>*/}
+          {/*    <option value='lowToHigh'> по возрастанию</option>*/}
+          {/*  </select>*/}
+          {/*</div>*/}
           {loading && !state.products.length ? (
               <Loader/>
           ) : !state.products.length ? (

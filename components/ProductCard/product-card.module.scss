@@ -7,6 +7,9 @@
 .left {
   width: 720px;
   height: 100%;
+  img{
+    border-radius: 32px;
+  }
 }
 
 .right {
@@ -62,12 +65,13 @@
 .price {
   font-weight: 600;
   font-size: 18px;
-  margin-bottom: 50px;
+  //margin-bottom: 50px;
 }
 
 .attributesName {
   font-weight: 600;
   font-size: 15px;
+  margin-bottom: 20px;
 
   span {
     font-weight: normal;
@@ -110,12 +114,11 @@
   margin: 25px 0;
 
   button {
-    position: relative;
+    //position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+
     font-weight: 500;
     font-size: 15px;
     margin-right: 1px;
@@ -255,8 +258,8 @@
 .description {
   //border-top: 1px solid #e8e8e8;
   //border-bottom: 1px solid #e8e8e8;
-  padding: 20px 0;
-  margin-left: 150px;
+  padding: 20px 15px;
+  //margin-left: 150px;
   width: 570px;
 
   div {
@@ -290,20 +293,22 @@
     display: block;
     margin-bottom: 50px;
   }
-  .left {
-    //position: relative;
-    width: 100%;
-    //left: 50%;
-    //right: 50%;
-    //margin-left: -50vw;
-    //margin-right: -50vw;
-    margin-bottom: 30px;
-  }
+
   .right {
     width: 100%;
   }
   .description {
     margin-left: 0;
     width: 100%;
+  }
+}
+@media screen and (max-width: 578px) {
+  .left {
+    position: relative;
+    margin-bottom: 30px;
+    img {
+      width: 100%;
+      max-width: 440px;
+    }
   }
 }

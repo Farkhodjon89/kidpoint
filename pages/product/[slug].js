@@ -70,7 +70,7 @@ const Product = ({
             setCartModal={setCartModal}
             topColors={topColors}
         />
-        <ProductSlider wishlistItems={wishlistItems} products={product.related.nodes}
+        <ProductSlider  wishlistItems={wishlistItems} products={product.related.nodes}
                        related={true} text={`С этим также покупают`}/>
       </Layout>
   )

@@ -99,7 +99,7 @@ const BuyModal = ({
               </div>
               <div className={s.details}>
                 Доставка
-                <span>15 000 UZS</span>
+                <span>20 000 UZS</span>
               </div>
               <div className={s.details}>
                 Итого

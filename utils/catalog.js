@@ -28,6 +28,19 @@ export const filterVariables = (filters) => {
       terms: Array.isArray(filters.brands) ? filters.brands : [filters.brands],
     })
   }
+  if (filters.age && filters.age.length) {
+    result.filters.push({
+      taxonomy: 'PAVOZRAST',
+      terms: Array.isArray(filters.age) ? filters.age : [filters.age],
+    })
+  }
+  if (filters.gender && filters.gender.length) {
+    result.filters.push({
+      taxonomy: 'PAGENDER',
+      terms: Array.isArray(filters.gender) ? filters.gender : [filters.gender],
+    })
+  }
+
 
   return result
 }
@@ -60,7 +73,7 @@ export const reducer = (state, action) => {
     case 'SET_FILTER_VALUE':
       return {
         ...state,
-        filters: { ...state.filters, [action.filter]: action.value },
+        filters: {...state.filters, [action.filter]: action.value},
         products: [],
       }
     case 'RESET_FILTERS':
@@ -72,7 +85,7 @@ export const reducer = (state, action) => {
     case 'RESET':
       return state.init ? initialState : state
     case 'SET_PRODUCTS':
-      return { ...state, products: action.products }
+      return {...state, products: action.products}
     case 'SET_PRODUCTS_AND_PAGE_INFO':
       return {
         ...state,
@@ -110,10 +123,10 @@ function parseQueryOptions(location) {
 }
 
 function parseQueryFilters(location) {
-  const query = queryString.parse(location, { arrayFormat: 'comma' })
+  const query = queryString.parse(location, {arrayFormat: 'comma'})
   const filterValues = {}
 
-  const multipleFilters = ['colors', 'sizes', 'brands']
+  const multipleFilters = ['colors', 'sizes', 'brands', 'age', 'gender']
 
   Object.keys(query).forEach((param) => {
     const mr = param.match(/^filter_([-_A-Za-z0-9]+)$/)
@@ -154,20 +167,20 @@ function buildQuery(options, filters) {
   }
 
   Object.keys(filters)
-    .filter((x) => !!filters[x])
-    .forEach((filterSlug) => {
-      params[`filter_${filterSlug}`] = filters[filterSlug]
-    })
+      .filter((x) => !!filters[x])
+      .forEach((filterSlug) => {
+        params[`filter_${filterSlug}`] = filters[filterSlug]
+      })
 
-  return queryString.stringify(params, { encode: false, arrayFormat: 'comma' })
+  return queryString.stringify(params, {encode: false, arrayFormat: 'comma'})
 }
 
 function init() {
   const [options, filters] = parseQuery(
-    typeof window !== 'undefined' ? window.location.search : ''
+      typeof window !== 'undefined' ? window.location.search : ''
   )
 
-  return { options, filters }
+  return {options, filters}
 }
 
 export const catalog = {

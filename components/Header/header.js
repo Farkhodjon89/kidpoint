@@ -10,6 +10,7 @@ import {useLazyQuery} from '@apollo/react-hooks'
 import CartModal from '../CartModal/cart-modal'
 import icons from '../../public/fixture'
 import PRODUCTS from '../../queries/products'
+import {getFormatPrice} from "../../utils/price";
 
 const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart}) => {
   const [open, setOpen] = useState(false)
@@ -20,6 +21,11 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
   const [loadProducts, {data, loading}] = useLazyQuery(PRODUCTS, {
     client
   })
+
+  useEffect(() => {
+    setCartModal(true)
+  }, [cartItems])
+
 
   useEffect(() => {
     if (data && searchQuery.length) {
@@ -40,6 +46,8 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
       })
     }
   }
+
+  let cartTotalPrice = 0
 
   return (
       <>

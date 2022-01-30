@@ -34,6 +34,18 @@ const PRODUCTS = gql`
           name
           slug
         }
+        paVozrasts {
+          name
+          slug
+        }
+        paBrands {
+         name
+         slug
+        }
+       paGenders {
+        name
+        slug
+      }
         
       }
       pageInfo {

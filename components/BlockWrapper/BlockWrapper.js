@@ -18,7 +18,8 @@ const BlockWrapper = ({offers, text}) => {
               <div className={s.banner} style={{
                 background: `url(${
                     windowWidth <= 768 ? mobimage.sourceUrl : image.sourceUrl
-                }) no-repeat center`
+                }) no-repeat center`,
+                backgroundSize: 'cover'
               }}>
                 <div className={s.bannerInner}>
                   {/*<div>*/}

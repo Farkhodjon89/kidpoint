@@ -40,7 +40,7 @@ const OrderMain = ({ order }) => {
       },
       {
         label: `Итого`,
-        value: getFormatPrice(parseInt(order.total) + 15000),
+        value: getFormatPrice(parseInt(order.total) + 20000),
       },
     ],
   }

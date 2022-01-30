@@ -12,6 +12,7 @@ import BRANDS from '../../../queries/brands'
 
 import { StaticDataSingleton } from '../../../utils/staticData'
 import Seo from '../../../utils/seo'
+import SectionTitle from "../../../components/SectionTitle";
 
 export default function Catalog({
   categories,
@@ -71,7 +72,7 @@ export default function Catalog({
         <Seo title={title} description={description}/>
         <Layout categories={categories}>
           <CategoriesBar categories={categories} category={category} />
-
+          <SectionTitle title='Каталог'/>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <CatalogMain
               key={category.id}

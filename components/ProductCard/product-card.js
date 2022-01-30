@@ -5,7 +5,10 @@ import ImageGallery from 'react-image-gallery'
 import {getFormatPrice, getDiscountPrice} from '../../utils/price'
 import Link from 'next/link'
 import icons from '../../public/fixture';
-import CartModal from '../CartModal/cart-modal'
+import CartModal from '../CartModal/cart-modal';
+import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
+import ReactImageZoom from "react-image-zoom";
+
 
 const ProductCard = ({
                        product,
@@ -37,7 +40,12 @@ const ProductCard = ({
   const [selectedProductSize, setSelectedProductSize] = useState(
       product.variations
           ? product.variations.nodes[0].size.nodes[0]?.value
-          : product.paSizes.nodes[0]?.name
+          : product.paRazmerUpakovkis.nodes[0]?.name
+  )
+  const [selectedProductWeight, setSelectedProductWeight] = useState(
+      product.variations
+          ? product.variations.nodes[0].weight.nodes[0]?.value
+          : product.paVesUpakovkis.nodes[0]?.name
   )
 
   const [selectedProductImage, setSelectedProductImage] = useState(
@@ -75,21 +83,13 @@ const ProductCard = ({
 
   const [buy, setBuy] = useState(false)
   const [cartModal, setCartModal] = useState(false)
-
+  const props = {width: 633, height: 533, zoomWidth: 600, img: selectedProductImage};
 
   return (
       <>
         <div className={s.wrapper}>
           <div className={s.left}>
-            <ImageGallery
-                items={images}
-                thumbnailPosition='left'
-                showThumbnails={windowWidth <= 1100 ? false : true}
-                showBullets={windowWidth <= 1100 ? true : false}
-                showPlayButton={false}
-                showFullscreenButton={false}
-                autoPlay={false}
-            />
+            <ReactImageZoom {...props}/>
             {product.description && (
                 <div className={s.description}>
                   <div>Описание</div>
@@ -179,6 +179,35 @@ const ProductCard = ({
                         </div>
                       </>
                   )}
+                  {selectedProductWeight && (
+                      <>
+                        <div className={s.attributesName}>
+                          Вес: <span> {selectedProductWeight} </span>
+                        </div>
+                        <div className={s.sizeList}>
+                          {product.variations.nodes.map((product, i) => (
+                              <button
+                                  key={i}
+                                  className={`${
+                                      selectedProductWeight === product.age.nodes[0].value
+                                          ? s.active
+                                          : ''
+                                  } ${
+                                      [null, 0, -1].includes(product.stockQuantity)
+                                          ? s.outOfStock
+                                          : ''
+                                  }`}
+                                  onClick={() => {
+                                    selectedProductWeight(product.size.nodes[0].value)
+                                    setSelectedProductId(product.databaseId)
+                                  }}
+                              >
+                                {product.age.nodes[0].value}
+                              </button>
+                          ))}
+                        </div>
+                      </>
+                  )}
                 </>
             ) : (
                 <>
@@ -205,9 +234,19 @@ const ProductCard = ({
                         <div className={s.attributesName}>
                           Размер: <span> {selectedProductSize} </span>
                         </div>
-                        <div className={s.sizeList}>
-                          <button className={s.active}>{selectedProductSize}</button>
+                        {/*<div className={s.sizeList}>*/}
+                        {/*  <button className={s.active}>{selectedProductSize}</button>*/}
+                        {/*</div>*/}
+                      </>
+                  )}
+                  {selectedProductWeight && (
+                      <>
+                        <div className={s.attributesName}>
+                          Вес: <span> {selectedProductWeight} </span>
                         </div>
+                        {/*<div className={s.sizeList}>*/}
+                        {/*  <button className={s.active}>{selectedProductAge}</button>*/}
+                        {/*</div>*/}
                       </>
                   )}
                 </>
@@ -240,7 +279,12 @@ const ProductCard = ({
               }} onClick={wishlistItem ? () => deleteFromWishlist(product) : () => addToWishlist(product)}/>
             </div>
             <button className={s.telegram}>
-              Написать в телеграм
+              <Link href='https://t.me/kidpoint'>
+                <a>
+                  Написать в телеграм
+                </a>
+              </Link>
+
             </button>
 
 
@@ -252,17 +296,15 @@ const ProductCard = ({
                 selectedProductSize={selectedProductSize}
                 selectedProductId={selectedProductId}
             />
-            <CartModal cartModal={cartModal}
-                       setCartModal={setCartModal}/>
-            <div className={s.delivery}>
-              <div>
-                <img src='/public/icons/delivery.svg' alt=''/> Доставка и возврат
-              </div>
-              <div>
-                Бесплатная доставка при заказе свыше 300 000 UZS по Ташкенту
-                осуществляется в течении 24 часов с момента заказа
-              </div>
-            </div>
+            {/*<div className={s.delivery}>*/}
+            {/*  <div>*/}
+            {/*    <img src='/public/icons/delivery.svg' alt=''/> Доставка и возврат*/}
+            {/*  </div>*/}
+            {/*  <div>*/}
+            {/*    Бесплатная доставка при заказе свыше 300 000 UZS по Ташкенту*/}
+            {/*    осуществляется в течении 24 часов с момента заказа*/}
+            {/*  </div>*/}
+            {/*</div>*/}
 
             {product.paMaterials?.nodes[0]?.name && (
                 <div className={s.description}>
