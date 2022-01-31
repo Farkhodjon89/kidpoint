@@ -6,11 +6,7 @@ const BRANDS = gql`
       nodes {
         name
         slug
-        products {
-          nodes {
-            id
-          }
-        }
+ 
       }
     }
   }

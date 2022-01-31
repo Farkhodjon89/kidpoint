@@ -73,7 +73,7 @@ export default function Base({
         <BaseSlider data={slides}/>
         <Categories categories={homeCategories}/>
         {/*<CategoriesSlider categories={homeCategories}/>*/}
-        <BlockWrapper offers={offers}/>
+        {/*<BlockWrapper offers={offers}/>*/}
         {/*<BaseBlocks category={category} />*/}
         <ProductSlider products={products} text={`Популярные товары `}/>
         {/*<ProductSlider products={products} text={`Бестселлеры`}/>*/}

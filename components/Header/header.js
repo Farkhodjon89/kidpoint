@@ -10,22 +10,18 @@ import {useLazyQuery} from '@apollo/react-hooks'
 import CartModal from '../CartModal/cart-modal'
 import icons from '../../public/fixture'
 import PRODUCTS from '../../queries/products'
+import {hideCartModal, showCartModal} from '../../redux/actions/modalActions'
 import {getFormatPrice} from "../../utils/price";
 
-const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart}) => {
+
+const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart, showCartModal, modalState}) => {
   const [open, setOpen] = useState(false)
   const [isSearchActive, setIsSearchActive] = useState(true)
   const [searchResults, setSearchResults] = useState([])
-  const [cartModal, setCartModal] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [loadProducts, {data, loading}] = useLazyQuery(PRODUCTS, {
     client
   })
-
-  useEffect(() => {
-    setCartModal(true)
-  }, [cartItems])
-
 
   useEffect(() => {
     if (data && searchQuery.length) {
@@ -88,7 +84,7 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
                 </Link>
               </div>
               <div className={s.cartLink}>
-                <a onClick={() => setCartModal(true)}>
+                <a onClick={() => !modalState.cart ? showCartModal() : null}>
                   <span dangerouslySetInnerHTML={{__html: icons.cart2}}/>
                   <span> <span className={s.cartWord}>Корзина</span> ({cartItems.length}) </span>
                 </a>
@@ -97,9 +93,7 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
             <CartModal
                 cartItems={cartItems}
                 deleteFromCart={deleteFromCart}
-                cartModal={cartModal}
                 addToCart={addToCart}
-                setCartModal={setCartModal}
             />
           </div>
         </div>
@@ -112,6 +106,7 @@ const mapStateToProps = state => {
   return {
     cartItems: state.cartData,
     wishlistItems: state.wishlistData,
+    modalState: state.modalState
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -119,9 +114,13 @@ const mapDispatchToProps = dispatch => {
     deleteFromCart: item => {
       dispatch(deleteFromCart(item))
     },
-    setCartModal: () => {
-      dispatch(setCartModal())
+    showCartModal: () => {
+      dispatch(showCartModal())
+    },
+    hideCartModal: () => {
+      dispatch(hideCartModal())
     }
+
   }
 }
 

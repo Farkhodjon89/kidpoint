@@ -16,6 +16,7 @@ const Categories = ({categories}) => {
                         className={s.image}
                         style={{
                           backgroundImage: `url(${image.sourceUrl})`,
+                          backgroundSize: 'cover'
                         }}
                     ></div>
                     <div className={s.title}>{title}</div>

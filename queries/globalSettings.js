@@ -5,10 +5,6 @@ export const HOME_PAGE = gql`
     themeGeneralSettings {
       globalOptions {
         slider {
-        button
-        subtitle
-        subtitle2
-        title
         url
         image {
           sourceUrl

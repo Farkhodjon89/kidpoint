@@ -9,13 +9,14 @@ import PRODUCT from '../../queries/product'
 import PRODUCTS from '../../queries/products'
 import TOPCOLORS from '../../queries/topColors'
 import {connect} from 'react-redux'
-import {addToCart, deleteFromCart,decreaseQuantity} from '../../redux/actions/cartActions'
+import {addToCart, deleteFromCart, decreaseQuantity} from '../../redux/actions/cartActions'
 import {
   addToWishlist,
   deleteFromWishlist,
 } from '../../redux/actions/wishlistActions'
 import {StaticDataSingleton} from '../../utils/staticData'
 import ProductSlider from "../../components/ProductSlider";
+import {hideCartModal,showCartModal} from "../../redux/actions/modalActions";
 
 const Product = ({
                    categories,
@@ -30,9 +31,8 @@ const Product = ({
                    decreaseQuantity,
                    deleteFromWishlist,
                    topColors,
+                   showCartModal
                  }) => {
-  // console.log(wishlistItems)
-  const [cartModal, setCartModal] = useState(false)
 
   const breadcrumbs = [
     {
@@ -50,11 +50,7 @@ const Product = ({
   ]
 
   return (
-      <Layout
-          categories={categories}
-          cartModal={cartModal}
-          setCartModal={setCartModal}
-      >
+      <Layout categories={categories}>
         <CategoriesBar categories={categories}/>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <ProductCard
@@ -67,10 +63,10 @@ const Product = ({
             addToWishlist={addToWishlist}
             decreaseQuantity={decreaseQuantity}
             deleteFromWishlist={deleteFromWishlist}
-            setCartModal={setCartModal}
+            showCartModal={showCartModal}
             topColors={topColors}
         />
-        <ProductSlider  wishlistItems={wishlistItems} products={product.related.nodes}
+        <ProductSlider wishlistItems={wishlistItems} products={product.related.nodes}
                        related={true} text={`С этим также покупают`}/>
       </Layout>
   )
@@ -148,11 +144,11 @@ export async function getServerSideProps({params}) {
       response.data.product.productCategories.nodes.length !== 0
           ? response.data.product.productCategories.nodes[0]?.slug ===
           'uncategorized'
-          ? ''
-          : staticData.getCategoryBySlug(
-              response.data.product.productCategories.nodes[0].slug,
-              2
-          )
+              ? ''
+              : staticData.getCategoryBySlug(
+                  response.data.product.productCategories.nodes[0].slug,
+                  2
+              )
           : ''
 
   return {
@@ -202,6 +198,12 @@ const mapDispatchToProps = (dispatch) => {
     deleteFromWishlist: (item) => {
       dispatch(deleteFromWishlist(item))
     },
+    hideCartModal: (item) => {
+      dispatch(hideCartModal(item))
+    },
+    showCartModal: () => {
+      dispatch(showCartModal())
+    }
   }
 }
 

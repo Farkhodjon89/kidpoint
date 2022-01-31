@@ -6,7 +6,7 @@ import icons from '../../public/fixture'
 import {addToCart, deleteFromCart} from "../../redux/actions/cartActions";
 import {addToWishlist, deleteFromWishlist} from "../../redux/actions/wishlistActions";
 import {connect} from "react-redux";
-import CartModal from "../CartModal/cart-modal";
+import {hideCartModal, showCartModal} from "../../redux/actions/modalActions";
 
 const ProductsListItem = ({
                             product,
@@ -17,10 +17,10 @@ const ProductsListItem = ({
                             cartItems,
                             wishlistItems,
                             addToWishlist,
-                            deleteFromWishlist
+                            deleteFromWishlist,
+                            showCartModal
                           }) => {
   const discountPrice = getDiscountPrice(product)
-
 
   const [selectedProductColor, setSelectedProductColor] = useState(
       product.variations
@@ -105,7 +105,8 @@ const ProductsListItem = ({
                             selectedProductColor,
                             selectedProductSize,
                             selectedProductId,
-                        )
+                        ),
+                            showCartModal()
                       }
                   }
                   dangerouslySetInnerHTML={{__html: icons.cartDark}}/>
@@ -151,6 +152,12 @@ const mapDispatchToProps = (dispatch) => {
     deleteFromWishlist: (item) => {
       dispatch(deleteFromWishlist(item))
     },
+    hideCartModal: (item) => {
+      dispatch(hideCartModal(item))
+    },
+    showCartModal: () => {
+      dispatch(showCartModal())
+    }
   }
 }
 

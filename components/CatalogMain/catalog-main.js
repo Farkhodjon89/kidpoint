@@ -19,6 +19,7 @@ import {
 } from '../../utils/catalog'
 import FilterAge from "../FilterAge/filter-age";
 import FilterGender from "../FilterGender/filter-gender";
+import ShopPrice from "../ShopPrice/shop-price";
 
 
 const initialState = {
@@ -49,7 +50,7 @@ const CatalogMain = ({
   const [prevSortValue, setPrevSortValue] = useState('default')
 
   const filterValues = (type, value) => {
-    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender']
+    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender',]
 
     if (value === '' || value == null) {
       const filters = {...state.filters}
@@ -163,10 +164,10 @@ const CatalogMain = ({
       })
     }
 
-    console.log({
-      categories: category ? [category.slug] : null,
-      ...filterVariables(state.filters),
-    })
+    // console.log({
+    //   categories: category ? [category.slug] : null,
+    //   ...filterVariables(state.filters),
+    // })
   }, [state.filters])
 
   useEffect(() => {
@@ -183,6 +184,9 @@ const CatalogMain = ({
       })
     }
   }, [state.sortValue])
+
+  let minPrice = 0;
+  let maxPrice = 9200000;
 
   return (
       <div className={s.wrapper}>
@@ -225,7 +229,14 @@ const CatalogMain = ({
               age={state.activeTerms && state.activeTerms.paVozrasts}
               active={state.filters.age}
               filterValues={filterValues}/>
+          <ShopPrice
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              filterValues={filterValues}
+          />
         </div>
+
+
         <div className={s.right}>
           {/*<div className={s.rightTop}>*/}
           {/*  Сортировать:*/}
@@ -249,14 +260,14 @@ const CatalogMain = ({
           ) : (
               <InfiniteScroll
                   pageStart={0}
-                  // loadMore={loadMore}
+                  loadMore={loadMore}
                   hasMore={!loading && state.pageInfo.hasNextPage}
                   initialLoad={false}
               >
                 <ProductsList products={state.products} catalog={'catalog'}/>
-                <div className={s.button}>
-                  <button onClick={loadMore} className={loading ? s.none : s.loadButton}>Загрузить еще</button>
-                </div>
+                {/*<div className={s.button}>*/}
+                {/*  <button onClick={loadMore} className={loading ? s.none : s.loadButton}>Загрузить еще</button>*/}
+                {/*</div>*/}
                 {loading && <Loader/>}
               </InfiniteScroll>
           )}

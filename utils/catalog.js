@@ -40,6 +40,12 @@ export const filterVariables = (filters) => {
       terms: Array.isArray(filters.gender) ? filters.gender : [filters.gender],
     })
   }
+  if (filters.price) {
+    const [minPrice, maxPrice] = filters.price
+
+    result.minPrice = minPrice
+    result.maxPrice = maxPrice
+  }
 
 
   return result
@@ -67,7 +73,7 @@ export const reducer = (state, action) => {
     case 'SET_FILTERS':
       return {
         ...state,
-        filters: action.filters,
+        filters: { ...action.filters, category: state.filters.category },
         products: [],
       }
     case 'SET_FILTER_VALUE':
@@ -96,6 +102,7 @@ export const reducer = (state, action) => {
     case 'SET_SORTING':
       return {
         ...state,
+        sortType: action.sortType,
         sortValue: action.sortValue,
       }
     default:
@@ -126,7 +133,7 @@ function parseQueryFilters(location) {
   const query = queryString.parse(location, {arrayFormat: 'comma'})
   const filterValues = {}
 
-  const multipleFilters = ['colors', 'sizes', 'brands', 'age', 'gender']
+  const multipleFilters = ['colors', 'sizes', 'brands', 'age', 'gender', ]
 
   Object.keys(query).forEach((param) => {
     const mr = param.match(/^filter_([-_A-Za-z0-9]+)$/)

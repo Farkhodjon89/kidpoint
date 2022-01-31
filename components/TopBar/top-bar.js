@@ -21,11 +21,11 @@ const TopBar = () => (
               Обмен и возврат товара
             </a>
           </Link>
-          <Link href='/'>
-            <a>
-              Статус заказа
-            </a>
-          </Link>
+          {/*<Link href='/'>*/}
+          {/*  <a>*/}
+          {/*    Статус заказа*/}
+          {/*  </a>*/}
+          {/*</Link>*/}
         </div>
         <div className={s.rightSide}>
           <Link href='tel:+998 71 222-22-22'>

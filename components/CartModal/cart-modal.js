@@ -2,40 +2,38 @@ import s from './cart-modal.module.scss'
 import React, {useRef, useEffect, useState} from 'react'
 import Link from 'next/link'
 import {getFormatPrice} from '../../utils/price'
-import {cartItemStock, decreaseQuantity,addToCart,deleteFromCart} from "../../redux/actions/cartActions";
+import {cartItemStock, decreaseQuantity, addToCart, deleteFromCart} from "../../redux/actions/cartActions";
 import {addToWishlist, deleteFromWishlist} from "../../redux/actions/wishlistActions";
 import {connect} from "react-redux";
+import {hideCartModal} from "../../redux/actions/modalActions";
 
-
-const CartModal = ({cartItems, deleteFromCart, decreaseQuantity,cartModal, setCartModal,addToCart,catalog = ''}) => {
+const CartModal = ({cartItems, deleteFromCart, decreaseQuantity, addToCart, hideCartModal, modalState}) => {
   const myRef = useRef()
   const handleClickOutside = (e) => {
     if (!myRef.current.contains(e.target)) {
-      setCartModal && setCartModal(false)
+      hideCartModal && hideCartModal()
     }
   }
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   })
-
-  if (!cartItems.length) {
-    setCartModal && setCartModal(false)
-  }
+  useEffect(() => {
+    hideCartModal()
+  }, [])
 
   let cartTotalPrice = 0
-
 
   return (
       <>
         {/*<div className={`${s.superWrapper} ${!cartModal ? s.active : ''}`}></div>*/}
-        <div ref={myRef} className={`${catalog === 'catalog' ? s.wrapper2 : s.wrapper}  ${cartModal ? s.active : ''}`}>
+        <div ref={myRef} className={`${s.wrapper}  ${modalState.cart ? s.active : ''}`}>
           <div className={s.top}>
             Корзина
             <img
                 src='/public/icons/close.svg'
                 alt=''
-                onClick={() => setCartModal(false)}
+                onClick={() => hideCartModal()}
             />
           </div>
           <div className={s.cardList}>
@@ -139,12 +137,11 @@ const CartModal = ({cartItems, deleteFromCart, decreaseQuantity,cartModal, setCa
 }
 
 
-
-
 const mapStateToProps = (state) => {
   return {
     cartItems: state.cartData,
     wishlistItems: state.wishlistData,
+    modalState: state.modalState
   }
 }
 
@@ -165,6 +162,9 @@ const mapDispatchToProps = (dispatch) => {
     deleteFromWishlist: (item) => {
       dispatch(deleteFromWishlist(item))
     },
+    hideCartModal: () => {
+      dispatch(hideCartModal())
+    }
   }
 }
 

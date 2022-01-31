@@ -52,19 +52,19 @@ const BaseSlider = ({ data }) => {
             <a style={{ backgroundImage: `url(${
               windowWidth <= 768 ? mobimage.sourceUrl : image.sourceUrl
             })` }} className={s.inner}>
-              <div className={s.main}>
-                <div className={s.major}>
-                  {title && (
-                    <>
-                      <div dangerouslySetInnerHTML={{ __html: title }} />
-                      <div dangerouslySetInnerHTML={{ __html: subtitle }} />
-                      <Link href={url}>
-                        <a>Перейти к покупкам</a>
-                      </Link>
-                    </>
-                  )}
-                </div>
-              </div>
+              {/*<div className={s.main}>*/}
+              {/*  <div className={s.major}>*/}
+              {/*    {title && (*/}
+              {/*      <>*/}
+              {/*        <div dangerouslySetInnerHTML={{ __html: title }} />*/}
+              {/*        <div dangerouslySetInnerHTML={{ __html: subtitle }} />*/}
+              {/*        <Link href={url}>*/}
+              {/*          <a>Перейти к покупкам</a>*/}
+              {/*        </Link>*/}
+              {/*      </>*/}
+              {/*    )}*/}
+              {/*  </div>*/}
+              {/*</div>*/}
             </a>
           </Link>
         </div>

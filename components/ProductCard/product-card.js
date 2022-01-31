@@ -1,14 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import s from './product-card.module.scss'
 import BuyModal from '../BuyModal/buy-modal'
-import ImageGallery from 'react-image-gallery'
 import {getFormatPrice, getDiscountPrice} from '../../utils/price'
 import Link from 'next/link'
 import icons from '../../public/fixture';
-import CartModal from '../CartModal/cart-modal';
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import ReactImageZoom from "react-image-zoom";
-
 
 const ProductCard = ({
                        product,
@@ -18,6 +15,7 @@ const ProductCard = ({
                        deleteFromCart,
                        addToWishlist,
                        deleteFromWishlist,
+                       showCartModal,
                        getActiveStatus,
                        topColors,
                      }) => {
@@ -58,7 +56,6 @@ const ProductCard = ({
   )[0]
   // console.log(cartItems)
   const wishlistItem = wishlistItems.filter((wishlistItem) => wishlistItem.id === product.id)[0]
-  console.log(wishlistItem)
 
   const galleryImages = product.galleryImages.nodes.map(({sourceUrl}) => ({
     original: sourceUrl,
@@ -82,7 +79,6 @@ const ProductCard = ({
   }, [])
 
   const [buy, setBuy] = useState(false)
-  const [cartModal, setCartModal] = useState(false)
   const props = {width: 633, height: 533, zoomWidth: 600, img: selectedProductImage};
 
   return (
@@ -264,7 +260,8 @@ const ProductCard = ({
                             selectedProductSize,
                             selectedProductId,
                         ),
-                            setCartModal(true)
+                            showCartModal()
+
                       }
                 }
             >
@@ -286,8 +283,6 @@ const ProductCard = ({
               </Link>
 
             </button>
-
-
             <BuyModal
                 buy={buy}
                 setBuy={setBuy}

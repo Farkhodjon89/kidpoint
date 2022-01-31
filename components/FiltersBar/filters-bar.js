@@ -4,13 +4,17 @@ import FilterCategory from '../FilterCategory/filter-category'
 import FilterColor from '../FilterColor/filter-color'
 import FilterSize from '../FilterSize/filter-size'
 import FilterBrand from '../FilterBrand/filter-brand'
+import FilterGender from "../FilterGender/filter-gender";
+import FilterAge from "../FilterAge/filter-age";
 
-const FiltersBar = ({
+const  FiltersBar = ({
   category,
   sizes,
   colors,
   filterValues,
   brands,
+    gender,
+    age,
   filters,
   dispatch,
   activeSortValue, categories
@@ -43,7 +47,11 @@ const FiltersBar = ({
   const FilterButton = () => (
     <>
       <FilterCategory category={category} categories={categories} />
-      {/*<FilterBrand brands={brands} filterValues={filterValues} active={filters.brands} />*/}
+      <FilterBrand brands={brands} filterValues={filterValues} active={filters.brands} />
+      <FilterGender
+          filterValues={filterValues}
+          active={filters.gender}
+          gender={gender}/>
       <FilterColor
         colors={colors}
         active={filters.colors}
@@ -54,6 +62,10 @@ const FiltersBar = ({
         active={filters.sizes}
         filterValues={filterValues}
       />
+      <FilterAge
+          age={age}
+          active={filters.age}
+          filterValues={filterValues}/>
     </>
   )
 
