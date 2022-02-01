@@ -7,6 +7,8 @@ const PRODUCTS = gql`
     $after: String
     $categories: [String]
     $filters: [ProductTaxonomyFilterInput]
+    $minPrice: Float
+    $maxPrice: Float
     $onSale: Boolean
     $search: String
     $orderBy: [ProductsOrderbyInput]
@@ -15,9 +17,12 @@ const PRODUCTS = gql`
       first: $first
       after: $after
       where: {
+        # orderby: { field: PRICE, order: DESC }
         status: "publish"
         stockStatus: IN_STOCK
         onSale: $onSale
+        minPrice: $minPrice
+        maxPrice: $maxPrice
         categoryIn: $categories
         taxonomyFilter: { and: $filters }
         search: $search
@@ -43,6 +48,19 @@ const PRODUCTS = gql`
          slug
         }
        paGenders {
+        name
+        slug
+      }
+      pwbBrands {
+        name
+        slug
+        parent
+      }
+      paKomponenties {
+        name
+        slug
+      }
+      paStupens {
         name
         slug
       }

@@ -22,6 +22,13 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
   const [loadProducts, {data, loading}] = useLazyQuery(PRODUCTS, {
     client
   })
+  const [windowWidth, setWindowWidth] = useState()
+  let resizeWindow = () => setWindowWidth(window.innerWidth)
+  useEffect(() => {
+    resizeWindow()
+    window.addEventListener('resize', resizeWindow)
+    return () => window.removeEventListener('resize', resizeWindow)
+  }, [])
 
   useEffect(() => {
     if (data && searchQuery.length) {
@@ -44,6 +51,10 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
   }
 
   let cartTotalPrice = 0
+  cartItems.map(item => {
+    const price = item.onSale ? item.woocsSalePrice : item.woocsRegularPrice
+    cartTotalPrice = cartTotalPrice + price
+  })
 
   return (
       <>
@@ -86,7 +97,8 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
               <div className={s.cartLink}>
                 <a onClick={() => !modalState.cart ? showCartModal() : null}>
                   <span dangerouslySetInnerHTML={{__html: icons.cart2}}/>
-                  <span> <span className={s.cartWord}>Корзина</span> ({cartItems.length}) </span>
+                  <span> <span className={s.cartWord}>Корзина</span>
+                    <span>({windowWidth <= 500 ?  cartItems.length : cartTotalPrice + ' UZS'})</span> </span>
                 </a>
               </div>
             </div>

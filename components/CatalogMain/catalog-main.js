@@ -20,6 +20,8 @@ import {
 import FilterAge from "../FilterAge/filter-age";
 import FilterGender from "../FilterGender/filter-gender";
 import ShopPrice from "../ShopPrice/shop-price";
+import FilterSteps from "../FilterSteps/filter-steps";
+import FilterComponents from "../FilterComponents/filter-components";
 
 
 const initialState = {
@@ -50,7 +52,7 @@ const CatalogMain = ({
   const [prevSortValue, setPrevSortValue] = useState('default')
 
   const filterValues = (type, value) => {
-    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender',]
+    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender','steps','components']
 
     if (value === '' || value == null) {
       const filters = {...state.filters}
@@ -198,6 +200,8 @@ const CatalogMain = ({
               age={state.activeTerms && state.activeTerms.paVozrasts}
               brands={state.activeTerms && state.activeTerms.paBrands}
               gender={state.activeTerms && state.activeTerms.paGenders}
+              steps={state.activeTerms && state.activeTerms.paStupens}
+              components={state.activeTerms && state.activeTerms.paKomponenties}
               filterValues={filterValues}
               filters={state.filters}
               dispatch={dispatch}
@@ -228,6 +232,14 @@ const CatalogMain = ({
           <FilterAge
               age={state.activeTerms && state.activeTerms.paVozrasts}
               active={state.filters.age}
+              filterValues={filterValues}/>
+          <FilterSteps
+              steps={state.activeTerms && state.activeTerms.paStupens}
+              active={state.filters.steps}
+              filterValues={filterValues}/>
+          <FilterComponents
+              components={state.activeTerms && state.activeTerms.paKomponenties}
+              active={state.filters.components}
               filterValues={filterValues}/>
           <ShopPrice
               minPrice={minPrice}

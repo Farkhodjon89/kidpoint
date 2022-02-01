@@ -40,11 +40,23 @@ export const filterVariables = (filters) => {
       terms: Array.isArray(filters.gender) ? filters.gender : [filters.gender],
     })
   }
+  if (filters.components && filters.components.length) {
+    result.filters.push({
+      taxonomy: 'PAKOMPONENTY',
+      terms: Array.isArray(filters.components) ? filters.components : [filters.components],
+    })
+  }
+  if (filters.steps && filters.steps.length) {
+    result.filters.push({
+      taxonomy: 'PASTUPEN',
+      terms: Array.isArray(filters.steps) ? filters.steps : [filters.steps],
+    })
+  }
   if (filters.price) {
     const [minPrice, maxPrice] = filters.price
 
-    result.minPrice = minPrice
-    result.maxPrice = maxPrice
+    result.minPrice = parseFloat(minPrice)
+    result.maxPrice = parseFloat(maxPrice)
   }
 
 
@@ -133,7 +145,7 @@ function parseQueryFilters(location) {
   const query = queryString.parse(location, {arrayFormat: 'comma'})
   const filterValues = {}
 
-  const multipleFilters = ['colors', 'sizes', 'brands', 'age', 'gender', ]
+  const multipleFilters = ['colors', 'sizes', 'brands', 'age', 'gender','steps','components' ]
 
   Object.keys(query).forEach((param) => {
     const mr = param.match(/^filter_([-_A-Za-z0-9]+)$/)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './filters-bar.module.scss'
 import FilterCategory from '../FilterCategory/filter-category'
 import FilterColor from '../FilterColor/filter-color'
@@ -6,19 +6,24 @@ import FilterSize from '../FilterSize/filter-size'
 import FilterBrand from '../FilterBrand/filter-brand'
 import FilterGender from "../FilterGender/filter-gender";
 import FilterAge from "../FilterAge/filter-age";
+import FilterSteps from "../FilterSteps/filter-steps";
+import FilterComponents from "../FilterComponents/filter-components";
+import ShopPrice from "../ShopPrice/shop-price";
 
-const  FiltersBar = ({
-  category,
-  sizes,
-  colors,
-  filterValues,
-  brands,
-    gender,
-    age,
-  filters,
-  dispatch,
-  activeSortValue, categories
-}) => {
+const FiltersBar = ({
+                      category,
+                      sizes,
+                      colors,
+                      filterValues,
+                      brands,
+                      gender,
+                      age,
+                      steps,
+                      components,
+                      filters,
+                      dispatch,
+                      activeSortValue, categories
+                    }) => {
   const [open, setOpen] = useState()
   const toggle = (i) => {
     if (open === i) {
@@ -43,91 +48,106 @@ const  FiltersBar = ({
       sortValue: value,
     })
   }
+  let minPrice = 0;
+  let maxPrice = 9200000;
 
   const FilterButton = () => (
-    <>
-      <FilterCategory category={category} categories={categories} />
-      <FilterBrand brands={brands} filterValues={filterValues} active={filters.brands} />
-      <FilterGender
-          filterValues={filterValues}
-          active={filters.gender}
-          gender={gender}/>
-      <FilterColor
-        colors={colors}
-        active={filters.colors}
-        filterValues={filterValues}
-      />
-      <FilterSize
-        sizes={sizes}
-        active={filters.sizes}
-        filterValues={filterValues}
-      />
-      <FilterAge
-          age={age}
-          active={filters.age}
-          filterValues={filterValues}/>
-    </>
+      <>
+        <FilterCategory category={category} categories={categories}/>
+        <FilterBrand brands={brands} filterValues={filterValues} active={filters.brands}/>
+        <FilterGender
+            filterValues={filterValues}
+            active={filters.gender}
+            gender={gender}/>
+        <FilterColor
+            colors={colors}
+            active={filters.colors}
+            filterValues={filterValues}
+        />
+        <FilterSize
+            sizes={sizes}
+            active={filters.sizes}
+            filterValues={filterValues}
+        />
+        <FilterAge
+            age={age}
+            active={filters.age}
+            filterValues={filterValues}/>
+        <FilterSteps
+            steps={steps}
+            active={filters.steps}
+            filterValues={filterValues}/>
+        <FilterComponents
+            components={components}
+            active={filters.components}
+            filterValues={filterValues}/>
+        <ShopPrice
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            filterValues={filterValues}
+        />
+      </>
   )
 
   const SortButton = () => (
-    <div className={s.sort}>
-      {[
-        { name: 'по умолчанию', value: 'default' },
-        { name: 'по убыванию', value: 'highToLow' },
-        { name: 'по возрастанию', value: 'lowToHigh' },
-      ].map(({ name, value }, i) => {
-        return (
-          <div
-            key={i}
-            onClick={() => setSortValue(value)}
-            className={(activeSortValue || []).includes(value) ? s.active : ''}
-          >
-            {name}
-          </div>
-        )
-      })}
-    </div>
+      <div className={s.sort}>
+        {[
+          {name: 'по умолчанию', value: 'default'},
+          {name: 'по убыванию', value: 'highToLow'},
+          {name: 'по возрастанию', value: 'lowToHigh'},
+        ].map(({name, value}, i) => {
+          return (
+              <div
+                  key={i}
+                  onClick={() => setSortValue(value)}
+                  className={(activeSortValue || []).includes(value) ? s.active : ''}
+              >
+                {name}
+              </div>
+          )
+        })}
+      </div>
   )
 
   const buttons = [
     {
       name: 'Фильтры',
       img: '/public/icons/filter.svg',
-      body: <FilterButton />,
+      body: <FilterButton/>,
     },
     {
       name: 'Сортировка',
       img: '/public/icons/sort.svg',
-      body: <SortButton />,
+      body: <SortButton/>,
     },
   ]
 
   return (
-    <>
-      <div className={s.buttons}>
-        {buttons.map(({ name, img }, i) => (
-          <button
-            key={i}
-            onClick={() => toggle(i)}
-            className={`${s.button} ${open === i ? s.active : ''}`}
-          >
-            {name}
-            <img src={img} alt='' />
-          </button>
-        ))}
-      </div>
-      {buttons.map(
-        ({ body }, i) =>
-          open === i && (
-            <div className={s.inner} key={i}>
-              {body}
-              <button className={s.apply} onClick={() => setOpen()}>
-                Применить
+      <>
+        <div className={s.buttons}>
+          {buttons.map(({name, img}, i) => (
+              <button
+                  key={i}
+                  onClick={() => toggle(i)}
+                  className={`${s.button} ${open === i ? s.active : ''}`}
+              >
+                {name}
+                <img src={img} alt=''/>
               </button>
-            </div>
-          )
-      )}
-    </>
+          ))}
+        </div>
+        {buttons.map(
+            ({body}, i) =>
+                open === i && (
+                    <div className={s.inner} key={i}>
+                      {body}
+                      <button className={s.apply} onClick={() => setOpen()}>
+                        Применить
+                      </button>
+                    </div>
+                )
+        )}
+      </>
   )
 }
 export default FiltersBar

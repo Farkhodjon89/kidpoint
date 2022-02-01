@@ -128,7 +128,7 @@ const ShopPrice = ({ minPrice, maxPrice, getFilterParams, filterValues }) => {
   const [maxPriceValue, setMaxPriceValue] = useState(maxPrice);
 
   return (
-    <div className="sidebar-widget mt-4 mt-md-5">
+    <div className={s.wrapper}>
       <h4 className={s.priceTitle}>
         {'Цена'}
         {minPriceValue !== minPrice || maxPriceValue !== maxPrice
