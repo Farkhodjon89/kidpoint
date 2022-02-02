@@ -5,12 +5,15 @@
 }
 
 .left {
-  width: 100%;
   max-width: 633px;
   height: 100%;
-  img{
-    border-radius: 32px;
+  .image{
+    img{
+      border-radius: 32px;
+      cursor: pointer;
+    }
   }
+
 }
 
 .right {

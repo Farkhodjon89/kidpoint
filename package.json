@@ -39,6 +39,7 @@
     "react-infinite-scroller": "^1.2.4",
     "react-inner-image-zoom": "^3.0.0",
     "react-input-mask": "^2.0.4",
+    "react-lightgallery": "^0.9.0",
     "react-modal": "^3.12.1",
     "react-redux": "^7.2.2",
     "react-slick": "^0.28.0",

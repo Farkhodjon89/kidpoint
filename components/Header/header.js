@@ -94,11 +94,12 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
                   </a>
                 </Link>
               </div>
-              <div className={s.cartLink}>
-                <a onClick={() => !modalState.cart ? showCartModal() : null}>
+              <div  className={s.cartLink}>
+                <a className={s.headerCartList} onClick={() => !modalState.cart ? showCartModal() : null}>
                   <span dangerouslySetInnerHTML={{__html: icons.cart2}}/>
+                  {cartItems.length > 0 && <span className={s.cartListQuantity}>{cartItems.length}</span>}
                   <span>
-                    <span>({windowWidth <= 500 ? cartItems.length : getFormatPrice(cartTotalPrice)})</span> </span>
+                    <span>{windowWidth <= 500 ? cartItems.length : getFormatPrice(cartTotalPrice)}</span> </span>
                 </a>
               </div>
             </div>

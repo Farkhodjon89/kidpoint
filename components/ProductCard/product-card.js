@@ -5,7 +5,7 @@ import {getFormatPrice, getDiscountPrice} from '../../utils/price'
 import Link from 'next/link'
 import icons from '../../public/fixture';
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
-import ReactImageZoom from "react-image-zoom";
+import {LightgalleryProvider, LightgalleryItem} from "react-lightgallery";
 
 const ProductCard = ({
                        product,
@@ -68,13 +68,22 @@ const ProductCard = ({
   }, [])
 
   const [buy, setBuy] = useState(false)
-  const props = {width: 633, height: 533, zoomWidth: 600, img: selectedProductImage};
+
 
   return (
       <>
         <div className={s.wrapper}>
           <div className={s.left}>
-            <ReactImageZoom {...props}/>
+            <LightgalleryProvider>
+              <div className={s.image}>
+                <LightgalleryItem src={selectedProductImage} thumb={selectedProductImage}>
+                  <img src={selectedProductImage}/>
+
+                </LightgalleryItem>
+
+              </div>
+
+            </LightgalleryProvider>
             {product.description && (
                 <div className={s.description}>
                   <div>Описание</div>

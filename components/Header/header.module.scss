@@ -45,6 +45,25 @@
 .cartLink {
   font-size: 14px;
   color: #5E697B;
+  span:last-child{
+    margin-left: 5px;
+  }
+  .headerCartList {
+    position: relative;
+
+    .cartListQuantity {
+      position: absolute;
+      left: 15px;
+      top: 0;
+      background: red;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      font-size: 10px;
+      text-align: center;
+      color: #fff;
+    }
+  }
 
   a {
     display: flex;
