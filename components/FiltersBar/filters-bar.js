@@ -9,6 +9,7 @@ import FilterAge from "../FilterAge/filter-age";
 import FilterSteps from "../FilterSteps/filter-steps";
 import FilterComponents from "../FilterComponents/filter-components";
 import ShopPrice from "../ShopPrice/shop-price";
+import PropTypes from "prop-types";
 
 const FiltersBar = ({
                       category,
@@ -22,6 +23,8 @@ const FiltersBar = ({
                       components,
                       filters,
                       dispatch,
+                      maxPrice,
+                      minPrice,
                       activeSortValue, categories
                     }) => {
   const [open, setOpen] = useState()
@@ -48,8 +51,6 @@ const FiltersBar = ({
       sortValue: value,
     })
   }
-  let minPrice = 0;
-  let maxPrice = 9200000;
 
   const FilterButton = () => (
       <>
@@ -106,6 +107,7 @@ const FiltersBar = ({
               </div>
           )
         })}
+
       </div>
   )
 
@@ -150,4 +152,8 @@ const FiltersBar = ({
       </>
   )
 }
+
+FiltersBar.propTypes = {
+  filterValues: PropTypes.func,
+};
 export default FiltersBar

@@ -57,17 +57,6 @@ const ProductCard = ({
   // console.log(cartItems)
   const wishlistItem = wishlistItems.filter((wishlistItem) => wishlistItem.id === product.id)[0]
 
-  const galleryImages = product.galleryImages.nodes.map(({sourceUrl}) => ({
-    original: sourceUrl,
-    thumbnail: sourceUrl,
-  }))
-  const images = [
-    {
-      original: selectedProductImage,
-      thumbnail: selectedProductImage,
-    },
-    ...galleryImages,
-  ]
 
   const [windowWidth, setWindowWidth] = useState()
   const resizeWindow = () => setWindowWidth(window.innerWidth)

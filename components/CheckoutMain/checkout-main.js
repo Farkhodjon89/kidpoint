@@ -77,7 +77,7 @@ const CheckoutMain = ({cartItems}) => {
   const [payment, setPayment] = useState('cash')
   const [comment, setComment] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [checkboxTicked, setCheckboxTicked] = useState(false)
+  const [checkboxTicked, setCheckboxTicked] = useState(true)
   const [selectMethod, setSelectMethod] = useState(paymentMethods[0].value)
   const [order, setOrder] = useState()
   const {userData} = useUser();
@@ -442,7 +442,7 @@ const CheckoutMain = ({cartItems}) => {
             </button>
         )}
         <div className={s.checkbox}>
-          <input type='checkbox' onClick={() => setCheckboxTicked(prev => !prev)}/>
+          <input type='checkbox' defaultChecked={true} onClick={() => setCheckboxTicked(prev => !prev)}/>
           <label>Я прочитал и согласен с условиями использования сайта*</label>
         </div>
       </div>

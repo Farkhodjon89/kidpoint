@@ -72,7 +72,7 @@ export default function Catalog({
         <Seo title={title} description={description}/>
         <Layout categories={categories}>
           <CategoriesBar categories={categories} category={category} />
-          <SectionTitle title='Каталог'/>
+          {/*<SectionTitle title='Каталог'/>*/}
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <CatalogMain
               key={category.id}

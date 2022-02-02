@@ -25,7 +25,7 @@ const CatalogPage = ({pageInfo, products, category, categories, activeTerms}) =>
         <Layout categories={categories}>
           <CategoriesBar categories={categories}/>
           <div className="container">
-            <SectionTitle title='Каталог'/>
+            {/*<SectionTitle title='Каталог'/>*/}
             <Breadcrumbs breadcrumbs={breadcrumbs}/>
             <Catalog
                 products={products}

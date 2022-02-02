@@ -97,8 +97,8 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
               <div className={s.cartLink}>
                 <a onClick={() => !modalState.cart ? showCartModal() : null}>
                   <span dangerouslySetInnerHTML={{__html: icons.cart2}}/>
-                  <span> <span className={s.cartWord}>Корзина</span>
-                    <span>({windowWidth <= 500 ?  cartItems.length : cartTotalPrice + ' UZS'})</span> </span>
+                  <span>
+                    <span>({windowWidth <= 500 ? cartItems.length : getFormatPrice(cartTotalPrice)})</span> </span>
                 </a>
               </div>
             </div>

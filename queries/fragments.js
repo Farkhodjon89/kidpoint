@@ -14,11 +14,7 @@ export const _Product = gql`
     image {
       sourceUrl
     }
-    galleryImages {
-      nodes {
-        sourceUrl
-      }
-    }
+   
    
     
     productCategories(where: { orderby: TERM_ID }) {

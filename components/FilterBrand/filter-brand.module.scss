@@ -1,5 +1,7 @@
-.wrapper{
+.wrapper {
   margin-top: 30px;
+
+
   .title {
     font-weight: 500;
     font-size: 16px;
@@ -7,6 +9,7 @@
     color: #5E697B;
     padding-bottom: 15px;
   }
+
   .action {
     font-weight: 500;
     font-size: 15px;
@@ -15,6 +18,7 @@
     background-color: #fff;
     height: 260px;
     overflow-y: auto;
+
     div {
       display: flex;
       align-items: center;
@@ -27,12 +31,15 @@
       letter-spacing: 0em;
       text-align: left;
       color: #5E697B;
+
       img {
         margin-right: 10px;
       }
+
       &.active {
         color: #6C98B1;
       }
+
       &:hover {
         color: #6C98B1;
         border: 1px solid #6C98B1;
@@ -40,10 +47,12 @@
         padding: 0 15px;
       }
     }
+
     &::-webkit-scrollbar-track {
       background: #e8e8e8;
       border-radius: 10px;
     }
+
     &::-webkit-scrollbar {
       -webkit-appearance: none;
       width: 5px;
@@ -53,5 +62,10 @@
       background: #6C98B1;
       border-radius: 10px;
     }
+  }
+}
+@media(max-width: 1100px) {
+  .wrapper{
+    margin-top: 0;
   }
 }

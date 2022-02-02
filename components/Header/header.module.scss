@@ -156,11 +156,12 @@
   .burger {
     display: block;
   }
-  //.cartLink {
-  //  span {
-  //    display: none;
-  //  }
-  //}
+  .user {
+    display: none;
+  }
+  .wishlist {
+    display: none;
+  }
   .cartWord {
     display: none
   }
@@ -182,12 +183,3 @@
   }
 }
 
-@media screen and (max-width: 440px) {
-  .user {
-    display: none;
-  }
-  .wishlist {
-    display: none;
-  }
-
-}
