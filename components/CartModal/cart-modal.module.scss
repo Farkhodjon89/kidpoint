@@ -138,6 +138,25 @@
     margin-left: 5px;
   }
 }
+.color2{
+  display: none;
+  align-items: center;
+  font-weight: 600;
+  font-size: 13px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  padding: 0 10px;
+  select{
+    margin-left: 8px;
+    outline: none;
+    border: 0;
+  }
+  span {
+    font-weight: normal;
+    margin-left: 5px;
+  }
+}
 .details {
   display: flex;
   align-items: center;
@@ -198,5 +217,11 @@
 @media screen and (max-width: 1100px) {
   .wrapper {
     width: 80%;
+  }
+  .color{
+    display: none;
+  }
+  .color2{
+    display: flex;
   }
 }

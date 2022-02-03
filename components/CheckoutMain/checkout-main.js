@@ -395,7 +395,7 @@ const CheckoutMain = ({cartItems}) => {
                     <div>
                       <Input
                           name='address'
-                          placeholder='Адрес доставки *'
+                          placeholder='Адрес доставки(район, улица, дом, квартира) *'
                           setAction={setAddress}
                           innerRef={register({required: true})}
                           style={errors.address && s.error}

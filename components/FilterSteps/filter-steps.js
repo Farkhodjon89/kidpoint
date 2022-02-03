@@ -4,7 +4,7 @@ import s from './filter-steps.module.scss'
 const FilterSteps = ({steps, active, filterValues}) =>
     steps && (
         <div className={s.wrapper}>
-          <div className={s.title}> Ступени</div>
+          <div className={s.title}> Ступень</div>
           <div className={s.action}>
             {steps?.map(({name}, i) => (
                 <div

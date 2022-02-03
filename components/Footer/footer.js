@@ -140,7 +140,7 @@ const Footer = ({categories}) => {
             {links.map(({id, title, parentSlug, child}, i) => (
                 <div key={i}>
                   <span> {title} </span>
-                  {child.map(({name, slug}, i) => (
+                  {child?.map(({name, slug}, i) => (
                       <Link href={slug} key={i}>
                         <a>{name}</a>
                       </Link>

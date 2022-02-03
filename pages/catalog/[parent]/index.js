@@ -7,23 +7,25 @@ import client from '../../../apollo/apollo-client'
 import PRODUCTS from '../../../queries/products'
 import {useRouter} from "next/router";
 import BRANDS from '../../../queries/brands'
+import FilterCategory from "../../../components/FilterCategory/filter-category";
 // import SIZES from '../../../queries/sizes'
 // import COLORS from '../../../queries/colors'
 
-import { StaticDataSingleton } from '../../../utils/staticData'
+import {StaticDataSingleton} from '../../../utils/staticData'
 import Seo from '../../../utils/seo'
 import SectionTitle from "../../../components/SectionTitle";
 
 export default function Catalog({
-  categories,
-  category,
-  // sizes,
-  // colors,
-    brands,
-  products,
-  pageInfo,
-  activeTerms,
-}) {
+                                  categories,
+                                  category,
+                                  // sizes,
+                                  // colors,
+                                  parentCategories,
+                                  brands,
+                                  products,
+                                  pageInfo,
+                                  activeTerms,
+                                }) {
   const breadcrumbs = [
     {
       name: 'Главная',
@@ -34,6 +36,7 @@ export default function Catalog({
       slug: `/catalog/${category.slug}`,
     },
   ]
+  // console.log(parentCategories)
 
   const router = useRouter()
   let title = ''
@@ -70,10 +73,10 @@ export default function Catalog({
   return (
       <>
         <Seo title={title} description={description}/>
-        <Layout categories={categories}>
-          <CategoriesBar categories={categories} category={category} />
+        <Layout catalog='catalog' parentCategories={parentCategories} categories={categories}>
+          <CategoriesBar categories={parentCategories} category={category}/>
           {/*<SectionTitle title='Каталог'/>*/}
-          <Breadcrumbs breadcrumbs={breadcrumbs} />
+          <Breadcrumbs breadcrumbs={breadcrumbs}/>
           <CatalogMain
               key={category.id}
               categories={categories}
@@ -103,7 +106,7 @@ export default function Catalog({
 //   }
 // }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({params}) {
   // const brands = await client.query({
   //   query: BRANDS,
   //   fetchPolicy: 'no-cache',
@@ -111,9 +114,11 @@ export async function getServerSideProps({ params }) {
 
   const staticData = new StaticDataSingleton()
   await staticData.checkAndFetch()
-  const categories = staticData.getRootCategories()
   const category = staticData.getCategoryBySlug(params.parent, 3)
-  // console.log(categories)
+  const categories = category.children
+
+  const parentCategories = staticData.getRootCategories()
+
 
   const products = await client.query({
     query: PRODUCTS,
@@ -143,6 +148,7 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       categories,
+      parentCategories: parentCategories,
       category,
       // sizes: sizes.data.paSizes.nodes,
       // colors: colors.data.paColors.nodes,

@@ -3,12 +3,12 @@ import s from './layout.module.scss'
 import Header from '../Header/header'
 import Footer from '../Footer/footer'
 
-const Layout = ({children, categories}) => {
+const Layout = ({children, categories, parentCategories, catalog= ''}) => {
   return (
       <>
-        <Header categories={categories}/>
+        <Header categories={catalog === 'catalog' ? parentCategories : categories} />
         <div className={s.wrapper}>{children}</div>
-        <Footer categories={categories}/>
+        <Footer categories={catalog === 'catalog' ? parentCategories : categories} />
       </>
   )
 }

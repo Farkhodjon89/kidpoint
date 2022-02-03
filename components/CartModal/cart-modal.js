@@ -101,6 +101,43 @@ const CartModal = ({cartItems, deleteFromCart, decreaseQuantity, addToCart, hide
                           </div>
 
                         </div>
+                        <div className={s.color2}>
+                          Кол-во:
+                          <div className={s.quantity}>
+                            <button
+                                onClick={() =>
+                                    decreaseQuantity(
+                                        product.selectedProductId,
+                                        product.quantity
+                                    )
+                                }
+                            >
+                              -
+                            </button>
+                            <input
+                                type='text'
+                                value={product.quantity}
+                                readOnly
+                            />
+                            <button
+                                onClick={() => addToCart(product)}
+                                disabled={
+                                  product !== undefined &&
+                                  product.quantity &&
+                                  product.quantity >=
+                                  cartItemStock(
+                                      product,
+                                      product.selectedProductColor,
+                                      product.selectedProductSize
+                                  )
+                                }
+
+                            >
+                              +
+                            </button>
+                          </div>
+
+                        </div>
 
                         {product.selectedProductColor && (
                             <div className={s.colorSize}>

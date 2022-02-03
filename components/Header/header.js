@@ -14,7 +14,7 @@ import {hideCartModal, showCartModal} from '../../redux/actions/modalActions'
 import {getFormatPrice} from "../../utils/price";
 
 
-const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart, showCartModal, modalState}) => {
+const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart, showCartModal, modalState, parentCategories}) => {
   const [open, setOpen] = useState(false)
   const [isSearchActive, setIsSearchActive] = useState(true)
   const [searchResults, setSearchResults] = useState([])
@@ -52,7 +52,7 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
 
   let cartTotalPrice = 0
   cartItems.map(item => {
-    const price = item.onSale ? item.woocsSalePrice : item.woocsRegularPrice
+    const price = item.onSale ? item.woocsSalePrice * item.quantity : item.woocsRegularPrice * item.quantity
     cartTotalPrice = cartTotalPrice + price
   })
 
@@ -110,7 +110,7 @@ const Header = ({categories, cartItems, deleteFromCart, wishlistItems, addToCart
             />
           </div>
         </div>
-        <HeaderMenu categories={categories} open={open} setOpen={setOpen} cartItems={cartItems}/>
+        <HeaderMenu categories={categories}  open={open} setOpen={setOpen} cartItems={cartItems}/>
       </>
   )
 }

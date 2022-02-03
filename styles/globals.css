@@ -92,6 +92,9 @@ a:focus {
 .slick-track {
     width: 100%;
 }
+.slick-dots {
+    display: none !important;
+}
 
 /*.categories_slider .slick-slide  {*/
 /*    width: 160px !important;*/

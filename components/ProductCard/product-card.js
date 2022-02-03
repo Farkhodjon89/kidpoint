@@ -6,6 +6,7 @@ import Link from 'next/link'
 import icons from '../../public/fixture';
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import {LightgalleryProvider, LightgalleryItem} from "react-lightgallery";
+import Slider from "react-slick";
 
 const ProductCard = ({
                        product,
@@ -67,6 +68,30 @@ const ProductCard = ({
     return () => window.removeEventListener('resize', resizeWindow)
   }, [])
 
+  const SliderPrevArrow = (props) => (
+      <button
+          className="sliderPrevArrow"
+          onClick={props.onClick}
+          dangerouslySetInnerHTML={{__html: icons.arrowLeft}}
+      />
+  );
+
+  const SliderNextArrow = (props) => (
+      <button
+          className="sliderNextArrow"
+          onClick={props.onClick}
+          dangerouslySetInnerHTML={{__html: icons.arrowRight}}
+      />
+  );
+
+  const settings = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: <SliderPrevArrow/>,
+    nextArrow: <SliderNextArrow/>,
+    dots: true,
+  };
+
   const [buy, setBuy] = useState(false)
 
 
@@ -75,14 +100,37 @@ const ProductCard = ({
         <div className={s.wrapper}>
           <div className={s.left}>
             <LightgalleryProvider>
-              <div className={s.image}>
-                <LightgalleryItem src={selectedProductImage} thumb={selectedProductImage}>
-                  <img src={selectedProductImage}/>
+              <div className={s.images}>
+                <div className={s.img}>
+                  <LightgalleryItem src={selectedProductImage} thumb={selectedProductImage}>
+                    <img src={selectedProductImage}/>
+                  </LightgalleryItem>
+                </div>
+                {product.galleryImages.nodes.map(({sourceUrl}) => (
+                    <div className={s.img} key={sourceUrl}>
+                      <LightgalleryItem src={sourceUrl} thumb={sourceUrl}>
+                        <img src={sourceUrl}/>
+                      </LightgalleryItem>
+                    </div>
+                ))}
+              </div>
+            </LightgalleryProvider>
 
+            <LightgalleryProvider>
+              <Slider {...settings} className={s.slider}>
+                <LightgalleryItem
+                    src={selectedProductImage}
+                    thumb={selectedProductImage}
+                >
+                  <img src={selectedProductImage}/>
                 </LightgalleryItem>
 
-              </div>
-
+                {product.galleryImages.nodes.map(({sourceUrl}) => (
+                    <LightgalleryItem src={sourceUrl} thumb={sourceUrl}>
+                      <img src={sourceUrl}/>
+                    </LightgalleryItem>
+                ))}
+              </Slider>
             </LightgalleryProvider>
             {product.description && (
                 <div className={s.description}>
@@ -226,7 +274,7 @@ const ProductCard = ({
                   {selectedProductSize && (
                       <>
                         <div className={s.attributesName}>
-                          Размер: <span> {selectedProductSize} </span>
+                          Размер упаковки: <span> {selectedProductSize} </span>
                         </div>
                         {/*<div className={s.sizeList}>*/}
                         {/*  <button className={s.active}>{selectedProductSize}</button>*/}
@@ -236,7 +284,7 @@ const ProductCard = ({
                   {selectedProductWeight && (
                       <>
                         <div className={s.attributesName}>
-                          Вес: <span> {selectedProductWeight} </span>
+                          Вес упаковки: <span> {selectedProductWeight} </span>
                         </div>
                         {/*<div className={s.sizeList}>*/}
                         {/*  <button className={s.active}>{selectedProductAge}</button>*/}
@@ -274,7 +322,7 @@ const ProductCard = ({
               }} onClick={wishlistItem ? () => deleteFromWishlist(product) : () => addToWishlist(product)}/>
             </div>
             <button className={s.telegram}>
-              <Link href='https://t.me/kidpoint'>
+              <Link href='https://t.me/KidPointuz'>
                 <a>
                   Написать в телеграм
                 </a>
