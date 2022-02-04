@@ -3,10 +3,12 @@
   justify-content: space-between;
   margin-bottom: 70px;
 }
-.sliderPrevArrow{
+
+.sliderPrevArrow {
   left: 5% !important;
 }
-.sliderNextArrow{
+
+.sliderNextArrow {
   right: 5% !important;
 }
 
@@ -19,6 +21,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    .singleImg {
+      width: 100%;
+
+      img {
+        border-radius: 32px;
+        cursor: pointer;
+      }
+    }
 
     .img {
       width: 49%;
@@ -34,7 +45,10 @@
 }
 
 .slider {
-  display: none;
+  cursor: pointer;
+  img{
+    border-radius: 32px;
+  }
 }
 
 .slick-dots {

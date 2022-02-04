@@ -80,8 +80,11 @@
     color: #5E697B;
     margin-bottom: 15px;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: pre-line;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   div {

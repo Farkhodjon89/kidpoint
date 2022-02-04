@@ -359,7 +359,7 @@ const CheckoutMain = ({cartItems}) => {
   return cartItems.length >= 1 ? (
       <div className={s.wrapper}>
         <form id='payme-form' method='post' action='https://checkout.paycom.uz'>
-          <input type='hidden' name='merchant' value='607843bee928245e531ce1d3'/>
+          <input type='hidden' name='merchant' value='61f3e5e26b2af010e78d7835'/>
 
           <input type='hidden' name='amount' value={order?.total * 100}/>
 

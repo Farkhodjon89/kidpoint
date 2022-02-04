@@ -8,6 +8,7 @@ import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import {LightgalleryProvider, LightgalleryItem} from "react-lightgallery";
 import Slider from "react-slick";
 
+
 const ProductCard = ({
                        product,
                        cartItems,
@@ -43,7 +44,7 @@ const ProductCard = ({
   )
   const [selectedProductWeight, setSelectedProductWeight] = useState(
       product.variations
-          ? product.variations.nodes[0].weight.nodes[0]?.value
+          ? product.variations.nodes[0].weight?.nodes[0]?.value
           : product.paVesUpakovkis.nodes[0]?.name
   )
 
@@ -99,22 +100,22 @@ const ProductCard = ({
       <>
         <div className={s.wrapper}>
           <div className={s.left}>
-            <LightgalleryProvider>
-              <div className={s.images}>
-                <div className={s.img}>
-                  <LightgalleryItem src={selectedProductImage} thumb={selectedProductImage}>
-                    <img src={selectedProductImage}/>
-                  </LightgalleryItem>
-                </div>
-                {product.galleryImages.nodes.map(({sourceUrl}) => (
-                    <div className={s.img} key={sourceUrl}>
-                      <LightgalleryItem src={sourceUrl} thumb={sourceUrl}>
-                        <img src={sourceUrl}/>
-                      </LightgalleryItem>
-                    </div>
-                ))}
-              </div>
-            </LightgalleryProvider>
+            {/*<LightgalleryProvider>*/}
+            {/*  <div className={s.images}>*/}
+            {/*    <div className={product.galleryImages.nodes.length === 0 ? s.singleImg : s.img}>*/}
+            {/*      <LightgalleryItem src={selectedProductImage} thumb={selectedProductImage}>*/}
+            {/*        <img src={selectedProductImage}/>*/}
+            {/*      </LightgalleryItem>*/}
+            {/*    </div>*/}
+            {/*    {product.galleryImages.nodes.map(({sourceUrl}) => (*/}
+            {/*        <div className={s.img} key={sourceUrl}>*/}
+            {/*          <LightgalleryItem src={sourceUrl} thumb={sourceUrl}>*/}
+            {/*            <img src={sourceUrl}/>*/}
+            {/*          </LightgalleryItem>*/}
+            {/*        </div>*/}
+            {/*    ))}*/}
+            {/*  </div>*/}
+            {/*</LightgalleryProvider>*/}
 
             <LightgalleryProvider>
               <Slider {...settings} className={s.slider}>

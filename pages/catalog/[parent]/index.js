@@ -114,10 +114,13 @@ export async function getServerSideProps({params}) {
 
   const staticData = new StaticDataSingleton()
   await staticData.checkAndFetch()
-  const category = staticData.getCategoryBySlug(params.parent, 3)
+  const parentCategories = staticData.getRootCategories()
+  const category = staticData.getCategoryBySlug(params.parent, 2)
   const categories = category.children
 
-  const parentCategories = staticData.getRootCategories()
+
+
+  // console.log(parentCategories.children)
 
 
   const products = await client.query({
