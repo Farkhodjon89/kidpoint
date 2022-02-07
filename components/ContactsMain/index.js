@@ -16,36 +16,36 @@ const ContactsMain = () => {
     }
   ]
   const data = [
-    {
-      id: 1,
-      name: 'ТРЦ «Poytaxt»',
-      store: 'ТРЦ «Poytaxt» 1 этаж,',
-      address: 'ТРЦ «Poytaxt» 1 этаж',
-      phone: '+998946258855',
-      image: '/contacts/1.jpg'
-    },
-    {
-      id: 2,
-      name: 'ТРЦ «Mega Planet»',
-      store: 'ТРЦ «Mega Planet», 3 этаж',
-      address: 'ТРЦ «Mega Planet», 3 этаж',
-      phone: '+998970013779',
-      image: '/contacts/2.jpg'
-    },
-    {
-      id: 3,
-      name: 'ТРЦ «Samarqand Darvoza»',
-      store: 'ТРЦ «Samarqand Darvoza», 3 этаж',
-      address: 'ТРЦ «Samarqand Darvoza», 3 этаж',
-      phone: '+998977390855',
-      image: '/contacts/3.jpg'
-    },
+    // {
+    //   id: 1,
+    //   name: 'ТРЦ «Poytaxt»',
+    //   store: 'ТРЦ «Poytaxt» 1 этаж,',
+    //   address: 'ТРЦ «Poytaxt» 1 этаж',
+    //   phone: '+998946258855',
+    //   image: '/contacts/1.jpg'
+    // },
+    // {
+    //   id: 2,
+    //   name: 'ТРЦ «Mega Planet»',
+    //   store: 'ТРЦ «Mega Planet», 3 этаж',
+    //   address: 'ТРЦ «Mega Planet», 3 этаж',
+    //   phone: '+998970013779',
+    //   image: '/contacts/2.jpg'
+    // },
+    // {
+    //   id: 3,
+    //   name: 'ТРЦ «Samarqand Darvoza»',
+    //   store: 'ТРЦ «Samarqand Darvoza», 3 этаж',
+    //   address: 'ТРЦ «Samarqand Darvoza», 3 этаж',
+    //   phone: '+998977390855',
+    //   image: '/contacts/3.jpg'
+    // },
     {
       id: 4,
       name: 'ТРЦ «Atlas Chimgan»',
-      store: 'ТРЦ «Atlas Chimgan», 1 этаж',
-      address: 'ТРЦ «Atlas Chimgan», 1 этаж',
-      phone: '',
+      store: 'ТРЦ «Atlas Chimgan»',
+      address: 'Адрес: улица Темур Малик 3-А',
+      phone: '+998 99 610-77-88',
       image: '/contacts/4.jpg'
     },
     // {
