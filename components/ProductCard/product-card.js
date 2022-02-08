@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import s from './product-card.module.scss'
 import BuyModal from '../BuyModal/buy-modal'
 import {getFormatPrice, getDiscountPrice} from '../../utils/price'
@@ -7,7 +7,6 @@ import icons from '../../public/fixture';
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import {LightgalleryProvider, LightgalleryItem} from "react-lightgallery";
 import Slider from "react-slick";
-
 
 const ProductCard = ({
                        product,
@@ -86,14 +85,20 @@ const ProductCard = ({
   );
 
   const settings = {
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     prevArrow: <SliderPrevArrow/>,
     nextArrow: <SliderNextArrow/>,
-    dots: true,
   };
 
+
   const [buy, setBuy] = useState(false)
+  const [nav1, setNav1] = useState()
+  const [nav2, setNav2] = useState()
 
 
   return (
@@ -118,21 +123,34 @@ const ProductCard = ({
             {/*</LightgalleryProvider>*/}
 
             <LightgalleryProvider>
-              <Slider {...settings} className={s.slider}>
+              <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)}  {...settings} className={s.slider}>
                 <LightgalleryItem
                     src={selectedProductImage}
                     thumb={selectedProductImage}
                 >
                   <img src={selectedProductImage}/>
                 </LightgalleryItem>
-
                 {product.galleryImages.nodes.map(({sourceUrl}) => (
                     <LightgalleryItem src={sourceUrl} thumb={sourceUrl}>
                       <img src={sourceUrl}/>
                     </LightgalleryItem>
                 ))}
               </Slider>
+              {product.galleryImages.nodes.length <= 2 ?
+                  '' : (
+                      <Slider
+                          asNavFor={nav1}
+                          ref={(slider2) => setNav2(slider2)}
+                          slidesToShow={5}
+                          swipeToSlide={true}
+                          focusOnSelect={true}>
+                        <img className={s.sliderMinImg} src={selectedProductImage}/>
+                        {product.galleryImages.nodes.map(({sourceUrl}) => (
+                            <img className={s.sliderMinImg} src={sourceUrl}/>
+                        ))}
+                      </Slider>)}
             </LightgalleryProvider>
+
             {product.description && (
                 <div className={s.description}>
                   <div>Описание</div>

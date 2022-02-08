@@ -115,9 +115,13 @@ export async function getServerSideProps({params}) {
   const staticData = new StaticDataSingleton()
   await staticData.checkAndFetch()
   const parentCategories = staticData.getRootCategories()
-  const category = staticData.getCategoryBySlug(params.parent, 2)
-  const categories = category.children
+  let category = staticData.getCategoryBySlug(params.parent, 2)
 
+  if (category.parent != null) {
+    category = staticData.getCategoryBySlug(category.parent.parent == null ? category.parent.slug : category.parent.parent, 2)
+  }
+
+  const categories = category.children
 
 
   // console.log(parentCategories.children)

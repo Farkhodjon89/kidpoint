@@ -10,7 +10,7 @@ const Categories = ({categories}) => {
         <div className={s.wrapper}>
           {categories.map(({title, url, image}) => (
               <div className={s.category}>
-                <Link href={url}>
+                <Link href={`/catalog${url}`}>
                   <a>
                     <div
                         className={s.image}

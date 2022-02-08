@@ -245,6 +245,16 @@ const CheckoutMain = ({cartItems}) => {
         </button>
     ),
   }
+  for (const product of cartItems) {
+    const { normalPrice, salePrice } = getPrice(product);
+
+    orderReviewData.price += parseInt(normalPrice) * product.quantity;
+    orderReviewData.sale += parseInt(normalPrice) - parseInt(salePrice) * product.quantity;
+
+    let deliveryPrice = selectDelivery === 'flat_rate' ? 0 : 0;
+    orderReviewData.totalPrice = orderReviewData.price - orderReviewData.sale + deliveryPrice;
+  }
+
   const getDeliveryPrice = () => {
     return setDelivery === 'flat_rate' && orderReviewData.totalPrice < 500000
         ? 20000
@@ -374,6 +384,17 @@ const CheckoutMain = ({cartItems}) => {
           <input
               type='hidden'
               name='callback'
+              value={`${host}/order/${order && order.order_key}`}
+          />
+        </form>
+        <form id="click-form" method="get" action="https://my.click.uz/services/pay">
+          <input type="hidden" name="merchant_id" value="14802" />
+          <input type="hidden" name="transaction_param" value={order && order.id} />
+          <input type="hidden" name="service_id" value="20491" />
+          <input type="hidden" name="amount" value={orderReviewData.totalPrice} />
+          <input
+              type="hidden"
+              name="return_url"
               value={`${host}/order/${order && order.order_key}`}
           />
         </form>

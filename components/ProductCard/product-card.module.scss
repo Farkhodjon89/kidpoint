@@ -46,14 +46,32 @@
 
 .slider {
   cursor: pointer;
-  img{
+
+  img {
     border-radius: 32px;
+  }
+
+
+}
+.productList {
+  img {
+    width: 127px;
+    height: 127px;
+    border-radius: 16px;
+    cursor: pointer;
   }
 }
 
-.slick-dots {
-  display: none !important;
+.sliderMinImg {
+  border-radius: 16px;
+  cursor: pointer;
+
 }
+
+
+//.slick-dots {
+//  display: none !important;
+//}
 
 .right {
   width: 350px;

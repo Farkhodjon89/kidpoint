@@ -65,6 +65,7 @@ function MyApp({Component, pageProps}) {
           {/*    name='description'*/}
           {/*    content='Интернет-магазин BloomShop предлагает вам купить крема, гели, лосьоны и другие предметы гигиенты по уходу за лицом и телом.'*/}
           {/*/>*/}
+
           <link rel='shortcut icon' type='image/jpg' href='/KidPoint.ico'/>
           {process.env.NODE_ENV === 'production' ? (
               <>
