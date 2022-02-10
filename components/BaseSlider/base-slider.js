@@ -14,7 +14,7 @@ const BaseSlider = ({ data }) => {
 
   const SliderPrevArrow = (props) => (
     <img
-      src='/icons/arrowLeft.svg'
+      src='/public/icons/arrowLeft.svg'
       alt=''
       onClick={props.onClick}
       className={s.sliderPrevArrow}
@@ -23,7 +23,7 @@ const BaseSlider = ({ data }) => {
 
   const SliderNextArrow = (props) => (
     <img
-      src='/icons/arrowRight.svg'
+      src='/public/icons/arrowRight.svg'
       alt=''
       onClick={props.onClick}
       className={s.sliderNextArrow}

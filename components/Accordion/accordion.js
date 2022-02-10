@@ -15,7 +15,7 @@ const Accordion = ({name, parent, slug, children, setOpen}) => {
               {name}
             </a>
           </Link>
-          <img src='/icons/arrowUp.svg' alt=''/>
+          <img src='/public/icons/arrowUp.svg' alt=''/>
         </div>
         {expand &&
         children.map(({name, slug, children}, i) =>
@@ -48,7 +48,7 @@ const Accordion2 = ({name, parent, children, setOpen}) => {
             className={`${s.name} ${expand ? s.active : ''}`}
         >
           {name}
-          <img src='/icons/arrowUp.svg' alt=''/>
+          <img src='/public/icons/arrowUp.svg' alt=''/>
         </div>
         {expand &&
         children.map(({name, slug}, i) => (

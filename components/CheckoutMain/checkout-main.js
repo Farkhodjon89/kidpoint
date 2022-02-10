@@ -260,7 +260,7 @@ const CheckoutMain = ({cartItems}) => {
     console.log(orderReviewData.sale)
 
     let deliveryPrice = selectDelivery === 'flat_rate' ? 0 : 0;
-    orderReviewData.totalPrice = orderReviewData.price /*- orderReviewData.sale + deliveryPrice;*/
+    orderReviewData.totalPrice = orderReviewData.price - orderReviewData.sale + deliveryPrice;
   }
 
   // console.log(`order`, orderReviewData.totalPrice)
@@ -451,7 +451,7 @@ const CheckoutMain = ({cartItems}) => {
               Итого
               <span>
                 {getFormatPrice(
-                    (cartTotalPrice)/* + (cartTotalPrice >= 500000 ? 0 : 20000)*/
+                    (cartTotalPrice) + (cartTotalPrice >= 500000 ? 0 : 20000)
                 )}
               </span>
             </div>
