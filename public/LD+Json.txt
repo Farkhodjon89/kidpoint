@@ -1,24 +1,43 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Dermatology",
-  "name": "Bloom",
-  "image": "https://scontent.fppk1-1.fna.fbcdn.net/v/t1.6435-9/188331576_218914673372068_7699013698827035248_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=eZkmMwutnlUAX-bsbGx&_nc_ht=scontent.fppk1-1.fna&oh=c94ca0eb3d3ba28e3c9d0780e8885f44&oe=61315760",
-  "@id": "bloomshop.uz",
-  "url": "https://bloomshop.uz",
-  "telephone": "+998 71 222-22-22",
+  "@type": "ShoppingCenter",
+  "name": "Kidpoint",
+  "image": "https://instagram.ftas8-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/240681767_583050756062322_3014855350404551081_n.jpg?_nc_ht=instagram.ftas8-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=nvB40AdgNxUAX8cABD4&edm=ALQROFkBAAAA&ccb=7-4&ig_cache_key=MjY0Nzk3MDY5MzgyNjY5OTMzNA%3D%3D.2-ccb7-4&oh=00_AT_QibzedRREby7iBP5sD8ckSJI5_hOXc2Ns_9lDNH9kbw&oe=6203F3D3&_nc_sid=30a2ef",
+  "@id": "https://kidpoint.uz",
+  "url": "https://kidpoint.uz",
+  "telephone": "+998 99 610-77-88",
   "priceRange": "$$",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "21 улица Узбекистон Овози",
+    "streetAddress": "ул. Катартал, 28",
     "addressLocality": "Ташкент",
-    "postalCode": "100001",
+    "postalCode": "100123",
     "addressCountry": "UZ"
-  } ,
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.2884782,
+    "longitude": 69.2077714
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "09:00",
+    "closes": "21:00"
+  },
   "sameAs": [
-    "https://www.facebook.com/bloombeauty.uz/",
-    "https://www.instagram.com/bloombeauty.uz/",
-    "https://t.me/bloombeautyuz"
-  ] 
+    "https://t.me/kidpoint",
+    "https://www.facebook.com/kidpoint.uz",
+    "https://www.instagram.com/kidpoint.uz/"
+  ]  
 }
 </script>

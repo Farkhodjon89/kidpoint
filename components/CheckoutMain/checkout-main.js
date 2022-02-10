@@ -18,6 +18,7 @@ import useUser from "../../utils/useUser";
 import {RegionDropdown} from "react-country-region-selector";
 import {getFormatPrice} from "../../utils/price";
 import Link from "next/link";
+import {getPrice} from "../../utils";
 
 const cities = [
   "Ташкент",
@@ -80,6 +81,7 @@ const CheckoutMain = ({cartItems}) => {
   const [checkboxTicked, setCheckboxTicked] = useState(true)
   const [selectMethod, setSelectMethod] = useState(paymentMethods[0].value)
   const [order, setOrder] = useState()
+  const [selectDelivery, setSelectDelivery] = useState(delivery[0].value);
   const {userData} = useUser();
 
   useEffect(() => {
@@ -123,6 +125,12 @@ const CheckoutMain = ({cartItems}) => {
     //   right: 'Бесплатно',
     // },
   ]
+
+  const getDeliveryPrice = () => {
+    return setDelivery === 'flat_rate' && orderReviewData.totalPrice < 500000
+        ? 20000
+        : 0
+  }
   const sendInfo = async () => {
     setIsLoading(true);
 
@@ -226,7 +234,6 @@ const CheckoutMain = ({cartItems}) => {
       router.reload()
     }
   }
-
   let orderReviewData = {
     price: 0,
     sale: 0,
@@ -246,20 +253,17 @@ const CheckoutMain = ({cartItems}) => {
     ),
   }
   for (const product of cartItems) {
-    const { normalPrice, salePrice } = getPrice(product);
+    const {normalPrice, salePrice} = getPrice(product);
 
     orderReviewData.price += parseInt(normalPrice) * product.quantity;
     orderReviewData.sale += parseInt(normalPrice) - parseInt(salePrice) * product.quantity;
+    console.log(orderReviewData.sale)
 
     let deliveryPrice = selectDelivery === 'flat_rate' ? 0 : 0;
-    orderReviewData.totalPrice = orderReviewData.price - orderReviewData.sale + deliveryPrice;
+    orderReviewData.totalPrice = orderReviewData.price /*- orderReviewData.sale + deliveryPrice;*/
   }
 
-  const getDeliveryPrice = () => {
-    return setDelivery === 'flat_rate' && orderReviewData.totalPrice < 500000
-        ? 20000
-        : 0
-  }
+  // console.log(`order`, orderReviewData.totalPrice)
 
 
   const fields = [
@@ -388,10 +392,10 @@ const CheckoutMain = ({cartItems}) => {
           />
         </form>
         <form id="click-form" method="get" action="https://my.click.uz/services/pay">
-          <input type="hidden" name="merchant_id" value="14802" />
-          <input type="hidden" name="transaction_param" value={order && order.id} />
-          <input type="hidden" name="service_id" value="20491" />
-          <input type="hidden" name="amount" value={orderReviewData.totalPrice} />
+          <input type="hidden" name="merchant_id" value="14802"/>
+          <input type="hidden" name="transaction_param" value={order && order.id}/>
+          <input type="hidden" name="service_id" value="20491"/>
+          <input type="hidden" name="amount" value={orderReviewData.totalPrice}/>
           <input
               type="hidden"
               name="return_url"
@@ -447,7 +451,7 @@ const CheckoutMain = ({cartItems}) => {
               Итого
               <span>
                 {getFormatPrice(
-                    (cartTotalPrice) + (cartTotalPrice >= 500000 ? 0 : 20000)
+                    (cartTotalPrice)/* + (cartTotalPrice >= 500000 ? 0 : 20000)*/
                 )}
               </span>
             </div>
