@@ -41,7 +41,7 @@ const ContactsMain = () => {
     //   image: '/contacts/3.jpg'
     // },
     {
-      id: 4,
+      id: 1,
       name: 'ТРЦ «Atlas Chimgan»',
       store: 'ТРЦ «Atlas Chimgan»',
       address: 'Адрес: улица Темур Малик 3-А',

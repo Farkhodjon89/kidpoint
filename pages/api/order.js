@@ -11,7 +11,7 @@ const wc = new WooCommerceResApi({
 export default async (req, res) => {
   if (req.method === 'POST') {
     const {order} = req.body
-    // console.log(order)
+    console.log(order)
     let response
     try {
       response = await wc.post('orders', order)

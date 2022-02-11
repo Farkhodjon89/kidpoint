@@ -6,7 +6,7 @@ const TopBar = () => (
     <div className={s.wrapper}>
       <div className={s.inner}>
         <div className={s.leftSide}>
-          <Link href='/'>
+          <Link href='/contacts'>
             <a>
               Магазины
             </a>

@@ -50,7 +50,7 @@ function MyApp({Component, pageProps}) {
             title='Магазин детских игрушек и товаров в Ташкенте | Kidpoint'
             description='Интернет-магазин детских игрушек, товаров для гигиены, питания, развития и творчества - Kidpoint. Быстрая доставка по всему Узбекистану.'
             openGraph={{
-              images: [{ url: '/og-mage.jpg' }],
+              images: [{ url: '/og-mage.png' }],
               url: 'https://kidpoint.uz/',
               title: 'Магазин детских игрушек и товаров в Ташкенте | Kidpoint',
               site_name: 'KidPoint',

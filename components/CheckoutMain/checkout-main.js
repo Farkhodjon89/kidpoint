@@ -45,7 +45,7 @@ const paymentMethods = [
   {
     value: 'payme',
     name: '',
-    img: '/icons/payme.svg',
+    img: '/public/icons/payme.svg',
   },
   // {
   //   value: 'uzcard',
@@ -55,7 +55,7 @@ const paymentMethods = [
   {
     value: 'click',
     name: '',
-    img: '/icons/click.svg'
+    img: '/public/icons/click.svg'
   }
 ]
 
@@ -367,12 +367,12 @@ const CheckoutMain = ({cartItems}) => {
 
   const host =
       process.env.NODE_ENV === 'production'
-          ? 'https://bloomshop.uz'
+          ? 'https://kidpoint.uz'
           : 'http://localhost:3000'
 
   return cartItems.length >= 1 ? (
       <div className={s.wrapper}>
-        <form id='payme-form' method='post' action='https://checkout.paycom.uz'>
+        <form id='payme-form' method='post' action='https://test.paycom.uz'>
           <input type='hidden' name='merchant' value='61f3e5e26b2af010e78d7835'/>
 
           <input type='hidden' name='amount' value={order?.total * 100}/>
