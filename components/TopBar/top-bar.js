@@ -28,10 +28,10 @@ const TopBar = () => (
           {/*</Link>*/}
         </div>
         <div className={s.rightSide}>
-          <Link href='tel:+998 71 222-22-22'>
+          <Link href='tel:+998 97 720 16 16'>
             <a>
               <img src='/icons/phone.svg' alt=''/>
-              +998 99 610-77-88
+              +998 97 720 16 16
             </a>
           </Link>
         </div>

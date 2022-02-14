@@ -45,7 +45,7 @@ const ContactsMain = () => {
       name: 'ТРЦ «Atlas Chimgan»',
       store: 'ТРЦ «Atlas Chimgan»',
       address: 'Адрес: улица Темур Малик 3-А',
-      phone: '+998 99 610-77-88',
+      phone: ' +998 97 720 16 16',
       image: '/contacts/4.jpg'
     },
     // {

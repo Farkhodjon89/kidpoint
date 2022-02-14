@@ -67,7 +67,7 @@ const ProductsListItem = ({
                 dangerouslySetInnerHTML={{__html: wishlistItem ? icons.wishlistChosen : icons.wishlist}}
             />
 
-            <Link href={`/product${product.slug}`}>
+            <Link href={`/product/${product.slug}`}>
               <a>
                 <div className={s.details}>
                   {product.paBrands?.nodes[0]?.name && (

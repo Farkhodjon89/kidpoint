@@ -57,9 +57,9 @@ const WishlistMain = ({ wishlistItems, deleteFromWishlist, account,openNavigatio
                       alt=""
                       className={s.img}
                     />
-                    <Link href={`/product/${product.slug}`}>
-                      <a className={s.productLink}>Выбрать размер</a>
-                    </Link>
+                    {/*<Link href={`/product/${product.slug}`}>*/}
+                    {/*  <a className={s.productLink}>Выбрать размер</a>*/}
+                    {/*</Link>*/}
                     <div className={s.remove}>
                       <button
                         onClick={() => deleteFromWishlist(product)}
