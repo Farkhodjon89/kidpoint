@@ -27,6 +27,7 @@ const ProductCard = ({
           : product.databaseId
   )
   const quantityCount = 1;
+  // console.log(product)
 
   // const joki = topColors.filter((r) => r.slug === product.slug)
 
@@ -43,7 +44,7 @@ const ProductCard = ({
   )
   const [selectedProductWeight, setSelectedProductWeight] = useState(
       product.variations
-          ? product.variations.nodes[0].weight?.nodes[0]?.value
+          ? product.variations.nodes[0].weight.nodes[0]?.value
           : product.paVesUpakovkis.nodes[0]?.name
   )
 
@@ -87,7 +88,7 @@ const ProductCard = ({
   const settings = {
     dots: true,
     dotsClass: "slick-dots slick-thumb",
-    infinite: true,
+    infinite: false,
     speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -99,6 +100,7 @@ const ProductCard = ({
   const [buy, setBuy] = useState(false)
   const [nav1, setNav1] = useState()
   const [nav2, setNav2] = useState()
+  const [isShowMore, setShowMore] = useState(false)
 
 
   return (
@@ -154,7 +156,10 @@ const ProductCard = ({
             {product.description && (
                 <div className={s.description}>
                   <div>Описание</div>
-                  <div dangerouslySetInnerHTML={{__html: product.description}}/>
+                  <div className={isShowMore ? s.showActive : ''}
+                       dangerouslySetInnerHTML={{__html: product.description}}/>
+                  {isShowMore ? <span onClick={() => setShowMore(prev => !prev)}>Скрыть полное описание</span>
+                      : <span onClick={() => setShowMore(prev => !prev)}>Показать больше</span>}
                 </div>
             )}
           </div>
@@ -293,7 +298,7 @@ const ProductCard = ({
                   {selectedProductSize && (
                       <>
                         <div className={s.attributesName}>
-                          Размер упаковки: <span> {selectedProductSize} </span>
+                          Размер упаковки (см): <span> {selectedProductSize} </span>
                         </div>
                         {/*<div className={s.sizeList}>*/}
                         {/*  <button className={s.active}>{selectedProductSize}</button>*/}

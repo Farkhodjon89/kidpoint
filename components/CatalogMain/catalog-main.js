@@ -22,6 +22,7 @@ import FilterGender from "../FilterGender/filter-gender";
 import ShopPrice from "../ShopPrice/shop-price";
 import FilterSteps from "../FilterSteps/filter-steps";
 import FilterComponents from "../FilterComponents/filter-components";
+import {useRouter} from "next/router";
 
 
 const initialState = {
@@ -37,6 +38,7 @@ const CatalogMain = ({
                        products,
                        pageInfo,
                        onSale,
+                       index,
                        brands,
                        // sizes,
                        // colors,
@@ -51,8 +53,11 @@ const CatalogMain = ({
 
   const [prevSortValue, setPrevSortValue] = useState('default')
 
+  const router = useRouter()
+
+
   const filterValues = (type, value) => {
-    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender','steps','components']
+    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender', 'steps', 'components']
 
     if (value === '' || value == null) {
       const filters = {...state.filters}
@@ -95,7 +100,7 @@ const CatalogMain = ({
     if (!loading && state.pageInfo.hasNextPage) {
       loadProducts({
         variables: {
-          categories: category ? [category.slug] : null,
+          categories: index === 'index' ? (category ? [category.slug] : null) : [router.query.parent],
           onSale: !!onSale,
           after: state.pageInfo.endCursor,
           ...filterVariables(state.filters),

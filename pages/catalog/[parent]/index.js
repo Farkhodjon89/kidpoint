@@ -122,6 +122,7 @@ export async function getServerSideProps({params}) {
   }
 
   const categories = category.children
+  console.log(category)
 
 
   // console.log(parentCategories.children)
@@ -134,6 +135,7 @@ export async function getServerSideProps({params}) {
       categories: [params.parent],
     },
   })
+  // console.log(products.data.products.nodes.length)
 
   // const sizes = await client.query({
   //   query: SIZES,

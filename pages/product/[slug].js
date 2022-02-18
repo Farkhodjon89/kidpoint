@@ -137,6 +137,7 @@ export async function getServerSideProps({params}) {
     variables: {first: 9, featured: true}
   })
 
+
   const staticData = new StaticDataSingleton()
   await staticData.checkAndFetch()
   const categories = staticData.getRootCategories()
@@ -150,6 +151,7 @@ export async function getServerSideProps({params}) {
                   2
               )
           : ''
+
 
   return {
     props: {

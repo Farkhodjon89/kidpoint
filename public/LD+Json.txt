@@ -3,7 +3,7 @@
   "@context": "https://schema.org",
   "@type": "ShoppingCenter",
   "name": "Kidpoint",
-  "image": "https://instagram.ftas8-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/240681767_583050756062322_3014855350404551081_n.jpg?_nc_ht=instagram.ftas8-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=nvB40AdgNxUAX8cABD4&edm=ALQROFkBAAAA&ccb=7-4&ig_cache_key=MjY0Nzk3MDY5MzgyNjY5OTMzNA%3D%3D.2-ccb7-4&oh=00_AT_QibzedRREby7iBP5sD8ckSJI5_hOXc2Ns_9lDNH9kbw&oe=6203F3D3&_nc_sid=30a2ef",
+  "image": "https://kidpoint.uz/header/logo.svg",
   "@id": "https://kidpoint.uz",
   "url": "https://kidpoint.uz",
   "telephone": "+998 99 610-77-88",

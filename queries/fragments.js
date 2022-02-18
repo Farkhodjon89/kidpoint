@@ -50,7 +50,7 @@ export const _SimpleProduct = gql`
     }
     paVesUpakovkis {
       nodes {
-        name 
+        name
         slug
       }
     }

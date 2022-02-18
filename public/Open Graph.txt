@@ -3,7 +3,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Магазин детских игрушек и товаров в Ташкенте | Kidpoint">
 <meta property="og:description" content="Интернет-магазин детских игрушек, товаров для гигиены, питания, развития и творчества - Kidpoint. Быстрая доставка по всему Узбекистану.">
-<meta property="og:image" content="https://instagram.ftas8-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/240681767_583050756062322_3014855350404551081_n.jpg?_nc_ht=instagram.ftas8-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=nvB40AdgNxUAX8cABD4&edm=ALQROFkBAAAA&ccb=7-4&ig_cache_key=MjY0Nzk3MDY5MzgyNjY5OTMzNA%3D%3D.2-ccb7-4&oh=00_AT_QibzedRREby7iBP5sD8ckSJI5_hOXc2Ns_9lDNH9kbw&oe=6203F3D3&_nc_sid=30a2ef">
+<meta property="og:image" content="https://kidpoint.uz/header/logo.svg">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
@@ -11,4 +11,4 @@
 <meta property="twitter:url" content="https://kidpoint.uz">
 <meta name="twitter:title" content="Магазин детских игрушек и товаров в Ташкенте | Kidpoint">
 <meta name="twitter:description" content="Интернет-магазин детских игрушек, товаров для гигиены, питания, развития и творчества - Kidpoint. Быстрая доставка по всему Узбекистану.">
-<meta name="twitter:image" content="https://instagram.ftas8-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/240681767_583050756062322_3014855350404551081_n.jpg?_nc_ht=instagram.ftas8-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=nvB40AdgNxUAX8cABD4&edm=ALQROFkBAAAA&ccb=7-4&ig_cache_key=MjY0Nzk3MDY5MzgyNjY5OTMzNA%3D%3D.2-ccb7-4&oh=00_AT_QibzedRREby7iBP5sD8ckSJI5_hOXc2Ns_9lDNH9kbw&oe=6203F3D3&_nc_sid=30a2ef">
+<meta name="twitter:image" content="https://kidpoint.uz/header/logo.svg">

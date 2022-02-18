@@ -28,6 +28,7 @@ const CatalogPage = ({pageInfo, products, category, categories, activeTerms}) =>
             {/*<SectionTitle title='Каталог'/>*/}
             <Breadcrumbs breadcrumbs={breadcrumbs}/>
             <Catalog
+                index='index'
                 products={products}
                 categories={categories}
                 pageInfo={pageInfo}
