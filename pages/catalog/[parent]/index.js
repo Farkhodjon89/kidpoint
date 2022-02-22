@@ -117,16 +117,11 @@ export async function getServerSideProps({params}) {
   const parentCategories = staticData.getRootCategories()
   let category = staticData.getCategoryBySlug(params.parent, 2)
 
-  if (category.parent != null) {
-    category = staticData.getCategoryBySlug(category.parent.parent == null ? category.parent.slug : category.parent.parent, 2)
-  }
+  // if (category.parent != null) {
+  //   category = staticData.getCategoryBySlug(category.parent.parent == null ? category.parent.slug : category.parent.parent, 2)
+  // }
 
-  const categories = category.children
-  console.log(category)
-
-
-  // console.log(parentCategories.children)
-
+  const categories = category.children.length == 0 ? category : category.children
 
   const products = await client.query({
     query: PRODUCTS,

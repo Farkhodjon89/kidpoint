@@ -47,6 +47,11 @@ const ProductCard = ({
           ? product.variations.nodes[0].weight.nodes[0]?.value
           : product.paVesUpakovkis.nodes[0]?.name
   )
+  const [selectedProductAge, setSelectedProductAge] = useState(
+      product.variations
+          ? product.variations.nodes[0].age.nodes[0]?.value
+          : product.paVozrasts.nodes[0]?.name
+  )
 
   const [selectedProductImage, setSelectedProductImage] = useState(
       product.variations
@@ -274,6 +279,35 @@ const ProductCard = ({
                         </div>
                       </>
                   )}
+                  {selectedProductAge && (
+                      <>
+                        <div className={s.attributesName}>
+                          Возраст: <span> {selectedProductAge} </span>
+                        </div>
+                        <div className={s.sizeList}>
+                          {product.variations.nodes.map((product, i) => (
+                              <button
+                                  key={i}
+                                  className={`${
+                                      selectedProductAge === product.age.nodes[0].value
+                                          ? s.active
+                                          : ''
+                                  } ${
+                                      [null, 0, -1].includes(product.stockQuantity)
+                                          ? s.outOfStock
+                                          : ''
+                                  }`}
+                                  onClick={() => {
+                                    selectedProductAge(product.age.nodes[0].value)
+                                    setSelectedProductId(product.databaseId)
+                                  }}
+                              >
+                                {product.age.nodes[0].value}
+                              </button>
+                          ))}
+                        </div>
+                      </>
+                  )}
                 </>
             ) : (
                 <>
@@ -309,6 +343,16 @@ const ProductCard = ({
                       <>
                         <div className={s.attributesName}>
                           Вес упаковки: <span> {selectedProductWeight} </span>
+                        </div>
+                        {/*<div className={s.sizeList}>*/}
+                        {/*  <button className={s.active}>{selectedProductAge}</button>*/}
+                        {/*</div>*/}
+                      </>
+                  )}
+                  {selectedProductAge && (
+                      <>
+                        <div className={s.attributesName}>
+                          Возраст: <span> {selectedProductAge} </span>
                         </div>
                         {/*<div className={s.sizeList}>*/}
                         {/*  <button className={s.active}>{selectedProductAge}</button>*/}

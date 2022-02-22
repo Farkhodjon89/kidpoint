@@ -25,6 +25,7 @@ const SignUp = ({
   let resizeWindow = () => {
     setWindowWidth(window.innerWidth);
   };
+  // console.log(phone)
 
   const [loading, setLoading] = useState(false);
 
@@ -99,13 +100,11 @@ const SignUp = ({
             // mask="(+\9\98\)99 999 99 99"
             mask="+\9\98 (99) 999 99 99"
             alwaysShowMask={true}
+            value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className={phone ? s.valid : ""}
             disabled={phone && sendOtp}
           />
-
-          
-
           {sendOtp ? (
             <div className={s.inputs}>
               <input
@@ -127,7 +126,7 @@ const SignUp = ({
           ) : (
             <button
               disabled={!firstName || !phone || loading}
-              className={s.button}
+              className={(phone === "+998 (__) ___ __ __" || phone === "") ? s.button : s.activeButton}
               onClick={(e) => onSubmit2(e)}
             >
               Получить код

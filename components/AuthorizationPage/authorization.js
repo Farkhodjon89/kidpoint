@@ -14,6 +14,7 @@ const Authorization = ({ referralCode }) => {
   const [content, setContent] = useState(contentTypes.signIn);
   const [contentBefore, setContentBefore] = useState(contentTypes.signIn);
   const [phone, setPhone] = useState("");
+  // console.log(phone)
 
   const setContents = (contentType) => {
     setContentBefore(content);

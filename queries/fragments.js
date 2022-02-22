@@ -48,6 +48,12 @@ export const _SimpleProduct = gql`
         name
       }
     }
+    paVozrasts {
+      nodes {
+        name
+        slug
+      }
+    }
     paVesUpakovkis {
       nodes {
         name

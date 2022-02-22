@@ -7,7 +7,7 @@ import SectionTitle from "../SectionTitle";
 import InputMask from "react-input-mask";
 import Link from "next/link";
 
-const SignIn = ({setContent, contentTypes, phone, setPhone,content}) => {
+const SignIn = ({setContent, contentTypes, phone, setPhone, content}) => {
   const [sendOtp, setSendOtp] = useState(false);
   const [otp, setOtp] = useState(false);
   const [windowWidth, setWindowWidth] = useState();
@@ -56,7 +56,7 @@ const SignIn = ({setContent, contentTypes, phone, setPhone,content}) => {
         <SectionTitle title="авторизация"/>
         <div className={s.authorization}>
           <div className={s.regOrLogin2}>
-            <button className ={content === 'signIn' ? s.bold : ''} onClick={() => setContent(contentTypes.signIn)}>
+            <button className={content === 'signIn' ? s.bold : ''} onClick={() => setContent(contentTypes.signIn)}>
               Войти в аккаунт
             </button>
             <button className={content === 'signUp' ? s.bold : ''} onClick={() => setContent(contentTypes.signUp)}>
@@ -88,6 +88,7 @@ const SignIn = ({setContent, contentTypes, phone, setPhone,content}) => {
                 id="phone"
                 // mask="(+\9\98\)99 999 99 99"
                 mask="+\9\98 (99) 999 99 99"
+                value={phone}
                 alwaysShowMask={true}
                 onChange={(e) => setPhone(e.target.value)}
                 className={phone ? s.valid : ""}
@@ -118,7 +119,7 @@ const SignIn = ({setContent, contentTypes, phone, setPhone,content}) => {
                   <div className={s.space}/>
                   <button
                       disabled={phone === "" || loading}
-                      className={s.button}
+                      className={(phone === "+998 (__) ___ __ __" || phone === "") ? s.button : s.activeButton}
                       onClick={(e) => onSubmit(e)}
                   >
                     Получить код
