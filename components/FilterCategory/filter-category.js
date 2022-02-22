@@ -19,7 +19,7 @@ const FilterCategory = ({categories}) =>
         <>
           <div className={s.title}>Категории</div>
           <div className={s.accordion}>
-            <Accordion name={categories.name} slug={categories.slug}>
+            <Accordion slugEmpty={'slugEmpty'} name={categories.name} >
               {categories.name}
             </Accordion>
           </div>

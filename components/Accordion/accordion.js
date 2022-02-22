@@ -2,23 +2,30 @@ import React, {useState} from 'react'
 import s from './accordion.module.scss'
 import Link from 'next/link'
 
-const Accordion = ({name, parent, slug, children, setOpen}) => {
+const Accordion = ({name, parent, slug, children, setOpen, slugEmpty}) => {
   const [expand, setExpand] = useState(false)
   return (
       <div className={s.category1}>
-        <div
-            onClick={() => setExpand((expand) => !expand)}
-            className={`${s.name} ${expand ? s.active : ''}`}
-        >
-          <Link href={`/catalog/${slug}`}>
-            <a onClick={() => setOpen && setOpen(false)}>
-              {name}
-            </a>
-          </Link>
-          <img src='/public/icons/arrowUp.svg' alt=''/>
-        </div>
+        {slugEmpty == 'slugEmpty' ? (
+            <div className={s.name}>
+              <a>{name}</a>
+            </div>
+
+        ) : (
+            <div
+                onClick={() => setExpand((expand) => !expand)}
+                className={`${s.name} ${expand ? s.active : ''}`}
+            >
+              <Link href={`/catalog/${slug}`}>
+                <a onClick={() => setOpen && setOpen(false)}>
+                  {name}
+                </a>
+              </Link>
+              <img src='/public/icons/arrowUp.svg' alt=''/>
+            </div>
+        )}
         {expand &&
-        children.map(({name, slug, children}, i) =>
+        children?.map(({name, slug, children}, i) =>
             children.length > 0 ? (
                 <Accordion2
                     name={name}
@@ -51,7 +58,7 @@ const Accordion2 = ({name, parent, children, setOpen}) => {
           <img src='/public/icons/arrowUp.svg' alt=''/>
         </div>
         {expand &&
-        children.map(({name, slug}, i) => (
+        children?.map(({name, slug}, i) => (
             <Link href={`/catalog/${slug}`} key={i}>
               <a className={s.link} onClick={() => setOpen && setOpen(false)}>
                 {name}
