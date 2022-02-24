@@ -21,13 +21,13 @@ export const DeliveryInput = ({delivery, setDelivery, deliveryMethods}) =>
         </div>
     ))
 
-export const PaymentInput = ({payment, setPayment, otherPayment}) => {
+export const PaymentInput = ({selectMethod, setSelectMethod, otherPayment}) => {
 
   return (
       otherPayment.map((r, i) => (
-          <div key={i} onClick={() => setPayment(r.value)}
-               className={`${s.payment} ${payment === r.value ? s.active : ''}`}>
-            {payment === r.value ? <img src='/public/icons/tick.svg' alt=''/> :
+          <div key={i} onClick={() => setSelectMethod(r.value)}
+               className={`${s.payment} ${selectMethod === r.value ? s.active : ''}`}>
+            {selectMethod === r.value ? <img src='/public/icons/tick.svg' alt=''/> :
                 <img src='/public/icons/untick.svg' alt=''/>}
             {r.name}
             <img src={r.img} alt=''/>
@@ -36,13 +36,13 @@ export const PaymentInput = ({payment, setPayment, otherPayment}) => {
   )
 
 }
-export const CashInput = ({payment, setPayment, cashPayment}) => {
+export const CashInput = ({selectMethod, setSelectMethod, cashPayment}) => {
 
   return (
       cashPayment.map((r, i) => (
-          <div key={i} onClick={() => setPayment(r.value)}
-               className={`${s.cashPayment} ${payment === r.value ? s.active : ''}`}>
-            {payment === r.value ? <img src='/public/icons/tick.svg' alt=''/> :
+          <div key={i} onClick={() => setSelectMethod(r.value)}
+               className={`${s.cashPayment} ${selectMethod === r.value ? s.active : ''}`}>
+            {selectMethod === r.value ? <img src='/public/icons/tick.svg' alt=''/> :
                 <img src='/public/icons/untick.svg' alt=''/>}
             {r.name}
             <img src={r.img} alt=''/>

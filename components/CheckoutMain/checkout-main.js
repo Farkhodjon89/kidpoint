@@ -75,7 +75,7 @@ const CheckoutMain = ({cartItems}) => {
   const [country, setCountry] = useState(user && user.country ? user.country : 'Uzbekistan');
   const [address, setAddress] = useState('')
   const [delivery, setDelivery] = useState(`Доставка курьером`)
-  const [payment, setPayment] = useState('cash')
+  // const [payment, setPayment] = useState('cash')
   const [comment, setComment] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [checkboxTicked, setCheckboxTicked] = useState(true)
@@ -86,15 +86,18 @@ const CheckoutMain = ({cartItems}) => {
 
   useEffect(() => {
     if (userData && userData.isLoggedIn) {
-      setValue('firstName', userData.user.firstName)
-      setValue('lastName', userData.user.lastName)
-      setValue('phone', userData.user.billing.phone)
+      setName(userData.user.firstName)
+      setSurname(userData.user.lastName)
       setPhone(userData.user.billing.phone)
-      setValue('email', userData.user.email)
-      setValue('city', cities.includes(userData.user.billing.city) ? userData.user.billing.city : 'Ташкент')
-      setValue('address', userData.user.billing.address1)
+      setEmail(userData.user.email)
+      const userCity = cities.includes(userData.user.billing.city)
+          ? userData.user.billing.city
+          : 'Ташкент'
+      setCity(userCity)
+      setValue('city', userCity)
+      setAddress(userData.user.billing.address1)
     }
-  }, [userData]);
+  }, [userData])
 
 
   for (const product of cartItems) {
@@ -132,16 +135,16 @@ const CheckoutMain = ({cartItems}) => {
         : 0
   }
   const sendInfo = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     const orderData = {
       customer_id: userData?.isLoggedIn ? userData.user.databaseId : 0,
       set_paid: false,
-      currency: "UZS",
-      status: selectMethod === "cash" ? "processing" : "pending",
+      currency: 'UZS',
+      status: selectMethod === 'cash' ? 'processing' : 'pending',
       payment_method_title:
-          selectMethod === "cash"
-              ? "Оплата наличными или картой при доставке"
+          selectMethod === 'cash'
+              ? 'Оплата наличными или картой при доставке'
               : selectMethod,
       line_items: lineItems,
       billing: {
@@ -155,75 +158,31 @@ const CheckoutMain = ({cartItems}) => {
       shipping_lines: [
         {
           method_id:
-              setDelivery === "flat_rate" ? "flat_rate" : "local_pickup",
+              selectDelivery === 'flat_rate' ? 'flat_rate' : 'local_pickup',
           method_title:
-              setDelivery === "flat_rate"
-                  ? "Доставка курьером"
-                  : "Самовывоз из магазина",
+              selectDelivery === 'flat_rate'
+                  ? 'Доставка курьером'
+                  : 'Самовывоз из магазина',
           total: getDeliveryPrice().toLocaleString(),
         },
       ],
       customer_note: comment && comment,
-    };
+    }
 
-    const response = await axios.post('/api/order', {order: orderData})
-
-    // if (response.data.status) {
-    //   setOrder(response.data.order)
-    //   if (payment === 'zoodpay') {
-    //     axios
-    //       .post('/api/zoodpay', {
-    //         data: {
-    //           customer: {
-    //             customer_email: 'test@gmail.com',
-    //             customer_phone: response.data.order.billing.phone,
-    //             first_name: response.data.order.billing.first_name
-    //           },
-    //           items: response.data.order.line_items.map(({ name, price, quantity }) => ({
-    //             categories: [['test', 'test']],
-    //             name: name,
-    //             price: price,
-    //             quantity: quantity
-    //           })),
-    //           order: {
-    //             amount: response.data.order.total,
-    //             currency: 'UZS',
-    //             market_code: 'UZ',
-    //             merchant_reference_no: response.data.order.id.toString(),
-    //             service_code: 'ZPI',
-    //             signature: sha512(`B!LLZ_W@rk|${response.data.order.id}|${response.data.order.total}|UZS|UZ|w*]7J8K%`)
-    //           },
-    //           shipping: {
-    //             address_line1: response.data.order.billing.address_1,
-    //             country_code: 'UZB',
-    //             name: response.data.order.billing.first_name,
-    //             zipcode: '100096'
-    //           }
-    //         }
-    //       })
-    //       .then(function (response) {
-    //         window.location.assign(response.data.data.payment_url)
-    //         localStorage.clear()
-    //       })
-    //       .catch(function (error) {
-    //         console.log(error)
-    //         setIsLoading(false)
-    //       })
-    //   } else {
-    //     await window.location.assign(`/order/${response.data.order.order_key}`)
-    //     localStorage.clear()
-    //   }
-    // } else {
-    //   alert(response.data.message)
-    //   setIsLoading(false)
+    // if (email) {
+    //   orderData.billing.email = email
     // }
-    setOrder(response.data.order)
+
+    const response = await axios.post('/api/order', { order: orderData })
+
     if (response.data.status) {
-      if (payment === 'cash') {
-        await window.location.assign(`/order/${response.data.order.order_key}`)
+      setOrder(response.data.order)
+
+      if (selectMethod === 'cash') {
+        await router.replace(`/order/${response.data.order.order_key}`)
         localStorage.clear()
       } else {
-        const form = document.querySelector(`#${payment}-form`)
+        const form = document.querySelector(`#${selectMethod}-form`)
         if (form) {
           form.submit()
         }
@@ -233,6 +192,8 @@ const CheckoutMain = ({cartItems}) => {
       alert(response.data.message)
       router.reload()
     }
+
+    setIsLoading(false)
   }
   let orderReviewData = {
     price: 0,
@@ -270,19 +231,23 @@ const CheckoutMain = ({cartItems}) => {
     {
       title: 'Персоналные данные',
       actions: [
-        <Input
-            name='firstName'
-            placeholder='Ваше имя'
-            setAction={setName}
-            innerRef={register({required: true})}
+        <input
+            name='name'
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            ref={register({ required: true })}
             style={errors.name && s.error}
+            className={s.input}
+            placeholder='Имя*'
         />,
-        <Input
-            name='lastName'
-            setAction={setSurname}
-            placeholder='Фамилия *'
-            innerRef={register({required: true})}
-            style={errors.name && s.error}
+        <input
+            name='surname'
+            value={surname}
+            onChange={(e) => setSurname(e.target.value)}
+            ref={register({ required: true })}
+            style={errors.surname && s.error}
+            className={s.input}
+            placeholder='Фамилия*'
         />,
         <MaskedInput
             name='phone'
@@ -304,13 +269,14 @@ const CheckoutMain = ({cartItems}) => {
               />
           )}
         </MaskedInput>,
-        <Input
+        <input
             name='email'
-            setAction={setEmail}
+            onChange={(e) => setEmail(e.target.value)}
+            ref={register({ required: false })}
             value={email}
-            innerRef={register({required: false})}
+            style={errors.name && s.errorInput}
+            className={s.input}
             placeholder='Введите email(необязательно)'
-            onChange={(e) => validateEmail(e)}
         />,
         <input
             id="country"
@@ -350,12 +316,12 @@ const CheckoutMain = ({cartItems}) => {
       title: 'Метод оплаты',
       rowStyle: 'full',
       actions: [
-        <CashInput payment={payment}
-                   setPayment={setPayment}
+        <CashInput selectMethod={selectMethod}
+                   setSelectMethod={setSelectMethod}
                    cashPayment={cashPayment}/>,
         <PaymentInput
-            payment={payment}
-            setPayment={setPayment}
+            selectMethod={selectMethod}
+            setSelectMethod={setSelectMethod}
             otherPayment={otherPayment}
         />,
       ],
@@ -372,7 +338,7 @@ const CheckoutMain = ({cartItems}) => {
 
   return cartItems.length >= 1 ? (
       <div className={s.wrapper}>
-        <form id='payme-form' method='post' action='https://test.paycom.uz'>
+        <form id='payme-form' method='post' action='https://checkout.paycom.uz'>
           <input type='hidden' name='merchant' value='61f3e5e26b2af010e78d7835'/>
 
           <input type='hidden' name='amount' value={order?.total * 100}/>
@@ -418,13 +384,14 @@ const CheckoutMain = ({cartItems}) => {
               {i === 0 && (
                   <>
                     <div>
-                      <Input
+                      <input
                           name='address'
-                          placeholder='Адрес доставки(район, улица, дом, квартира) *'
-                          setAction={setAddress}
-                          innerRef={register({required: true})}
+                          onChange={(e) => setAddress(e.target.value)}
+                          ref={register({ required: true })}
                           style={errors.address && s.error}
                           className={s.input}
+                          value={address}
+                          placeholder='Адрес доставки(район, улица, дом, квартира) *'
                       />
                     </div>
                     <div>

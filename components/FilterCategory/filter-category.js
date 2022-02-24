@@ -1,7 +1,6 @@
 import React from 'react'
 import s from './filter-category.module.scss'
 import Accordion from '../Accordion/accordion'
-import Link from 'next/link';
 
 const FilterCategory = ({categories}) =>
     Array.isArray(categories) ? (

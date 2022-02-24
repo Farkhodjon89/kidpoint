@@ -50,7 +50,7 @@ const ProductCard = ({
   const [selectedProductAge, setSelectedProductAge] = useState(
       product.variations
           ? product.variations.nodes[0].age.nodes[0]?.value
-          : product.paVozrasts.nodes[0]?.name
+          : product.paVozrastOrigens.nodes[0]?.name
   )
 
   const [selectedProductImage, setSelectedProductImage] = useState(
