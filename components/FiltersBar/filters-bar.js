@@ -35,7 +35,7 @@ const FiltersBar = ({
       setOpen(i)
     }
   }
-  // useEffect(() => {
+  useEffect(() => {
   //   if (open === 0) {
   //     document.body.style.overflow = 'hidden'
   //   } else if (open === 1) {
@@ -43,7 +43,7 @@ const FiltersBar = ({
   //   } else {
       document.body.style.overflow = 'unset'
   //   }
-  // }, [open])
+  }, [open])
 
   useEffect(() => {
     window.scrollTo(0, 0);

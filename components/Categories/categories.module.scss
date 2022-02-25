@@ -15,14 +15,34 @@
   justify-content: center;
 
   .category {
+    width: 16.66%;
     margin-bottom: 30px;
-    margin-right: 20px;
-
-    @media(max-width: 440px) {
+    //margin-right: 20px;
+    @media(max-width: 1100px) {
       &.category {
-        margin-right: 10px;
+        width: 20%;
       }
     }
+    @media(max-width: 996px) {
+      &.category {
+        width: 25%;
+      }
+    }
+    @media(max-width: 776px) {
+      &.category {
+        width: 33.3%;
+      }
+    }
+    @media(max-width: 550px) {
+      &.category {
+        width: 50%;
+      }
+    }
+    //@media(max-width: 440px) {
+    //  &.category {
+    //    margin-right: 10px;
+    //  }
+    //}
 
     .image {
       width: 160px;

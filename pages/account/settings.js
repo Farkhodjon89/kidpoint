@@ -11,6 +11,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import useUser from "../../utils/useUser";
 import SectionTitle from "../../components/SectionTitle";
+import Loader from "../../components/Loader/loader";
 
 const AccountPage = ({categories}) => {
   const breadcrumbs = [
@@ -36,6 +37,7 @@ const AccountPage = ({categories}) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const sendInfo = async (data) => {
+    setIsLoading(true)
     const response = await axios.post("/api/user/edit", {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -44,6 +46,7 @@ const AccountPage = ({categories}) => {
       city: data.city,
       address: data.address,
     });
+    setIsLoading(false)
   };
 
   const cities = [
@@ -137,26 +140,7 @@ const AccountPage = ({categories}) => {
     />,
 
 
-
-
-
-
-]
-  const makeOrder = async () => {
-    setIsLoading(true)
-
-    const orderData = {
-      billing: {
-        address_1: `${city}, ${country}, ${address}`,
-        first_name: name,
-        last_name: surname,
-        phone: phone,
-      },
-
-      customer_note: comment && comment,
-    }
-  }
-
+  ]
 
   return (
       <Layout categories={categories}>
@@ -184,17 +168,19 @@ const AccountPage = ({categories}) => {
               {errors.address ? (
                   <p className={s.errorMessage}>Необходимо заполнить</p>
               ) : null}
-              <button
-                  onClick={handleSubmit(sendInfo)}
-                  disabled={isLoading}
-                  className={s.submitButton}
-              >
-                {isLoading ? (
-                    <div className={s.loaderAnimation}></div>
-                ) : (
+
+              {isLoading ? (
+                  <Loader/>
+              ) : (
+                  <button
+                      onClick={handleSubmit(sendInfo)}
+                      disabled={isLoading}
+                      className={s.submitButton}
+                  >
                     <>Сохранить</>
-                )}
-              </button>
+                  </button>
+              )}
+
             </div>
           </div>
         </PersonalCabinet>
