@@ -137,18 +137,18 @@ const CatalogMain = ({
 
   const isMount = useIsMount()
 
-  // if (typeof window !== 'undefined') {
-  //   useEffect(() => {
-  //     const {filters} = catalog.init()
-  //
-  //     if (Object.keys(filters).length) {
-  //       dispatch({
-  //         type: 'SET_FILTERS',
-  //         filters: filters,
-  //       })
-  //     }
-  //   }, [window.location.search])
-  // }
+  if (typeof window !== 'undefined') {
+    useEffect(() => {
+      const {filters} = catalog.init()
+
+      if (Object.keys(filters).length) {
+        dispatch({
+          type: 'SET_FILTERS',
+          filters: filters,
+        })
+      }
+    }, [window.location.search])
+  }
 
   useEffect(() => {
     // if (typeof window !== 'undefined') {
