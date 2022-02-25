@@ -148,7 +148,7 @@ const AccountPage = ({categories}) => {
         <SectionTitle title='Профиль'/>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <PersonalCabinet>
-          <h1 className={s.title}>Персоналные данные</h1>
+          <h1 className={s.title}>Персональные данные</h1>
           <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
             {actions.map((r, i) => (
                 <div className={s.action} key={i}>

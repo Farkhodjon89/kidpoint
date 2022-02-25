@@ -6,7 +6,7 @@ import { getFormatPrice } from '../../utils/price'
 const OrderMain = ({ order }) => {
   const personalInfo = [
     {
-      title: 'Персоналные данные',
+      title: 'Персональные данные',
       details: [
         `Имя: <span>${order.billing.firstName}</span>`,
         `Номер телефона: <span>${order.billing.phone}</span>`,
