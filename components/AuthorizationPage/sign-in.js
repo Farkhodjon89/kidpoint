@@ -99,7 +99,6 @@ const SignIn = ({setContent, contentTypes, phone, setPhone, content}) => {
                   <input
                       id="otp"
                       onChange={(e) => setOtp(e.target.value)}
-                      value={otp}
                       placeholder="Код"
                       className={!otpError ? s.valid : s.error}
                   />
