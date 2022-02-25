@@ -45,6 +45,10 @@ const FiltersBar = ({
   //   }
   // }, [open])
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const setSortValue = (value) => {
     dispatch({
       type: 'SET_SORTING',
