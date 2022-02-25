@@ -41,7 +41,7 @@ const FiltersBar = ({
   //   } else if (open === 1) {
   //     document.body.style.overflow = 'hidden'
   //   } else {
-  //     document.body.style.overflow = 'unset'
+      document.body.style.overflow = 'unset'
   //   }
   // }, [open])
 
