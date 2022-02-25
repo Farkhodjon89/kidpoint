@@ -151,11 +151,11 @@ const CatalogMain = ({
   }
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const query = catalog.buildQuery({}, state.filters)
-      const location = `${window.location.pathname}${query ? '?' : ''}${query}`
-      window.history.replaceState(null, '', location)
-    }
+    // if (typeof window !== 'undefined') {
+    //   const query = catalog.buildQuery({}, state.filters)
+    //   const location = `${window.location.pathname}${query ? '?' : ''}${query}`
+    //   window.history.replaceState(null, '', location)
+    // }
 
     if (!isMount) {
       loadProducts({
