@@ -38,9 +38,9 @@ const FiltersBar = ({
   useEffect(() => {
     if (open === 0) {
       document.body.style.overflow = 'hidden'
-    } //else if (open === 1) {
-  //     document.body.style.overflow = 'hidden'
-    else {
+    } else if (open === 1) {
+      document.body.style.overflow = 'hidden'
+    } else {
       document.body.style.overflow = 'unset'
     }
   }, [open])
