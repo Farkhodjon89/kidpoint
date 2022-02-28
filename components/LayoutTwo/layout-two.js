@@ -70,10 +70,10 @@ const LayoutTwo = ({children}) => {
             </div>
 
 
-            <Link href='tel:+998 99 610-77-88'>
+            <Link href='tel:+998 97 720 16 16'>
               <a>
                 <img className={s.phoneLogo} src='/public/icons/phone.svg' alt=''/>
-                <span>99 610-77-88</span>
+                <span>97 720 16 16</span>
               </a>
             </Link>
           </div>
