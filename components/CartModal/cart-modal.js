@@ -163,9 +163,9 @@ const CartModal = ({cartItems, deleteFromCart, decreaseQuantity, addToCart, hide
             <Link href='/cart'>
               <a className={s.checkout}>Оформить заказ</a>
             </Link>
-            <Link href='/cart'>
-              <a className={s.checkout2}>Продолжить покупки</a>
-            </Link>
+            {/*<Link href='/cart'>*/}
+              <a onClick={() => hideCartModal()} className={s.checkout2}>Продолжить покупки</a>
+            {/*</Link>*/}
           </div>
         </div>
       </>
