@@ -59,6 +59,7 @@ const paymentMethods = [
   }
 ]
 
+
 const cashPayment = paymentMethods.filter((_, index) => index === 0)
 const otherPayment = paymentMethods.filter((_, index) => index !== 0)
 
@@ -75,13 +76,11 @@ const CheckoutMain = ({cartItems}) => {
   const [country, setCountry] = useState(user && user.country ? user.country : 'Uzbekistan');
   const [address, setAddress] = useState('')
   const [delivery, setDelivery] = useState(`Доставка курьером`)
-  // const [payment, setPayment] = useState('cash')
   const [comment, setComment] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [checkboxTicked, setCheckboxTicked] = useState(true)
   const [selectMethod, setSelectMethod] = useState(paymentMethods[0].value)
   const [order, setOrder] = useState()
-  const [selectDelivery, setSelectDelivery] = useState(delivery[0].value);
   const {userData} = useUser();
 
   useEffect(() => {
@@ -130,7 +129,7 @@ const CheckoutMain = ({cartItems}) => {
   ]
 
   const getDeliveryPrice = () => {
-    return setDelivery === 'flat_rate' && orderReviewData.totalPrice < 500000
+    return delivery === 'Доставка курьером' && orderReviewData.totalPrice < 500000
         ? 20000
         : 0
   }
@@ -158,11 +157,9 @@ const CheckoutMain = ({cartItems}) => {
       shipping_lines: [
         {
           method_id:
-              selectDelivery === 'flat_rate' ? 'flat_rate' : 'local_pickup',
+              delivery === 'Доставка курьером' ? 'flat_rate' : 'local_pickup',
           method_title:
-              selectDelivery === 'flat_rate'
-                  ? 'Доставка курьером'
-                  : 'Самовывоз из магазина',
+              delivery === 'Доставка курьером' ? 'Доставка курьером' : 'Самовывоз из магазина',
           total: getDeliveryPrice().toLocaleString(),
         },
       ],
@@ -173,13 +170,12 @@ const CheckoutMain = ({cartItems}) => {
     //   orderData.billing.email = email
     // }
 
-    const response = await axios.post('/api/order', { order: orderData })
+    const response = await axios.post('/api/order', {order: orderData})
 
     if (response.data.status) {
       setOrder(response.data.order)
-
       if (selectMethod === 'cash') {
-        await router.replace(`/order/${response.data.order.order_key}`)
+        await window.location.assign(`/order/${response.data.order.order_key}`);
         localStorage.clear()
       } else {
         const form = document.querySelector(`#${selectMethod}-form`)
@@ -218,9 +214,9 @@ const CheckoutMain = ({cartItems}) => {
 
     orderReviewData.price += parseInt(normalPrice) * product.quantity;
     orderReviewData.sale += parseInt(normalPrice) - parseInt(salePrice) * product.quantity;
-    console.log(orderReviewData.sale)
+    // console.log(orderReviewData.sale)
 
-    let deliveryPrice = selectDelivery === 'flat_rate' ? 0 : 0;
+    let deliveryPrice = delivery === 'flat_rate' ? 0 : 0;
     orderReviewData.totalPrice = orderReviewData.price /*- orderReviewData.sale*/ + deliveryPrice;
   }
 
@@ -235,7 +231,7 @@ const CheckoutMain = ({cartItems}) => {
             name='name'
             onChange={(e) => setName(e.target.value)}
             value={name}
-            ref={register({ required: true })}
+            ref={register({required: true})}
             style={errors.name && s.error}
             className={s.input}
             placeholder='Имя*'
@@ -244,7 +240,7 @@ const CheckoutMain = ({cartItems}) => {
             name='surname'
             value={surname}
             onChange={(e) => setSurname(e.target.value)}
-            ref={register({ required: true })}
+            ref={register({required: true})}
             style={errors.surname && s.error}
             className={s.input}
             placeholder='Фамилия*'
@@ -272,7 +268,7 @@ const CheckoutMain = ({cartItems}) => {
         <input
             name='email'
             onChange={(e) => setEmail(e.target.value)}
-            ref={register({ required: false })}
+            ref={register({required: false})}
             value={email}
             style={errors.name && s.errorInput}
             className={s.input}
@@ -387,7 +383,7 @@ const CheckoutMain = ({cartItems}) => {
                       <input
                           name='address'
                           onChange={(e) => setAddress(e.target.value)}
-                          ref={register({ required: true })}
+                          ref={register({required: true})}
                           style={errors.address && s.error}
                           className={s.input}
                           value={address}

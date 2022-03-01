@@ -11,7 +11,7 @@ export const Input = ({name, placeholder, setAction, innerRef, style}) => (
 )
 
 export const DeliveryInput = ({delivery, setDelivery, deliveryMethods}) =>
-    deliveryMethods.map(({left, right}, i) => (
+    deliveryMethods.map(({left,right}, i) => (
         <div key={i} onClick={() => setDelivery(left)} className={`${s.delivery} ${delivery === left ? s.active : ''}`}>
           <div>
             {delivery === left ? <img src='/public/icons/tick.svg' alt=''/> :
