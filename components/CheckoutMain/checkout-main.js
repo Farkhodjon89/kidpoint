@@ -123,10 +123,10 @@ const CheckoutMain = ({cartItems}) => {
       left: 'Доставка курьером',
       right: cartTotalPrice >= 500000 ? '0 UZS' : '20 000 UZS',
     },
-    // {
-    //   left: 'Самовывоз из магазина',
-    //   right: 'Бесплатно',
-    // },
+    {
+      left: 'Самовывоз из магазина',
+      right: 'Бесплатно',
+    },
   ]
 
   const getDeliveryPrice = () => {

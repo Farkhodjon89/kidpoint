@@ -39,7 +39,7 @@ const Footer = ({categories}) => {
 
     {
       title: 'Категории',
-      child: Object.values(categories).map(({ name, slug }) => ({
+      child: Object.values(categories).map(({name, slug}) => ({
         name: name,
         slug: '/catalog/' + slug,
       })),
@@ -106,8 +106,8 @@ const Footer = ({categories}) => {
       },
       {
         name: 'Facebook',
-        img: '/footer/facebook.svg',
-        slug: 'https://www.facebook.com/bloombeauty.uz',
+        img: '/footer/tg_bot.svg',
+        slug: 'https://t.me/KidPoint_bot',
       },
       {
         name: 'Telegram',

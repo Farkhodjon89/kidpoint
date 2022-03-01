@@ -160,11 +160,11 @@ const CartModal = ({cartItems, deleteFromCart, decreaseQuantity, addToCart, hide
               Итого
               <span>{getFormatPrice(cartTotalPrice)}</span>
             </div>
-            <Link href='/checkout'>
+            <Link href='/cart'>
               <a className={s.checkout}>Оформить заказ</a>
             </Link>
             <Link href='/cart'>
-              <a className={s.checkout2}>Перейти в корзину</a>
+              <a className={s.checkout2}>Продолжить покупки</a>
             </Link>
           </div>
         </div>
