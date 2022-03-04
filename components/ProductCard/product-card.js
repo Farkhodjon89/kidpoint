@@ -44,12 +44,12 @@ const ProductCard = ({
   )
   const [selectedProductWeight, setSelectedProductWeight] = useState(
       product.variations
-          ? product.variations.nodes[0].weight.nodes[0]?.value
+          ? product.variations.nodes[0].weight?.nodes[0]?.value
           : product.paVesUpakovkis.nodes[0]?.name
   )
   const [selectedProductAge, setSelectedProductAge] = useState(
       product.variations
-          ? product.variations.nodes[0].age.nodes[0]?.value
+          ? product.variations.nodes[0].age?.nodes[0]?.value
           : product.paVozrastOrigens.nodes[0]?.name
   )
 
