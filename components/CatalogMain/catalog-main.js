@@ -100,7 +100,7 @@ const CatalogMain = ({
     if (!loading && state.pageInfo.hasNextPage) {
       loadProducts({
         variables: {
-          categories: index === 'index' ? (category ? [category.slug] : null) : [router.query.parent],
+          categories: category ? [category.slug] : null,
           onSale: !!onSale,
           after: state.pageInfo.endCursor,
           ...filterVariables(state.filters),
