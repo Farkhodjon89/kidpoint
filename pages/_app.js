@@ -6,7 +6,7 @@ import {store} from '../redux/store'
 import React, {useState, useEffect} from 'react'
 import Wait from '../components/wait'
 import Router from 'next/router'
-import {NextSeo}  from 'next-seo'
+import {NextSeo} from 'next-seo'
 
 if (typeof window !== 'undefined') {
   const hours = 6
@@ -50,7 +50,7 @@ function MyApp({Component, pageProps}) {
             title='Магазин детских игрушек и товаров в Ташкенте | Kidpoint'
             description='Интернет-магазин детских игрушек, товаров для гигиены, питания, развития и творчества - Kidpoint. Быстрая доставка по всему Узбекистану.'
             openGraph={{
-              images: [{ url: '/og-mage.png' }],
+              images: [{url: '/og-mage.png'}],
               url: 'https://kidpoint.uz/',
               title: 'Магазин детских игрушек и товаров в Ташкенте | Kidpoint',
               site_name: 'KidPoint',
@@ -72,11 +72,10 @@ function MyApp({Component, pageProps}) {
                 <script
                     dangerouslySetInnerHTML={{
                       __html: `
-                  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-                  m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-                  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-                    ym(83589079, "init", {
+                    (function(m,e,t,r,i,k,a){m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
+                    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+                    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+                    ym(87728552, "init", {
                     clickmap:true,
                     trackLinks:true,
                     accurateTrackBounce:true,
@@ -88,10 +87,22 @@ function MyApp({Component, pageProps}) {
                 <noscript
                     dangerouslySetInnerHTML={{
                       __html: `
-                       <div><img src="https://mc.yandex.ru/watch/75430372" style="position:absolute; left:-9999px;" alt="" /></div>
+                       <div><img src="https://mc.yandex.ru/watch/87728552" style="position:absolute; left:-9999px;" alt="" /></div>
                         `,
                     }}
                 />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF8HK1LFRF">
+                </script>
+
+                <script dangerouslySetInnerHTML={{
+                  __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-MF8HK1LFRF');
+                  `
+                }
+                }/>
               </>
           ) : null}
         </Head>
