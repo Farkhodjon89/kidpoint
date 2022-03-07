@@ -57,7 +57,9 @@ const ProductSlider = ({products, text}) => {
         <h1 className={s.productSliderTitle}>{text}</h1>
         <section className={s.productSlider}>
           {productList.length < 3 ?
-              productList :
+              <div className={s.productList}>
+                {productList}
+              </div> :
               <Slider {...settings} >
                 {productList}
               </Slider>

@@ -1,5 +1,9 @@
 .productSlider {
   margin-bottom: 70px;
+  .productList{
+    display: flex;
+    justify-content: space-evenly;
+  }
 
   .title {
     font-weight: 400;
