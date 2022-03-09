@@ -143,7 +143,7 @@ const ProductCard = ({
                     </LightgalleryItem>
                 ))}
               </Slider>
-              {product.galleryImages.nodes.length <= 2 ?
+              {product.galleryImages.nodes.length <= 3 ?
                   '' : (
                       <Slider
                           asNavFor={nav1}
