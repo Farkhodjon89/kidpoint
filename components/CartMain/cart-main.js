@@ -189,13 +189,13 @@ const CartMain = ({
               </div>
               <div>
                 Доставка
-                <span>{cartTotalPrice >= 500000 ? '0' : '20000'} UZS</span>
+                <span>{cartTotalPrice  ? '20000' : ''} UZS</span>
               </div>
               <div>
                 Итого
                 <span>
                 {getFormatPrice(
-                    (cartTotalPrice) + (cartTotalPrice >= 500000 ? 0 : 20000)
+                    (cartTotalPrice) + (cartTotalPrice ? 20000 : '')
                 )}
               </span>
               </div>

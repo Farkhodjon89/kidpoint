@@ -120,7 +120,7 @@ const CheckoutMain = ({cartItems}) => {
   const deliveryMethods = [
     {
       left: 'Доставка курьером',
-      right: cartTotalPrice >= 500000 ? '0 UZS' : '20 000 UZS',
+      right: cartTotalPrice  ? '20000 UZS' : '',
     },
     {
       left: 'Самовывоз из магазина',
@@ -129,9 +129,7 @@ const CheckoutMain = ({cartItems}) => {
   ]
 
   const getDeliveryPrice = () => {
-    return delivery === 'Доставка курьером' && orderReviewData.totalPrice < 500000
-        ? 20000
-        : 0
+    return delivery === 'Доставка курьером' && orderReviewData.totalPrice ? 20000 : ''
   }
   const sendInfo = async () => {
     setIsLoading(true)
@@ -408,13 +406,13 @@ const CheckoutMain = ({cartItems}) => {
             </div>
             <div>
               Доставка
-              <span>{cartTotalPrice >= 500000 ? '0' : '20000'} UZS</span>
+              <span>{cartTotalPrice  ? '20000' : ''} UZS</span>
             </div>
             <div>
               Итого
               <span>
                 {getFormatPrice(
-                    (cartTotalPrice) + (cartTotalPrice >= 500000 ? 0 : 20000)
+                    (cartTotalPrice) + (cartTotalPrice ? 20000 : '')
                 )}
               </span>
             </div>
