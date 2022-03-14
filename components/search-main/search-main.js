@@ -4,9 +4,6 @@ import {useLazyQuery} from '@apollo/react-hooks'
 import PRODUCTS from '../../queries/products'
 import React, {useState, useEffect} from 'react'
 import ProductsList from "../ProductsList/products-list";
-import icons from "../../public/fixture";
-import ProductSlider from "../ProductSlider";
-import Link from "next/link";
 
 const SearchMain = () => {
   const [searchResults, setSearchResults] = useState([])
@@ -14,13 +11,23 @@ const SearchMain = () => {
   const [loadProducts, {data, loading}] = useLazyQuery(PRODUCTS, {
     client,
   })
-  // const [isSearchActive, setIsSearchActive] = useState(true);
 
+  // const [isSearchActive, setIsSearchActive] = useState(true);
   useEffect(() => {
-    if (data && searchQuery.length) {
-      setSearchResults(data.products.nodes)
+    if (data) {
+      if (searchQuery.length) {
+        setSearchResults(data.products.nodes)
+      }
+    } else {
+      loadProducts({
+        variables: {
+          first: 500,
+          sku: searchQuery,
+        },
+      })
     }
   }, [data])
+
 
   const searchData = (e) => {
     setSearchResults([])

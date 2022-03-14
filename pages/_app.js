@@ -80,7 +80,7 @@ function MyApp({Component, pageProps}) {
                     trackLinks:true,
                     accurateTrackBounce:true,
                     webvisor:true
-   });
+                    });
                         `,
                     }}
                 />

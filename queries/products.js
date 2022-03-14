@@ -11,6 +11,7 @@ const PRODUCTS = gql`
     $maxPrice: Float
     $onSale: Boolean
     $search: String
+    $sku: String
     $orderBy: [ProductsOrderbyInput]
   ) {
     products(
@@ -25,7 +26,8 @@ const PRODUCTS = gql`
         maxPrice: $maxPrice
         categoryIn: $categories
         taxonomyFilter: { and: $filters }
-        search: $search
+        search: $search,
+        sku: $sku,
         orderby: $orderBy
       }
     ) {
