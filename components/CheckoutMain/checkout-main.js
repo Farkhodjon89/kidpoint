@@ -114,7 +114,7 @@ const CheckoutMain = ({cartItems}) => {
   let cartTotalPrice = 0
   cartItems.map(
       ({woocsRegularPrice, onSale, woocsSalePrice, quantity}) =>
-          (cartTotalPrice += onSale ? woocsSalePrice : woocsRegularPrice * quantity)
+          (cartTotalPrice += onSale ? woocsSalePrice * quantity : woocsRegularPrice * quantity)
   )
   console.log(cartItems)
 
