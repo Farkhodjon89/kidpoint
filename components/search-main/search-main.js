@@ -11,6 +11,7 @@ const SearchMain = () => {
   const [loadProducts, {data, loading}] = useLazyQuery(PRODUCTS, {
     client,
   })
+  console.log(data)
 
   // const [isSearchActive, setIsSearchActive] = useState(true);
   useEffect(() => {
@@ -27,6 +28,7 @@ const SearchMain = () => {
       })
     }
   }, [data])
+
 
 
   const searchData = (e) => {

@@ -116,6 +116,7 @@ const CheckoutMain = ({cartItems}) => {
       ({woocsRegularPrice, onSale, woocsSalePrice, quantity}) =>
           (cartTotalPrice += onSale ? woocsSalePrice : woocsRegularPrice * quantity)
   )
+  console.log(cartItems)
 
   const deliveryMethods = [
     {

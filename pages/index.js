@@ -1,27 +1,3 @@
-// import Layout from '../components/Layout/layout'
-// import HomeMain from '../components/HomeMain/home-main'
-// import { StaticDataSingleton } from '../utils/staticData'
-
-// export default function Home({ categories }) {
-//   return (
-//     <Layout categories={categories}>
-//       <HomeMain categories={categories} />
-//     </Layout>
-//   )
-// }
-
-// export async function getStaticProps() {
-//   const staticData = new StaticDataSingleton()
-//   await staticData.checkAndFetch(true)
-//   const categories = staticData.getRootCategories()
-//   return {
-//     props: {
-//       categories
-//     },
-//     revalidate: 60
-//   }
-// }
-
 import Layout from '../components/Layout/layout'
 import CategoriesBar from '../components/CategoriesBar/categories-bar'
 import BaseSlider from '../components/BaseSlider/base-slider'
@@ -49,24 +25,6 @@ export default function Base({
                                brands1,
                                brands2
                              }) {
-  // let data = [
-  //   {
-  //     title: `Сенсационный <br/> Ультиматный цвет`,
-  //     image: '/base/banner-min.jpg',
-  //     link: '/catalog/muzhchinam',
-  //   },
-  //   {
-  //     title: `Сенсационный <br/> Ультиматный цвет`,
-  //     image: '/base/banner-min.jpg',
-  //     link: '/catalog/muzhchinam',
-  //   },
-  // ]
-  // let data2 = {
-  //   image: '/base/smallBanner-min.jpg',
-  //   imageMbb: '/base/smallBanner-min-mob.jpg',
-  //   slug: '/catalog/muzhchinam',
-  // }
-  // console.log(categories)
   return (
       <Layout categories={categories}>
         <CategoriesBar categories={categories}/>
