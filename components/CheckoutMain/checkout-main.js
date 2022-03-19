@@ -130,7 +130,7 @@ const CheckoutMain = ({cartItems}) => {
   ]
 
   const getDeliveryPrice = () => {
-    return delivery === 'Доставка курьером' && orderReviewData.totalPrice ? 20000 : ''
+    return delivery === 'Доставка курьером' && orderReviewData.totalPrice ? 20000 : 0
   }
   const sendInfo = async () => {
     setIsLoading(true)
@@ -407,13 +407,13 @@ const CheckoutMain = ({cartItems}) => {
             </div>
             <div>
               Доставка
-              <span>{cartTotalPrice  ? '20000' : ''} UZS</span>
+              <span>{delivery === 'Доставка курьером' && cartTotalPrice  ? '20000' : '0'} UZS</span>
             </div>
             <div>
               Итого
               <span>
                 {getFormatPrice(
-                    (cartTotalPrice) + (cartTotalPrice ? 20000 : '')
+                    (cartTotalPrice) + (delivery === 'Доставка курьером' && cartTotalPrice ? 20000 : 0)
                 )}
               </span>
             </div>
