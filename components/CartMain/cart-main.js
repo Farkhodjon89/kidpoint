@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './cart-main.module.scss'
 import EmptyBlock from '../EmptyBlock/empty-block'
 import Link from 'next/link'
@@ -14,7 +14,10 @@ import {
   deleteFromWishlist,
 } from '../../redux/actions/wishlistActions'
 import {getFormatPrice} from '../../utils/price'
-import Breadcrumbs from '../Breadcrumbs/breadcrumbs'
+import COUPON from '../../queries/coupon'
+import client from "../../apollo/apollo-client";
+import {useLazyQuery} from "@apollo/react-hooks";
+import Loader from "../Loader/loader";
 
 const CartMain = ({
                     cartItems,
@@ -24,10 +27,53 @@ const CartMain = ({
 
 
                   }) => {
-  // const [quantity, setQuantity] = useState(1)
 
+  const [loadCupon, {data, loading, error}] = useLazyQuery(COUPON, {
+    client,
+  })
+
+  const [name, setName] = useState('')
+  const [myCoupon, setMyCoupon] = useState(
+      typeof window !== 'undefined'
+          ? JSON.parse(localStorage.getItem('coupon'))
+          : ' '
+  )
+  const sendCupon = () => {
+    loadCupon({
+      variables: {
+        id: name,
+      },
+    })
+  }
+
+  useEffect(() => {
+    if (data && data.coupon) {
+      localStorage.setItem('coupon', JSON.stringify(data.coupon))
+      setMyCoupon(JSON.parse(localStorage.getItem('coupon')))
+    }
+  }, [data])
+
+  let couponFront
   let cartTotalPrice = 0
-  // const [quantity, setQuantity] = useState(1)
+
+  if (myCoupon && myCoupon.amount) {
+    switch (myCoupon.discountType) {
+      case 'FIXED_CART':
+        cartTotalPrice -= myCoupon.amount
+        couponFront = getFormat(myCoupon.amount) + ' сум'
+        break
+      case 'PERCENT':
+        cartTotalPrice = Math.round(
+            cartTotalPrice - cartTotalPrice * (myCoupon.amount / 100)
+        )
+        couponFront = myCoupon.amount + ' %'
+        break
+      default:
+        break
+    }
+    localStorage.setItem('cartTotalPriceFront', cartTotalPrice)
+  }
+
 
   return cartItems.length >= 1 ? (
       <div>
@@ -181,32 +227,68 @@ const CartMain = ({
             })}
           </div>
           <div className={s.right}>
-            <div className={s.title}>Итог заказа</div>
-            <div className={s.details}>
-              <div>
-                Подытог
-                <span>{getFormatPrice(cartTotalPrice)}</span>
-              </div>
-              <div>
-                Доставка
-                <span>{cartTotalPrice  ? '20000' : ''} UZS</span>
-              </div>
-              <div>
-                Итого
-                <span>
+            <div className={s.rightInner}>
+              <div className={s.title}>Итог заказа</div>
+              <div className={s.details}>
+                <div>
+                  Подытог
+                  <span>{getFormatPrice(cartTotalPrice)}</span>
+                </div>
+                <div>
+                  Купон <span>{couponFront ? couponFront : '0 UZS'}</span>
+                </div>
+                <div>
+                  Доставка
+                  <span>{cartTotalPrice ? '20000' : ''} UZS</span>
+                </div>
+                <div>
+                  Итого
+                  <span>
                 {getFormatPrice(
                     (cartTotalPrice) + (cartTotalPrice ? 20000 : '')
                 )}
               </span>
+                </div>
               </div>
+              <Link href='/checkout'>
+                <a className={s.checkout}>Оформить заказ</a>
+              </Link>
+
             </div>
-            <Link href='/checkout'>
-              <a className={s.checkout}>Оформить заказ</a>
-            </Link>
-            {/*<Link href='/checkout'>*/}
-            {/*  <a className={s.buy}>Купить сейчас</a>*/}
-            {/*</Link>*/}
+            <div className={s.promoCode}>У вас есть промокод?</div>
+            {loading ? (
+                <Loader coupon/>
+            ) : myCoupon ? (
+                <div className={s.activatedPromoCode}>
+                  Промокод <div>{myCoupon.code}</div> активирован!
+                  <button
+                      onClick={() => {
+                        setMyCoupon(localStorage.removeItem('coupon'))
+                        setName('')
+                      }}
+                  >
+                    Отменить
+                  </button>
+                </div>
+            ) : (
+                <>
+                  {error && (
+                      <div className={s.wrongPromoCode}>Неправильный промокод</div>
+                  )}
+                  <div className={s.sendPromoCode}>
+                    <input
+                        type="text"
+                        placeholder="Введите промокод"
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <button onClick={sendCupon}>Применить</button>
+                  </div>
+                </>
+            )}
+
           </div>
+
+
         </div>
         {/* <ProductsList /> */}
       </div>

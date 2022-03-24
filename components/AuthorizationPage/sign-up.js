@@ -89,7 +89,7 @@ const SignUp = ({
             className={firstName ? s.valid : ""}
             placeholder="Имя"
           />
-          <Input
+          <input
               id='lastName'
               placeholder='Фамилия *'
               onChange={(e) => setLastName(e.target.value)}
