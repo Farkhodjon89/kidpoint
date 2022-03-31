@@ -18,6 +18,7 @@ import COUPON from '../../queries/coupon'
 import client from "../../apollo/apollo-client";
 import {useLazyQuery} from "@apollo/react-hooks";
 import Loader from "../Loader/loader";
+import {getFormat} from "../../utils";
 
 const CartMain = ({
                     cartItems,

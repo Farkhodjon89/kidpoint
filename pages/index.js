@@ -49,6 +49,7 @@ export async function getStaticProps() {
   const staticData = new StaticDataSingleton()
   await staticData.checkAndFetch(true)
   const categories = staticData.getRootCategories()
+  console.log(categories)
 
 
   const products = await client.query({
