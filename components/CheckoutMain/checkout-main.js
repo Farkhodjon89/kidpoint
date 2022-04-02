@@ -111,17 +111,22 @@ const CheckoutMain = ({cartItems}) => {
     })
   }
 
-  let cartTotalPrice = 0
-  cartItems.map(
-      ({woocsRegularPrice, onSale, woocsSalePrice, quantity}) =>
-          (cartTotalPrice += onSale ? woocsSalePrice * quantity : woocsRegularPrice * quantity)
+  const discount =
+      typeof window !== 'undefined'
+          ? JSON.parse(localStorage.getItem('coupon'))
+          : ''
+
+  let cartTotalPrice2 = 0
+  cartItems.map(({woocsRegularPrice, onSale, woocsSalePrice, quantity}) => {
+        (cartTotalPrice2 += onSale ? woocsSalePrice * quantity : woocsRegularPrice * quantity)
+      }
   )
-  // console.log(cartItems)
+
 
   const deliveryMethods = [
     {
       left: 'Доставка курьером',
-      right: cartTotalPrice  ? '20000 UZS' : '',
+      right: cartTotalPrice2 ? '20000 UZS' : '',
     },
     {
       left: 'Самовывоз из магазина',
@@ -130,7 +135,7 @@ const CheckoutMain = ({cartItems}) => {
   ]
 
   const getDeliveryPrice = () => {
-    return delivery === 'Доставка курьером' && orderReviewData.totalPrice ? 20000 : 0
+    return delivery === 'Доставка курьером' && cartTotalPrice ? (cartTotalPrice ? 20000 : 0) : (cartTotalPrice2 ? 20000 : 0)
   }
   const sendInfo = async () => {
     setIsLoading(true)
@@ -140,6 +145,8 @@ const CheckoutMain = ({cartItems}) => {
       set_paid: false,
       currency: 'UZS',
       status: selectMethod === 'cash' ? 'processing' : 'pending',
+      total: cartTotalPrice ? cartTotalPrice : cartTotalPrice2,
+      coupon_lines: discount && [{code: discount.code}],
       payment_method_title:
           selectMethod === 'cash'
               ? 'Оплата наличными или картой при доставке'
@@ -190,34 +197,42 @@ const CheckoutMain = ({cartItems}) => {
 
     setIsLoading(false)
   }
-  let orderReviewData = {
-    price: 0,
-    sale: 0,
-    totalPrice: 0,
-    button: (
-        <button
-            onClick={handleSubmit(sendInfo)}
-            disabled={isLoading}
-            className={s.orderButton}
-        >
-          {isLoading ? (
-              <div className={s.loaderAnimation}></div>
-          ) : (
-              <>Оформить заказ</>
-          )}
-        </button>
-    ),
-  }
-  for (const product of cartItems) {
-    const {normalPrice, salePrice} = getPrice(product);
 
-    orderReviewData.price += parseInt(normalPrice) * product.quantity;
-    orderReviewData.sale += parseInt(normalPrice) - parseInt(salePrice) * product.quantity;
-    // console.log(orderReviewData.sale)
+  const cartTotalPrice =
+      typeof window !== 'undefined'
+          ? parseInt(localStorage.getItem('cartTotalPriceFront'))
+          : ''
 
-    let deliveryPrice = delivery === 'flat_rate' ? 0 : 0;
-    orderReviewData.totalPrice = orderReviewData.price /*- orderReviewData.sale*/ + deliveryPrice;
-  }
+  console.log(cartTotalPrice)
+
+  // let orderReviewData = {
+  //   price: 0,
+  //   sale: 0,
+  //   totalPrice: 0,
+  //   button: (
+  //       <button
+  //           onClick={handleSubmit(sendInfo)}
+  //           disabled={isLoading}
+  //           className={s.orderButton}
+  //       >
+  //         {isLoading ? (
+  //             <div className={s.loaderAnimation}></div>
+  //         ) : (
+  //             <>Оформить заказ</>
+  //         )}
+  //       </button>
+  //   ),
+  // }
+  // for (const product of cartItems) {
+  //   const {normalPrice, salePrice} = getPrice(product);
+  //
+  //   orderReviewData.price += parseInt(normalPrice) * product.quantity;
+  //   orderReviewData.sale += parseInt(normalPrice) - parseInt(salePrice) * product.quantity;
+  //   // console.log(orderReviewData.sale)
+  //
+  //   let deliveryPrice = delivery === 'flat_rate' ? 0 : 0;
+  //   orderReviewData.totalPrice = orderReviewData.price /*- orderReviewData.sale*/ + deliveryPrice;
+  // }
 
   // console.log(`order`, orderReviewData.totalPrice)
 
@@ -325,6 +340,7 @@ const CheckoutMain = ({cartItems}) => {
 
 
   // console.log(`order`, order)
+  console.log(cartTotalPrice)
 
   const host =
       process.env.NODE_ENV === 'production'
@@ -356,7 +372,7 @@ const CheckoutMain = ({cartItems}) => {
           <input type="hidden" name="merchant_id" value="14802"/>
           <input type="hidden" name="transaction_param" value={order && order.id}/>
           <input type="hidden" name="service_id" value="20491"/>
-          <input type="hidden" name="amount" value={orderReviewData.totalPrice}/>
+          <input type="hidden" name="amount" value={order?.total}/>
           <input
               type="hidden"
               name="return_url"
@@ -403,17 +419,26 @@ const CheckoutMain = ({cartItems}) => {
           <div className={s.details}>
             <div>
               Подытог
-              <span>{getFormatPrice(cartTotalPrice)}</span>
+              <span>{getFormatPrice(cartTotalPrice ? cartTotalPrice : cartTotalPrice2)}</span>
+            </div>
+            <div>
+              Купон:
+              <span>
+                {discount ? discount.amount : ' 0 сум'}{' '}
+                {discount && discount.discountType === 'FIXED_CART'
+                    ? 'сум'
+                    : discount && '%'}{' '}
+              </span>
             </div>
             <div>
               Доставка
-              <span>{delivery === 'Доставка курьером' && cartTotalPrice  ? '20000' : '0'} UZS</span>
+              <span>{delivery === 'Доставка курьером' && cartTotalPrice ? '20000' : '0'} UZS</span>
             </div>
             <div>
               Итого
               <span>
                 {getFormatPrice(
-                    (cartTotalPrice) + (delivery === 'Доставка курьером' && cartTotalPrice ? 20000 : 0)
+                    (cartTotalPrice ? cartTotalPrice : cartTotalPrice2) + (delivery === 'Доставка курьером' && cartTotalPrice ? 20000 : 0)
                 )}
               </span>
             </div>

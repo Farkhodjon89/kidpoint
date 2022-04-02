@@ -18,7 +18,7 @@ import COUPON from '../../queries/coupon'
 import client from "../../apollo/apollo-client";
 import {useLazyQuery} from "@apollo/react-hooks";
 import Loader from "../Loader/loader";
-import {getFormat} from "../../utils";
+import {getFormat, getPrice} from "../../utils";
 
 const CartMain = ({
                     cartItems,
@@ -39,6 +39,7 @@ const CartMain = ({
           ? JSON.parse(localStorage.getItem('coupon'))
           : ' '
   )
+  console.log(myCoupon)
   const sendCupon = () => {
     loadCupon({
       variables: {
@@ -57,16 +58,22 @@ const CartMain = ({
   let couponFront
   let cartTotalPrice = 0
 
+  cartItems.map((product) => {
+    const { normalPrice, salePrice } = getPrice(product)
+    cartTotalPrice += product.onSale
+        ? parseInt(salePrice) * product.quantity
+        : parseInt(normalPrice) * product.quantity
+    localStorage.setItem('cartTotalPriceFront', cartTotalPrice)
+  })
+
   if (myCoupon && myCoupon.amount) {
     switch (myCoupon.discountType) {
       case 'FIXED_CART':
         cartTotalPrice -= myCoupon.amount
-        couponFront = getFormat(myCoupon.amount) + ' сум'
+        couponFront = getFormat(myCoupon.amount) + ' KZT'
         break
       case 'PERCENT':
-        cartTotalPrice = Math.round(
-            cartTotalPrice - cartTotalPrice * (myCoupon.amount / 100)
-        )
+        cartTotalPrice = Math.round(cartTotalPrice - cartTotalPrice * (myCoupon.amount / 100))
         couponFront = myCoupon.amount + ' %'
         break
       default:
@@ -81,9 +88,9 @@ const CartMain = ({
         <div className={s.wrapper}>
           <div className={s.left}>
             {cartItems.map((product, i) => {
-              cartTotalPrice += product.onSale
-                  ? product.woocsSalePrice * product.quantity
-                  : product.woocsRegularPrice * product.quantity
+              // cartTotalPrice += product.onSale
+              //     ? product.woocsSalePrice * product.quantity
+              //     : product.woocsRegularPrice * product.quantity
               return (
                   <>
                     <div className={`${s.card} ${s.showDesktop} `} key={i}>
@@ -261,7 +268,7 @@ const CartMain = ({
                 <Loader coupon/>
             ) : myCoupon ? (
                 <div className={s.activatedPromoCode}>
-                  Промокод <div>{myCoupon.code}</div> активирован!
+                  Промокод активирован!
                   <button
                       onClick={() => {
                         setMyCoupon(localStorage.removeItem('coupon'))

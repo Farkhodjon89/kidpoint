@@ -1,14 +1,12 @@
 <!-- Facebook Meta Tags -->
 <meta property="og:url" content="https://kidpoint.uz">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Магазин детских игрушек и товаров в Ташкенте | Kidpoint">
-<meta property="og:description" content="Интернет-магазин детских игрушек, товаров для гигиены, питания, развития и творчества - Kidpoint. Быстрая доставка по всему Узбекистану.">
+<meta property="og:title" content="Интернет-магазин товаров для малышей и мам в Ташкенте| Kidpoint">
 <meta property="og:image" content="https://kidpoint.uz/header/logo.svg">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:domain" content="Kidpoint">
 <meta property="twitter:url" content="https://kidpoint.uz">
-<meta name="twitter:title" content="Магазин детских игрушек и товаров в Ташкенте | Kidpoint">
-<meta name="twitter:description" content="Интернет-магазин детских игрушек, товаров для гигиены, питания, развития и творчества - Kidpoint. Быстрая доставка по всему Узбекистану.">
+<meta name="twitter:title" content="Интернет-магазин товаров для малышей и мам в Ташкенте| Kidpoint">
 <meta name="twitter:image" content="https://kidpoint.uz/header/logo.svg">
