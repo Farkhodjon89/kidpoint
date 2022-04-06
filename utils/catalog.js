@@ -52,6 +52,12 @@ export const filterVariables = (filters) => {
       terms: Array.isArray(filters.steps) ? filters.steps : [filters.steps],
     })
   }
+  if (filters.collection && filters.collection.length) {
+    result.filters.push({
+      taxonomy: 'PACOLLECTION',
+      terms: Array.isArray(filters.collection) ? filters.collection : [filters.collection],
+    })
+  }
   if (filters.price) {
     const [minPrice, maxPrice] = filters.price
 
@@ -145,7 +151,7 @@ function parseQueryFilters(location) {
   const query = queryString.parse(location, {arrayFormat: 'comma'})
   const filterValues = {}
 
-  const multipleFilters = ['colors', 'sizes', 'brands', 'age', 'gender','steps','components' ]
+  const multipleFilters = ['colors', 'sizes', 'brands', 'age', 'gender','steps','components','collection' ]
 
   Object.keys(query).forEach((param) => {
     const mr = param.match(/^filter_([-_A-Za-z0-9]+)$/)

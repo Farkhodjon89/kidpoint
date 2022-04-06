@@ -33,10 +33,58 @@ let arr_EN = [
   'Y',
   'Z',
 ];
+let arr_RU = [
+  'А',
+  'Б',
+  'В',
+  'Г',
+  'Д',
+  'Е',
+  'Ё',
+  'Ж',
+  'З',
+  'И',
+  'Й',
+  'К',
+  'Л',
+  'М',
+  'Н',
+  'О',
+  'П',
+  'Р',
+  'С',
+  'Т',
+  'У',
+  'Ф',
+  'Х',
+  'Ц',
+  'Ч',
+  'Ш',
+      'Щ',
+'Ъ',
+'Ы',
+'Ь',
+'Э',
+'Ю',
+'Я'
+
+];
 
 const Brands = ({categories, brands}) => {
-  // console.log(brands);
+
   let letter = arr_EN.map((letter) => {
+    const brandList = [];
+    for (const brand of brands) {
+      if (letter == brand.name[0]) {
+        brandList.push({name: brand.name.toUpperCase(), slug: brand.slug});
+      }
+    }
+    return (letter = {
+      letter,
+      brands: brandList,
+    });
+  });
+  let letter2 = arr_RU.map((letter) => {
     const brandList = [];
     for (const brand of brands) {
       if (letter == brand.name[0]) {
@@ -64,7 +112,7 @@ const Brands = ({categories, brands}) => {
       <Layout categories={categories}>
         <div className="brands">Бренды</div>
         {/*<Breadcrumbs breadcrumbs={breadcrumbs}/>*/}
-        <BrandList brands={letter}/>
+        <BrandList brands={letter} brands2={letter2}/>
       </Layout>
   );
 };
@@ -84,7 +132,7 @@ export async function getStaticProps() {
   return {
     props: {
       categories,
-      brands:  brands.data.paBrands.nodes,
+      brands: brands.data.paBrands.nodes,
     },
     revalidate: 60,
   };

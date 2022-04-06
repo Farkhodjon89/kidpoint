@@ -45,6 +45,10 @@ const PRODUCTS = gql`
           name
           slug
         }
+        paCollections {
+          name
+          slug
+        }
         paBrands {
          name
          slug

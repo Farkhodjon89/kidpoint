@@ -9,8 +9,6 @@
   font-weight: bold;
   color: #717171;
   padding: 1rem 1rem 2rem;
-  //margin-bottom: 20px;
-  //border-bottom: 1px solid #e8e8e8;
   position: sticky;
   top: 70px;
   z-index: 999;
@@ -18,9 +16,16 @@
 
   div {
     cursor: pointer;
-
-
   }
+}
+.russianLetters{
+  font-size: 56px;
+  font-weight: bold;
+  color: #717171;
+  padding: 1rem 1rem 2rem;
+  cursor: pointer;
+  justify-content: center;
+  display: flex;
 }
 .active {
   color: #6C98B1;

@@ -57,7 +57,7 @@ const CatalogMain = ({
 
 
   const filterValues = (type, value) => {
-    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender', 'steps', 'components']
+    const arrayValuesFor = ['brands', 'colors', 'sizes', 'age', 'gender', 'steps', 'components','collection']
 
     if (value === '' || value == null) {
       const filters = {...state.filters}
@@ -211,6 +211,7 @@ const CatalogMain = ({
               gender={state.activeTerms && state.activeTerms.paGenders}
               steps={state.activeTerms && state.activeTerms.paStupens}
               components={state.activeTerms && state.activeTerms.paKomponenties}
+              collection={state.activeTerms && state.activeTerms.paCollections}
               filterValues={filterValues}
               minPrice={minPrice}
               maxPrice={maxPrice}

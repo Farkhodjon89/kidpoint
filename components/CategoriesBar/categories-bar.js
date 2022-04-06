@@ -78,8 +78,6 @@ const Category = ({name, slug, children}) => {
         )}
       </div>
   );
-
-
 }
 
 export default CategoriesBar
